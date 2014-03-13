@@ -31,9 +31,23 @@ if [ "${enable_revert_unixtime}" = "yes" ]; then
 fi
 
 if [ "${enable_av}" != "no" ]; then
-	HDEFINE(_SUPPORT_AUDIO,"yes")
-	CHECK(toxav)
 	CHECK(openal)
+	CHECK(toxav)
+	HDEFINE(_SUPPORT_AUDIO,"yes")
+	if [ "${HAVE_TOXAV}" != "yes" ]; then
+		echo "*"
+		echo "* Tried to enable AV"
+		echo "* But library toxav was not found"
+		echo "*"
+		exit 1
+	fi
+	if [ "${HAVE_OPENAL}" != "yes" ]; then
+		echo "*"
+		echo "* Tried to enable AV "
+		echo "* But library openal was not found"
+		echo "*"
+		exit 1
+	fi
 else
         HDEFINE(_SUPPORT_AUDIO,"no")
 fi
