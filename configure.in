@@ -18,6 +18,11 @@ REGISTER("--with-libtoxcore=DIR",	"search for libtoxcore files in DIR")
 REGISTER("--with-libsodium=DIR",	"search for libsodium files in DIR")
 REGISTER("--with-libtoxav=DIR",	"search for libtoxav files in DIR")
 
+REQUIRE(cc)
+#CHECK(curses)
+REQUIRE(sodium)
+REQUIRE(toxcore)
+
 if [ "${enable_apply_unixtime}" = "yes" ]; then
 	patch -p1 < fun/unixtime.patch
 fi
@@ -25,13 +30,10 @@ if [ "${enable_revert_unixtime}" = "yes" ]; then
         patch -R -p1 < fun/unixtime.patch
 fi
 
-if [ "${disable_av}" = "yes" ]; then
-        HDEFINE(_SUPPORT_AUDIO,"no")
-else
+if [ "${enable_av}" != "yes" ]; then
 	HDEFINE(_SUPPORT_AUDIO,"yes")
+	CHECK(toxav)
+	CHECK(openal)
+else
+        HDEFINE(_SUPPORT_AUDIO,"no")
 fi
-
-CHECK(cc)
-#CHECK(curses)
-CHECK(libtoxcore)
-CHECK(libsodium)
