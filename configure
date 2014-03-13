@@ -393,6 +393,7 @@ echo "    --with-dependency-search=DI search for dependencies in DIR"
 echo "    --with-libtoxcore=DIR       search for libtoxcore files in DIR"
 echo "    --with-libsodium=DIR        search for libsodium files in DIR"
 echo "    --with-libtoxav=DIR         search for libtoxav files in DIR"
+echo "    --with-libopenal=DIR        search for libtoxav files in DIR"
 exit 1
 fi;
 if [ "${show_version}" = "yes" ]; then
@@ -684,28 +685,6 @@ echo "#ifndef VERSION" > config/version.h
 echo "#define VERSION \"$VERSION\"" >> config/version.h
 echo "#endif" >> config/version.h
 echo "hdefs[\"VERSION\"] = \"$VERSION\"" >>configure.lua
-if [ "${enable_apply_unixtime}" = "yes" ]
- then
-	patch -p1 < fun/unixtime.patch
-fi
-if [ "${enable_revert_unixtime}" = "yes" ]
- then
-        patch -R -p1 < fun/unixtime.patch
-fi
-if [ "${disable_av}" = "yes" ]
- then
-_SUPPORT_AUDIO="no"
-echo "#ifndef _SUPPORT_AUDIO" > config/_support_audio.h
-echo "#define _SUPPORT_AUDIO \"$_SUPPORT_AUDIO\"" >> config/_support_audio.h
-echo "#endif" >> config/_support_audio.h
-echo "hdefs[\"_SUPPORT_AUDIO\"] = \"$_SUPPORT_AUDIO\"" >>configure.lua
-else
-_SUPPORT_AUDIO="yes"
-echo "#ifndef _SUPPORT_AUDIO" > config/_support_audio.h
-echo "#define _SUPPORT_AUDIO \"$_SUPPORT_AUDIO\"" >> config/_support_audio.h
-echo "#endif" >> config/_support_audio.h
-echo "hdefs[\"_SUPPORT_AUDIO\"] = \"$_SUPPORT_AUDIO\"" >>configure.lua
-fi
 $ECHO_N "checking for a C compiler..."
 $ECHO_N "checking for a C compiler..." >> config.log
 if [ "$CC" = "" ]; then
@@ -1051,97 +1030,107 @@ echo "no" >> config.log
 fi;
 rm -f conftest.c $testdir/conftest$EXECSUFFIX
 fi;
-$ECHO_N "checking for libtoxcore (https://github.com/irungentoo/ProjectTox-Core)..."
-$ECHO_N "checking for libtoxcore (https://github.com/irungentoo/ProjectTox-Core)..." >> config.log
+if [ "${HAVE_CC}" != "yes" ]; then
+echo "* "
+echo "* " >> config.log
+echo "* This software requires cc installed on your system."
+echo "* This software requires cc installed on your system." >> config.log
+echo "* "
+echo "* " >> config.log
+echo "configure failed!"
+exit 1
+fi;
+$ECHO_N "checking for ncurses (https://github.com/jedisct1/libsodium)..."
+$ECHO_N "checking for ncurses (https://github.com/jedisct1/libsodium)..." >> config.log
 if [ "" != "" ]; then
-	MK_EXEC_PKGPREFIX=`$PKGCONFIG --variable=prefix libtoxcore 2>/dev/null`
+	MK_EXEC_PKGPREFIX=`$PKGCONFIG --variable=prefix ncurses 2>/dev/null`
 	if [ "$MK_EXEC_PKGPREFIX" != "" ]; then
 		echo " "
 		echo "* "
-		echo "* ERROR: According to pkg-config, libtoxcore is installed in prefix: "
+		echo "* ERROR: According to pkg-config, ncurses is installed in prefix: "
 		echo "* $MK_EXEC_PKGPREFIX, but the prefix () was specified."
 		echo "* "
-		echo "* Please re-run ./configure again with the correct libtoxcore prefix"
+		echo "* Please re-run ./configure again with the correct ncurses prefix"
 		echo "* (or specify no prefix at all to enable auto-detection)."
 		echo "* "
 		exit 1
 	else
-		TOXCORE_VERSION=`$PKGCONFIG libtoxcore --modversion 2>/dev/null`
+		NCURSES_VERSION=`$PKGCONFIG ncurses --modversion 2>/dev/null`
 	fi
 else
-	TOXCORE_VERSION=`$PKGCONFIG libtoxcore --modversion 2>/dev/null`
+	NCURSES_VERSION=`$PKGCONFIG ncurses --modversion 2>/dev/null`
 fi
 if [ "" != "" ]; then
-	MK_EXEC_PKGPREFIX=`$PKGCONFIG --variable=prefix libtoxcore 2>/dev/null`
+	MK_EXEC_PKGPREFIX=`$PKGCONFIG --variable=prefix ncurses 2>/dev/null`
 	if [ "$MK_EXEC_PKGPREFIX" != "" ]; then
 		echo " "
 		echo "* "
-		echo "* ERROR: According to pkg-config, libtoxcore is installed in prefix: "
+		echo "* ERROR: According to pkg-config, ncurses is installed in prefix: "
 		echo "* $MK_EXEC_PKGPREFIX, but the prefix () was specified."
 		echo "* "
-		echo "* Please re-run ./configure again with the correct libtoxcore prefix"
+		echo "* Please re-run ./configure again with the correct ncurses prefix"
 		echo "* (or specify no prefix at all to enable auto-detection)."
 		echo "* "
 		exit 1
 	else
-		TOXCORE_CFLAGS=`$PKGCONFIG libtoxcore --cflags 2>/dev/null`
+		NNCURSES_CFLAGS=`$PKGCONFIG ncurses --cflags 2>/dev/null`
 	fi
 else
-	TOXCORE_CFLAGS=`$PKGCONFIG libtoxcore --cflags 2>/dev/null`
+	NNCURSES_CFLAGS=`$PKGCONFIG ncurses --cflags 2>/dev/null`
 fi
 if [ "" != "" ]; then
-	MK_EXEC_PKGPREFIX=`$PKGCONFIG --variable=prefix libtoxcore 2>/dev/null`
+	MK_EXEC_PKGPREFIX=`$PKGCONFIG --variable=prefix ncurses 2>/dev/null`
 	if [ "$MK_EXEC_PKGPREFIX" != "" ]; then
 		echo " "
 		echo "* "
-		echo "* ERROR: According to pkg-config, libtoxcore is installed in prefix: "
+		echo "* ERROR: According to pkg-config, ncurses is installed in prefix: "
 		echo "* $MK_EXEC_PKGPREFIX, but the prefix () was specified."
 		echo "* "
-		echo "* Please re-run ./configure again with the correct libtoxcore prefix"
+		echo "* Please re-run ./configure again with the correct ncurses prefix"
 		echo "* (or specify no prefix at all to enable auto-detection)."
 		echo "* "
 		exit 1
 	else
-		TOXCORE_LIBS=`$PKGCONFIG libtoxcore --libs 2>/dev/null`
+		NCURSES_LIBS=`$PKGCONFIG ncurses --libs 2>/dev/null`
 	fi
 else
-	TOXCORE_LIBS=`$PKGCONFIG libtoxcore --libs 2>/dev/null`
+	NCURSES_LIBS=`$PKGCONFIG ncurses --libs 2>/dev/null`
 fi
-if [ "${TOXCORE_VERSION}" != "" ]; then
+if [ "${NCURSES_VERSION}" != "" ]; then
 if [ "" != "" ]; then
-echo "yes ($TOXCORE_VERSION in )"
-echo "yes ($TOXCORE_VERSION in )" >> config.log
+echo "yes ($NCURSES_VERSION in )"
+echo "yes ($NCURSES_VERSION in )" >> config.log
 else
-echo "yes ($TOXCORE_VERSION)"
-echo "yes ($TOXCORE_VERSION)" >> config.log
+echo "yes ($NCURSES_VERSION)"
+echo "yes ($NCURSES_VERSION)" >> config.log
 fi;
 if [ "" != "" ]; then
 if [ "${MK_VERSION_OK}" != "yes" ]; then
-echo "Version  or greater is required (found $TOXCORE_VERSION)"
+echo "Version  or greater is required (found $NCURSES_VERSION)"
 exit 1
 fi;
 fi;
-$ECHO_N "checking whether libtoxcore works..."
-$ECHO_N "checking whether libtoxcore works..." >> config.log
+$ECHO_N "checking whether ncurses works..."
+$ECHO_N "checking whether ncurses works..." >> config.log
 MK_CACHED="No"
 MK_COMPILE_STATUS="OK"
 if [ "${cache}" != "" ]; then
-	if [ -e "${cache}/ctest-HAVE_TOXCORE" ]; then
-		HAVE_TOXCORE=`cat ${cache}/ctest-HAVE_TOXCORE`
-		MK_COMPILE_STATUS=`cat ${cache}/ctest-status-HAVE_TOXCORE`
+	if [ -e "${cache}/ctest-HAVE_NCURSES" ]; then
+		HAVE_NCURSES=`cat ${cache}/ctest-HAVE_NCURSES`
+		MK_COMPILE_STATUS=`cat ${cache}/ctest-status-HAVE_NCURSES`
 		MK_CACHED="Yes"
 	fi
 fi
 if [ "${MK_CACHED}" = "No" ]; then
 	cat << EOT > conftest.c
-#include <tox/tox.h.h>
+#include <ncurses.h>
 int main(int argc, char *argv[]) {
   return (0);
 }
 
 EOT
-	echo "$CC $CFLAGS $TEST_CFLAGS ${TOXCORE_CFLAGS} -o $testdir/conftest conftest.c ${TOXCORE_LIBS}" >>config.log
-	$CC $CFLAGS $TEST_CFLAGS ${TOXCORE_CFLAGS} -o $testdir/conftest conftest.c ${TOXCORE_LIBS} 2>>config.log
+	echo "$CC $CFLAGS $TEST_CFLAGS ${NCURSES_CFLAGS} -o $testdir/conftest conftest.c ${NCURSES_LIBS}" >>config.log
+	$CC $CFLAGS $TEST_CFLAGS ${NCURSES_CFLAGS} -o $testdir/conftest conftest.c ${NCURSES_LIBS} 2>>config.log
 	if [ $? != 0 ]; then
 		echo "-> failed ($?)" >> config.log
 		MK_COMPILE_STATUS="FAIL($?)"
@@ -1150,39 +1139,39 @@ fi
 if [ "${MK_COMPILE_STATUS}" = "OK" ]; then
 echo "yes"
 echo "yes" >> config.log
-HAVE_TOXCORE="yes"
-echo "#ifndef HAVE_TOXCORE" > config/have_toxcore.h
-echo "#define HAVE_TOXCORE \"$HAVE_TOXCORE\"" >> config/have_toxcore.h
-echo "#endif" >> config/have_toxcore.h
-echo "hdefs[\"HAVE_TOXCORE\"] = \"$HAVE_TOXCORE\"" >>configure.lua
+HAVE_NCURSES="yes"
+echo "#ifndef HAVE_NCURSES" > config/have_ncurses.h
+echo "#define HAVE_NCURSES \"$HAVE_NCURSES\"" >> config/have_ncurses.h
+echo "#endif" >> config/have_ncurses.h
+echo "hdefs[\"HAVE_NCURSES\"] = \"$HAVE_NCURSES\"" >>configure.lua
 else
 echo "no"
 echo "no" >> config.log
-HAVE_TOXCORE="no"
-echo "#undef HAVE_TOXCORE" >config/have_toxcore.h
-echo "hdefs[\"HAVE_TOXCORE\"] = nil" >>configure.lua
+HAVE_NCURSES="no"
+echo "#undef HAVE_NCURSES" >config/have_ncurses.h
+echo "hdefs[\"HAVE_NCURSES\"] = nil" >>configure.lua
 fi;
 if [ "${cache}" != "" ]; then
-	echo "$HAVE_TOXCORE" > ${cache}/ctest-HAVE_TOXCORE
-	echo $MK_COMPILE_STATUS > ${cache}/ctest-status-HAVE_TOXCORE
+	echo "$HAVE_NCURSES" > ${cache}/ctest-HAVE_NCURSES
+	echo $MK_COMPILE_STATUS > ${cache}/ctest-status-HAVE_NCURSES
 fi
 rm -f conftest.c $testdir/conftest$EXECSUFFIX
-if [ "${HAVE_TOXCORE}" = "yes" ]; then
-echo "#ifndef TOXCORE_CFLAGS" > config/toxcore_cflags.h
-echo "#define TOXCORE_CFLAGS \"$TOXCORE_CFLAGS\"" >> config/toxcore_cflags.h
-echo "#endif" >> config/toxcore_cflags.h
-echo "hdefs[\"TOXCORE_CFLAGS\"] = \"$TOXCORE_CFLAGS\"" >>configure.lua
-echo "#ifndef TOXCORE_LIBS" > config/toxcore_libs.h
-echo "#define TOXCORE_LIBS \"$TOXCORE_LIBS\"" >> config/toxcore_libs.h
-echo "#endif" >> config/toxcore_libs.h
-echo "hdefs[\"TOXCORE_LIBS\"] = \"$TOXCORE_LIBS\"" >>configure.lua
+if [ "${HAVE_NCURSES}" = "yes" ]; then
+echo "#ifndef NCURSES_CFLAGS" > config/ncurses_cflags.h
+echo "#define NCURSES_CFLAGS \"$NCURSES_CFLAGS\"" >> config/ncurses_cflags.h
+echo "#endif" >> config/ncurses_cflags.h
+echo "hdefs[\"NCURSES_CFLAGS\"] = \"$NCURSES_CFLAGS\"" >>configure.lua
+echo "#ifndef NCURSES_LIBS" > config/ncurses_libs.h
+echo "#define NCURSES_LIBS \"$NCURSES_LIBS\"" >> config/ncurses_libs.h
+echo "#endif" >> config/ncurses_libs.h
+echo "hdefs[\"NCURSES_LIBS\"] = \"$NCURSES_LIBS\"" >>configure.lua
 else
-echo "#undef TOXCORE_CFLAGS" >config/toxcore_cflags.h
-echo "hdefs[\"TOXCORE_CFLAGS\"] = nil" >>configure.lua
-TOXCORE_CFLAGS=""
-echo "#undef TOXCORE_LIBS" >config/toxcore_libs.h
-echo "hdefs[\"TOXCORE_LIBS\"] = nil" >>configure.lua
-TOXCORE_LIBS=""
+echo "#undef NCURSES_CFLAGS" >config/ncurses_cflags.h
+echo "hdefs[\"NCURSES_CFLAGS\"] = nil" >>configure.lua
+NCURSES_CFLAGS=""
+echo "#undef NCURSES_LIBS" >config/ncurses_libs.h
+echo "hdefs[\"NCURSES_LIBS\"] = nil" >>configure.lua
+NCURSES_LIBS=""
 fi;
 else
 if [ "" != "" ]; then
@@ -1192,18 +1181,28 @@ else
 echo "no"
 echo "no" >> config.log
 fi;
-echo "#undef HAVE_TOXCORE" >config/have_toxcore.h
-echo "hdefs[\"HAVE_TOXCORE\"] = nil" >>configure.lua
+echo "#undef HAVE_NCURSES" >config/have_ncurses.h
+echo "hdefs[\"HAVE_NCURSES\"] = nil" >>configure.lua
+fi;
+if [ "${HAVE_NCURSES}" != "yes" ]; then
+echo "* "
+echo "* " >> config.log
+echo "* This software requires ncurses installed on your system."
+echo "* This software requires ncurses installed on your system." >> config.log
+echo "* "
+echo "* " >> config.log
+echo "configure failed!"
+exit 1
 fi;
 $ECHO_N "checking for Libsodium (https://github.com/jedisct1/libsodium)..."
 $ECHO_N "checking for Libsodium (https://github.com/jedisct1/libsodium)..." >> config.log
-if [ "" != "" ]; then
+if [ "${prefix_libsodium}" != "" ]; then
 	MK_EXEC_PKGPREFIX=`$PKGCONFIG --variable=prefix libsodium 2>/dev/null`
-	if [ "$MK_EXEC_PKGPREFIX" != "" ]; then
+	if [ "$MK_EXEC_PKGPREFIX" != "${prefix_libsodium}" ]; then
 		echo " "
 		echo "* "
 		echo "* ERROR: According to pkg-config, libsodium is installed in prefix: "
-		echo "* $MK_EXEC_PKGPREFIX, but the prefix () was specified."
+		echo "* $MK_EXEC_PKGPREFIX, but the prefix (${prefix_libsodium}) was specified."
 		echo "* "
 		echo "* Please re-run ./configure again with the correct libsodium prefix"
 		echo "* (or specify no prefix at all to enable auto-detection)."
@@ -1215,13 +1214,13 @@ if [ "" != "" ]; then
 else
 	SODIUM_VERSION=`$PKGCONFIG libsodium --modversion 2>/dev/null`
 fi
-if [ "" != "" ]; then
+if [ "${prefix_libsodium}" != "" ]; then
 	MK_EXEC_PKGPREFIX=`$PKGCONFIG --variable=prefix libsodium 2>/dev/null`
-	if [ "$MK_EXEC_PKGPREFIX" != "" ]; then
+	if [ "$MK_EXEC_PKGPREFIX" != "${prefix_libsodium}" ]; then
 		echo " "
 		echo "* "
 		echo "* ERROR: According to pkg-config, libsodium is installed in prefix: "
-		echo "* $MK_EXEC_PKGPREFIX, but the prefix () was specified."
+		echo "* $MK_EXEC_PKGPREFIX, but the prefix (${prefix_libsodium}) was specified."
 		echo "* "
 		echo "* Please re-run ./configure again with the correct libsodium prefix"
 		echo "* (or specify no prefix at all to enable auto-detection)."
@@ -1233,13 +1232,13 @@ if [ "" != "" ]; then
 else
 	SODIUM_CFLAGS=`$PKGCONFIG libsodium --cflags 2>/dev/null`
 fi
-if [ "" != "" ]; then
+if [ "${prefix_libsodium}" != "" ]; then
 	MK_EXEC_PKGPREFIX=`$PKGCONFIG --variable=prefix libsodium 2>/dev/null`
-	if [ "$MK_EXEC_PKGPREFIX" != "" ]; then
+	if [ "$MK_EXEC_PKGPREFIX" != "${prefix_libsodium}" ]; then
 		echo " "
 		echo "* "
 		echo "* ERROR: According to pkg-config, libsodium is installed in prefix: "
-		echo "* $MK_EXEC_PKGPREFIX, but the prefix () was specified."
+		echo "* $MK_EXEC_PKGPREFIX, but the prefix (${prefix_libsodium}) was specified."
 		echo "* "
 		echo "* Please re-run ./configure again with the correct libsodium prefix"
 		echo "* (or specify no prefix at all to enable auto-detection)."
@@ -1252,16 +1251,39 @@ else
 	SODIUM_LIBS=`$PKGCONFIG libsodium --libs 2>/dev/null`
 fi
 if [ "${SODIUM_VERSION}" != "" ]; then
-if [ "" != "" ]; then
-echo "yes ($SODIUM_VERSION in )"
-echo "yes ($SODIUM_VERSION in )" >> config.log
+if [ "${prefix_libsodium}" != "" ]; then
+echo "yes ($SODIUM_VERSION in ${prefix_libsodium})"
+echo "yes ($SODIUM_VERSION in ${prefix_libsodium})" >> config.log
 else
 echo "yes ($SODIUM_VERSION)"
 echo "yes ($SODIUM_VERSION)" >> config.log
 fi;
-if [ "" != "" ]; then
+if [ "0.4.2" != "" ]; then
+MK_VERSION_MAJOR=`echo "$SODIUM_VERSION" |sed 's/\([0-9]*\).\([0-9]*\).\([0-9]*\).*/\1/'`;
+MK_VERSION_MINOR=`echo "$SODIUM_VERSION" |sed 's/\([0-9]*\).\([0-9]*\).\([0-9]*\).*/\2/'`;
+MK_VERSION_MICRO=`echo "$SODIUM_VERSION" |sed 's/\([0-9]*\).\([0-9]*\).\([0-9]*\).*/\3/'`;
+MK_VERSION_OK="no"
+if [ $MK_VERSION_MAJOR -gt 0 ]; then
+	MK_VERSION_OK="yes";
+elif [ $MK_VERSION_MAJOR -eq 0 ]; then
+	if [ "$MK_VERSION_MINOR" = "" ]; then
+		MK_VERSION_OK="yes"
+	else
+		if [ $MK_VERSION_MINOR -gt 4 ]; then
+			MK_VERSION_OK="yes";
+		elif [ $MK_VERSION_MINOR -eq 4 ]; then
+			if [ "$MK_VERSION_MICRO" = "" ]; then
+				MK_VERSION_OK="yes"
+			else
+				if [ $MK_VERSION_MICRO -ge 2 ]; then
+					MK_VERSION_OK="yes"
+				fi
+			fi
+		fi
+	fi
+fi
 if [ "${MK_VERSION_OK}" != "yes" ]; then
-echo "Version  or greater is required (found $SODIUM_VERSION)"
+echo "Version 0.4.2 or greater is required (found $SODIUM_VERSION)"
 exit 1
 fi;
 fi;
@@ -1329,9 +1351,9 @@ echo "hdefs[\"SODIUM_LIBS\"] = nil" >>configure.lua
 SODIUM_LIBS=""
 fi;
 else
-if [ "" != "" ]; then
-echo "no (not in )"
-echo "no (not in )" >> config.log
+if [ "${prefix_libsodium}" != "" ]; then
+echo "no (not in ${prefix_libsodium})"
+echo "no (not in ${prefix_libsodium})" >> config.log
 else
 echo "no"
 echo "no" >> config.log
@@ -1339,56 +1361,657 @@ fi;
 echo "#undef HAVE_SODIUM" >config/have_sodium.h
 echo "hdefs[\"HAVE_SODIUM\"] = nil" >>configure.lua
 fi;
+if [ "${HAVE_SODIUM}" != "yes" ]; then
+echo "* "
+echo "* " >> config.log
+echo "* This software requires sodium installed on your system."
+echo "* This software requires sodium installed on your system." >> config.log
+echo "* "
+echo "* " >> config.log
+echo "configure failed!"
+exit 1
+fi;
+if [ "${MK_VERSION_OK}" != "yes" ]; then
+echo "* "
+echo "* " >> config.log
+echo "* This software requires sodium version >= 0.4.2,"
+echo "* This software requires sodium version >= 0.4.2," >> config.log
+echo "* please upgrade and try again."
+echo "* please upgrade and try again." >> config.log
+echo "* "
+echo "* " >> config.log
+echo "configure failed!"
+exit 1
+fi;
+$ECHO_N "checking for libtoxcore (https://github.com/irungentoo/ProjectTox-Core)..."
+$ECHO_N "checking for libtoxcore (https://github.com/irungentoo/ProjectTox-Core)..." >> config.log
+if [ "${prefix_toxcore}" != "" ]; then
+	MK_EXEC_PKGPREFIX=`$PKGCONFIG --variable=prefix libtoxcore 2>/dev/null`
+	if [ "$MK_EXEC_PKGPREFIX" != "${prefix_toxcore}" ]; then
+		echo " "
+		echo "* "
+		echo "* ERROR: According to pkg-config, libtoxcore is installed in prefix: "
+		echo "* $MK_EXEC_PKGPREFIX, but the prefix (${prefix_toxcore}) was specified."
+		echo "* "
+		echo "* Please re-run ./configure again with the correct libtoxcore prefix"
+		echo "* (or specify no prefix at all to enable auto-detection)."
+		echo "* "
+		exit 1
+	else
+		TOXCORE_VERSION=`$PKGCONFIG libtoxcore --modversion 2>/dev/null`
+	fi
+else
+	TOXCORE_VERSION=`$PKGCONFIG libtoxcore --modversion 2>/dev/null`
+fi
+if [ "${prefix_toxcore}" != "" ]; then
+	MK_EXEC_PKGPREFIX=`$PKGCONFIG --variable=prefix libtoxcore 2>/dev/null`
+	if [ "$MK_EXEC_PKGPREFIX" != "${prefix_toxcore}" ]; then
+		echo " "
+		echo "* "
+		echo "* ERROR: According to pkg-config, libtoxcore is installed in prefix: "
+		echo "* $MK_EXEC_PKGPREFIX, but the prefix (${prefix_toxcore}) was specified."
+		echo "* "
+		echo "* Please re-run ./configure again with the correct libtoxcore prefix"
+		echo "* (or specify no prefix at all to enable auto-detection)."
+		echo "* "
+		exit 1
+	else
+		TOXCORE_CFLAGS=`$PKGCONFIG libtoxcore --cflags 2>/dev/null`
+	fi
+else
+	TOXCORE_CFLAGS=`$PKGCONFIG libtoxcore --cflags 2>/dev/null`
+fi
+if [ "${prefix_toxcore}" != "" ]; then
+	MK_EXEC_PKGPREFIX=`$PKGCONFIG --variable=prefix libtoxcore 2>/dev/null`
+	if [ "$MK_EXEC_PKGPREFIX" != "${prefix_toxcore}" ]; then
+		echo " "
+		echo "* "
+		echo "* ERROR: According to pkg-config, libtoxcore is installed in prefix: "
+		echo "* $MK_EXEC_PKGPREFIX, but the prefix (${prefix_toxcore}) was specified."
+		echo "* "
+		echo "* Please re-run ./configure again with the correct libtoxcore prefix"
+		echo "* (or specify no prefix at all to enable auto-detection)."
+		echo "* "
+		exit 1
+	else
+		TOXCORE_LIBS=`$PKGCONFIG libtoxcore --libs 2>/dev/null`
+	fi
+else
+	TOXCORE_LIBS=`$PKGCONFIG libtoxcore --libs 2>/dev/null`
+fi
+if [ "${TOXCORE_VERSION}" != "" ]; then
+if [ "${prefix_toxcore}" != "" ]; then
+echo "yes ($TOXCORE_VERSION in ${prefix_toxcore})"
+echo "yes ($TOXCORE_VERSION in ${prefix_toxcore})" >> config.log
+else
+echo "yes ($TOXCORE_VERSION)"
+echo "yes ($TOXCORE_VERSION)" >> config.log
+fi;
+if [ "0.0.0" != "" ]; then
+MK_VERSION_MAJOR=`echo "$TOXCORE_VERSION" |sed 's/\([0-9]*\).\([0-9]*\).\([0-9]*\).*/\1/'`;
+MK_VERSION_MINOR=`echo "$TOXCORE_VERSION" |sed 's/\([0-9]*\).\([0-9]*\).\([0-9]*\).*/\2/'`;
+MK_VERSION_MICRO=`echo "$TOXCORE_VERSION" |sed 's/\([0-9]*\).\([0-9]*\).\([0-9]*\).*/\3/'`;
+MK_VERSION_OK="no"
+if [ $MK_VERSION_MAJOR -gt 0 ]; then
+	MK_VERSION_OK="yes";
+elif [ $MK_VERSION_MAJOR -eq 0 ]; then
+	if [ "$MK_VERSION_MINOR" = "" ]; then
+		MK_VERSION_OK="yes"
+	else
+		if [ $MK_VERSION_MINOR -gt 0 ]; then
+			MK_VERSION_OK="yes";
+		elif [ $MK_VERSION_MINOR -eq 0 ]; then
+			if [ "$MK_VERSION_MICRO" = "" ]; then
+				MK_VERSION_OK="yes"
+			else
+				if [ $MK_VERSION_MICRO -ge 0 ]; then
+					MK_VERSION_OK="yes"
+				fi
+			fi
+		fi
+	fi
+fi
+if [ "${MK_VERSION_OK}" != "yes" ]; then
+echo "Version 0.0.0 or greater is required (found $TOXCORE_VERSION)"
+exit 1
+fi;
+fi;
+$ECHO_N "checking whether libtoxcore works..."
+$ECHO_N "checking whether libtoxcore works..." >> config.log
+MK_CACHED="No"
+MK_COMPILE_STATUS="OK"
+if [ "${cache}" != "" ]; then
+	if [ -e "${cache}/ctest-HAVE_TOXCORE" ]; then
+		HAVE_TOXCORE=`cat ${cache}/ctest-HAVE_TOXCORE`
+		MK_COMPILE_STATUS=`cat ${cache}/ctest-status-HAVE_TOXCORE`
+		MK_CACHED="Yes"
+	fi
+fi
+if [ "${MK_CACHED}" = "No" ]; then
+	cat << EOT > conftest.c
+#include <tox/tox.h>
+int main(int argc, char *argv[]) {
+  return (0);
+}
+
+EOT
+	echo "$CC $CFLAGS $TEST_CFLAGS ${TOXCORE_CFLAGS} -o $testdir/conftest conftest.c ${TOXCORE_LIBS}" >>config.log
+	$CC $CFLAGS $TEST_CFLAGS ${TOXCORE_CFLAGS} -o $testdir/conftest conftest.c ${TOXCORE_LIBS} 2>>config.log
+	if [ $? != 0 ]; then
+		echo "-> failed ($?)" >> config.log
+		MK_COMPILE_STATUS="FAIL($?)"
+	fi
+fi
+if [ "${MK_COMPILE_STATUS}" = "OK" ]; then
+echo "yes"
+echo "yes" >> config.log
+HAVE_TOXCORE="yes"
+echo "#ifndef HAVE_TOXCORE" > config/have_toxcore.h
+echo "#define HAVE_TOXCORE \"$HAVE_TOXCORE\"" >> config/have_toxcore.h
+echo "#endif" >> config/have_toxcore.h
+echo "hdefs[\"HAVE_TOXCORE\"] = \"$HAVE_TOXCORE\"" >>configure.lua
+else
+echo "no"
+echo "no" >> config.log
+HAVE_TOXCORE="no"
+echo "#undef HAVE_TOXCORE" >config/have_toxcore.h
+echo "hdefs[\"HAVE_TOXCORE\"] = nil" >>configure.lua
+fi;
+if [ "${cache}" != "" ]; then
+	echo "$HAVE_TOXCORE" > ${cache}/ctest-HAVE_TOXCORE
+	echo $MK_COMPILE_STATUS > ${cache}/ctest-status-HAVE_TOXCORE
+fi
+rm -f conftest.c $testdir/conftest$EXECSUFFIX
+if [ "${HAVE_TOXCORE}" = "yes" ]; then
+echo "#ifndef TOXCORE_CFLAGS" > config/toxcore_cflags.h
+echo "#define TOXCORE_CFLAGS \"$TOXCORE_CFLAGS\"" >> config/toxcore_cflags.h
+echo "#endif" >> config/toxcore_cflags.h
+echo "hdefs[\"TOXCORE_CFLAGS\"] = \"$TOXCORE_CFLAGS\"" >>configure.lua
+echo "#ifndef TOXCORE_LIBS" > config/toxcore_libs.h
+echo "#define TOXCORE_LIBS \"$TOXCORE_LIBS\"" >> config/toxcore_libs.h
+echo "#endif" >> config/toxcore_libs.h
+echo "hdefs[\"TOXCORE_LIBS\"] = \"$TOXCORE_LIBS\"" >>configure.lua
+else
+echo "#undef TOXCORE_CFLAGS" >config/toxcore_cflags.h
+echo "hdefs[\"TOXCORE_CFLAGS\"] = nil" >>configure.lua
+TOXCORE_CFLAGS=""
+echo "#undef TOXCORE_LIBS" >config/toxcore_libs.h
+echo "hdefs[\"TOXCORE_LIBS\"] = nil" >>configure.lua
+TOXCORE_LIBS=""
+fi;
+else
+if [ "${prefix_toxcore}" != "" ]; then
+echo "no (not in ${prefix_toxcore})"
+echo "no (not in ${prefix_toxcore})" >> config.log
+else
+echo "no"
+echo "no" >> config.log
+fi;
+echo "#undef HAVE_TOXCORE" >config/have_toxcore.h
+echo "hdefs[\"HAVE_TOXCORE\"] = nil" >>configure.lua
+fi;
+if [ "${HAVE_TOXCORE}" != "yes" ]; then
+echo "* "
+echo "* " >> config.log
+echo "* This software requires toxcore installed on your system."
+echo "* This software requires toxcore installed on your system." >> config.log
+echo "* "
+echo "* " >> config.log
+echo "configure failed!"
+exit 1
+fi;
+if [ "${MK_VERSION_OK}" != "yes" ]; then
+echo "* "
+echo "* " >> config.log
+echo "* This software requires toxcore version >= 0.0.0,"
+echo "* This software requires toxcore version >= 0.0.0," >> config.log
+echo "* please upgrade and try again."
+echo "* please upgrade and try again." >> config.log
+echo "* "
+echo "* " >> config.log
+echo "configure failed!"
+exit 1
+fi;
+if [ "${enable_apply_unixtime}" = "yes" ]
+ then
+	patch -p1 < fun/unixtime.patch
+fi
+if [ "${enable_revert_unixtime}" = "yes" ]
+ then
+        patch -R -p1 < fun/unixtime.patch
+fi
+if [ "${enable_av}" != "no" ]
+ then
+$ECHO_N "checking for openal (http://kcat.strangesoft.net/openal.html)..."
+$ECHO_N "checking for openal (http://kcat.strangesoft.net/openal.html)..." >> config.log
+if [ "${prefix_libopenal}" != "" ]; then
+	MK_EXEC_PKGPREFIX=`$PKGCONFIG --variable=prefix openal 2>/dev/null`
+	if [ "$MK_EXEC_PKGPREFIX" != "${prefix_libopenal}" ]; then
+		echo " "
+		echo "* "
+		echo "* ERROR: According to pkg-config, openal is installed in prefix: "
+		echo "* $MK_EXEC_PKGPREFIX, but the prefix (${prefix_libopenal}) was specified."
+		echo "* "
+		echo "* Please re-run ./configure again with the correct openal prefix"
+		echo "* (or specify no prefix at all to enable auto-detection)."
+		echo "* "
+		exit 1
+	else
+		OPENAL_VERSION=`$PKGCONFIG openal --modversion 2>/dev/null`
+	fi
+else
+	OPENAL_VERSION=`$PKGCONFIG openal --modversion 2>/dev/null`
+fi
+if [ "${prefix_libopenal}" != "" ]; then
+	MK_EXEC_PKGPREFIX=`$PKGCONFIG --variable=prefix openal 2>/dev/null`
+	if [ "$MK_EXEC_PKGPREFIX" != "${prefix_libopenal}" ]; then
+		echo " "
+		echo "* "
+		echo "* ERROR: According to pkg-config, openal is installed in prefix: "
+		echo "* $MK_EXEC_PKGPREFIX, but the prefix (${prefix_libopenal}) was specified."
+		echo "* "
+		echo "* Please re-run ./configure again with the correct openal prefix"
+		echo "* (or specify no prefix at all to enable auto-detection)."
+		echo "* "
+		exit 1
+	else
+		OPENAL_CFLAGS=`$PKGCONFIG openal --cflags 2>/dev/null`
+	fi
+else
+	OPENAL_CFLAGS=`$PKGCONFIG openal --cflags 2>/dev/null`
+fi
+if [ "${prefix_libopenal}" != "" ]; then
+	MK_EXEC_PKGPREFIX=`$PKGCONFIG --variable=prefix openal 2>/dev/null`
+	if [ "$MK_EXEC_PKGPREFIX" != "${prefix_libopenal}" ]; then
+		echo " "
+		echo "* "
+		echo "* ERROR: According to pkg-config, openal is installed in prefix: "
+		echo "* $MK_EXEC_PKGPREFIX, but the prefix (${prefix_libopenal}) was specified."
+		echo "* "
+		echo "* Please re-run ./configure again with the correct openal prefix"
+		echo "* (or specify no prefix at all to enable auto-detection)."
+		echo "* "
+		exit 1
+	else
+		OPENAL_LIBS=`$PKGCONFIG openal --libs 2>/dev/null`
+	fi
+else
+	OPENAL_LIBS=`$PKGCONFIG openal --libs 2>/dev/null`
+fi
+if [ "${OPENAL_VERSION}" != "" ]; then
+if [ "${prefix_libopenal}" != "" ]; then
+echo "yes ($OPENAL_VERSION in ${prefix_libopenal})"
+echo "yes ($OPENAL_VERSION in ${prefix_libopenal})" >> config.log
+else
+echo "yes ($OPENAL_VERSION)"
+echo "yes ($OPENAL_VERSION)" >> config.log
+fi;
+if [ "0.0.0" != "" ]; then
+MK_VERSION_MAJOR=`echo "$OPENAL_VERSION" |sed 's/\([0-9]*\).\([0-9]*\).\([0-9]*\).*/\1/'`;
+MK_VERSION_MINOR=`echo "$OPENAL_VERSION" |sed 's/\([0-9]*\).\([0-9]*\).\([0-9]*\).*/\2/'`;
+MK_VERSION_MICRO=`echo "$OPENAL_VERSION" |sed 's/\([0-9]*\).\([0-9]*\).\([0-9]*\).*/\3/'`;
+MK_VERSION_OK="no"
+if [ $MK_VERSION_MAJOR -gt 0 ]; then
+	MK_VERSION_OK="yes";
+elif [ $MK_VERSION_MAJOR -eq 0 ]; then
+	if [ "$MK_VERSION_MINOR" = "" ]; then
+		MK_VERSION_OK="yes"
+	else
+		if [ $MK_VERSION_MINOR -gt 0 ]; then
+			MK_VERSION_OK="yes";
+		elif [ $MK_VERSION_MINOR -eq 0 ]; then
+			if [ "$MK_VERSION_MICRO" = "" ]; then
+				MK_VERSION_OK="yes"
+			else
+				if [ $MK_VERSION_MICRO -ge 0 ]; then
+					MK_VERSION_OK="yes"
+				fi
+			fi
+		fi
+	fi
+fi
+if [ "${MK_VERSION_OK}" != "yes" ]; then
+echo "Version 0.0.0 or greater is required (found $OPENAL_VERSION)"
+exit 1
+fi;
+fi;
+$ECHO_N "checking whether openal works..."
+$ECHO_N "checking whether openal works..." >> config.log
+MK_CACHED="No"
+MK_COMPILE_STATUS="OK"
+if [ "${cache}" != "" ]; then
+	if [ -e "${cache}/ctest-HAVE_OPENAL" ]; then
+		HAVE_OPENAL=`cat ${cache}/ctest-HAVE_OPENAL`
+		MK_COMPILE_STATUS=`cat ${cache}/ctest-status-HAVE_OPENAL`
+		MK_CACHED="Yes"
+	fi
+fi
+if [ "${MK_CACHED}" = "No" ]; then
+	cat << EOT > conftest.c
+#include <AL/al.h>
+int main(int argc, char *argv[]) {
+  return (0);
+}
+
+EOT
+	echo "$CC $CFLAGS $TEST_CFLAGS ${OPENAL_CFLAGS} -o $testdir/conftest conftest.c ${OPENAL_LIBS}" >>config.log
+	$CC $CFLAGS $TEST_CFLAGS ${OPENAL_CFLAGS} -o $testdir/conftest conftest.c ${OPENAL_LIBS} 2>>config.log
+	if [ $? != 0 ]; then
+		echo "-> failed ($?)" >> config.log
+		MK_COMPILE_STATUS="FAIL($?)"
+	fi
+fi
+if [ "${MK_COMPILE_STATUS}" = "OK" ]; then
+echo "yes"
+echo "yes" >> config.log
+HAVE_OPENAL="yes"
+echo "#ifndef HAVE_OPENAL" > config/have_openal.h
+echo "#define HAVE_OPENAL \"$HAVE_OPENAL\"" >> config/have_openal.h
+echo "#endif" >> config/have_openal.h
+echo "hdefs[\"HAVE_OPENAL\"] = \"$HAVE_OPENAL\"" >>configure.lua
+else
+echo "no"
+echo "no" >> config.log
+HAVE_OPENAL="no"
+echo "#undef HAVE_OPENAL" >config/have_openal.h
+echo "hdefs[\"HAVE_OPENAL\"] = nil" >>configure.lua
+fi;
+if [ "${cache}" != "" ]; then
+	echo "$HAVE_OPENAL" > ${cache}/ctest-HAVE_OPENAL
+	echo $MK_COMPILE_STATUS > ${cache}/ctest-status-HAVE_OPENAL
+fi
+rm -f conftest.c $testdir/conftest$EXECSUFFIX
+if [ "${HAVE_OPENAL}" = "yes" ]; then
+echo "#ifndef OPENAL_CFLAGS" > config/openal_cflags.h
+echo "#define OPENAL_CFLAGS \"$OPENAL_CFLAGS\"" >> config/openal_cflags.h
+echo "#endif" >> config/openal_cflags.h
+echo "hdefs[\"OPENAL_CFLAGS\"] = \"$OPENAL_CFLAGS\"" >>configure.lua
+echo "#ifndef OPENAL_LIBS" > config/openal_libs.h
+echo "#define OPENAL_LIBS \"$OPENAL_LIBS\"" >> config/openal_libs.h
+echo "#endif" >> config/openal_libs.h
+echo "hdefs[\"OPENAL_LIBS\"] = \"$OPENAL_LIBS\"" >>configure.lua
+else
+echo "#undef OPENAL_CFLAGS" >config/openal_cflags.h
+echo "hdefs[\"OPENAL_CFLAGS\"] = nil" >>configure.lua
+OPENAL_CFLAGS=""
+echo "#undef OPENAL_LIBS" >config/openal_libs.h
+echo "hdefs[\"OPENAL_LIBS\"] = nil" >>configure.lua
+OPENAL_LIBS=""
+fi;
+else
+if [ "${prefix_libopenal}" != "" ]; then
+echo "no (not in ${prefix_libopenal})"
+echo "no (not in ${prefix_libopenal})" >> config.log
+else
+echo "no"
+echo "no" >> config.log
+fi;
+echo "#undef HAVE_OPENAL" >config/have_openal.h
+echo "hdefs[\"HAVE_OPENAL\"] = nil" >>configure.lua
+fi;
+$ECHO_N "checking for libtoxav (https://github.com/irungentoo/ProjectTox-Core)..."
+$ECHO_N "checking for libtoxav (https://github.com/irungentoo/ProjectTox-Core)..." >> config.log
+if [ "${prefix_libtoxav}" != "" ]; then
+	MK_EXEC_PKGPREFIX=`$PKGCONFIG --variable=prefix libtoxav 2>/dev/null`
+	if [ "$MK_EXEC_PKGPREFIX" != "${prefix_libtoxav}" ]; then
+		echo " "
+		echo "* "
+		echo "* ERROR: According to pkg-config, libtoxav is installed in prefix: "
+		echo "* $MK_EXEC_PKGPREFIX, but the prefix (${prefix_libtoxav}) was specified."
+		echo "* "
+		echo "* Please re-run ./configure again with the correct libtoxav prefix"
+		echo "* (or specify no prefix at all to enable auto-detection)."
+		echo "* "
+		exit 1
+	else
+		TOXAV_VERSION=`$PKGCONFIG libtoxav --modversion 2>/dev/null`
+	fi
+else
+	TOXAV_VERSION=`$PKGCONFIG libtoxav --modversion 2>/dev/null`
+fi
+if [ "${prefix_libtoxav}" != "" ]; then
+	MK_EXEC_PKGPREFIX=`$PKGCONFIG --variable=prefix libtoxav 2>/dev/null`
+	if [ "$MK_EXEC_PKGPREFIX" != "${prefix_libtoxav}" ]; then
+		echo " "
+		echo "* "
+		echo "* ERROR: According to pkg-config, libtoxav is installed in prefix: "
+		echo "* $MK_EXEC_PKGPREFIX, but the prefix (${prefix_libtoxav}) was specified."
+		echo "* "
+		echo "* Please re-run ./configure again with the correct libtoxav prefix"
+		echo "* (or specify no prefix at all to enable auto-detection)."
+		echo "* "
+		exit 1
+	else
+		TOXAV_CFLAGS=`$PKGCONFIG libtoxav --cflags 2>/dev/null`
+	fi
+else
+	TOXAV_CFLAGS=`$PKGCONFIG libtoxav --cflags 2>/dev/null`
+fi
+if [ "${prefix_libtoxav}" != "" ]; then
+	MK_EXEC_PKGPREFIX=`$PKGCONFIG --variable=prefix libtoxav 2>/dev/null`
+	if [ "$MK_EXEC_PKGPREFIX" != "${prefix_libtoxav}" ]; then
+		echo " "
+		echo "* "
+		echo "* ERROR: According to pkg-config, libtoxav is installed in prefix: "
+		echo "* $MK_EXEC_PKGPREFIX, but the prefix (${prefix_libtoxav}) was specified."
+		echo "* "
+		echo "* Please re-run ./configure again with the correct libtoxav prefix"
+		echo "* (or specify no prefix at all to enable auto-detection)."
+		echo "* "
+		exit 1
+	else
+		TOXAV_LIBS=`$PKGCONFIG libtoxav --libs 2>/dev/null`
+	fi
+else
+	TOXAV_LIBS=`$PKGCONFIG libtoxav --libs 2>/dev/null`
+fi
+if [ "${TOXAV_VERSION}" != "" ]; then
+if [ "${prefix_libtoxav}" != "" ]; then
+echo "yes ($TOXAV_VERSION in ${prefix_libtoxav})"
+echo "yes ($TOXAV_VERSION in ${prefix_libtoxav})" >> config.log
+else
+echo "yes ($TOXAV_VERSION)"
+echo "yes ($TOXAV_VERSION)" >> config.log
+fi;
+if [ "0.0.0" != "" ]; then
+MK_VERSION_MAJOR=`echo "$TOXAV_VERSION" |sed 's/\([0-9]*\).\([0-9]*\).\([0-9]*\).*/\1/'`;
+MK_VERSION_MINOR=`echo "$TOXAV_VERSION" |sed 's/\([0-9]*\).\([0-9]*\).\([0-9]*\).*/\2/'`;
+MK_VERSION_MICRO=`echo "$TOXAV_VERSION" |sed 's/\([0-9]*\).\([0-9]*\).\([0-9]*\).*/\3/'`;
+MK_VERSION_OK="no"
+if [ $MK_VERSION_MAJOR -gt 0 ]; then
+	MK_VERSION_OK="yes";
+elif [ $MK_VERSION_MAJOR -eq 0 ]; then
+	if [ "$MK_VERSION_MINOR" = "" ]; then
+		MK_VERSION_OK="yes"
+	else
+		if [ $MK_VERSION_MINOR -gt 0 ]; then
+			MK_VERSION_OK="yes";
+		elif [ $MK_VERSION_MINOR -eq 0 ]; then
+			if [ "$MK_VERSION_MICRO" = "" ]; then
+				MK_VERSION_OK="yes"
+			else
+				if [ $MK_VERSION_MICRO -ge 0 ]; then
+					MK_VERSION_OK="yes"
+				fi
+			fi
+		fi
+	fi
+fi
+if [ "${MK_VERSION_OK}" != "yes" ]; then
+echo "Version 0.0.0 or greater is required (found $TOXAV_VERSION)"
+exit 1
+fi;
+fi;
+$ECHO_N "checking whether libtoxav works..."
+$ECHO_N "checking whether libtoxav works..." >> config.log
+MK_CACHED="No"
+MK_COMPILE_STATUS="OK"
+if [ "${cache}" != "" ]; then
+	if [ -e "${cache}/ctest-HAVE_TOXAV" ]; then
+		HAVE_TOXAV=`cat ${cache}/ctest-HAVE_TOXAV`
+		MK_COMPILE_STATUS=`cat ${cache}/ctest-status-HAVE_TOXAV`
+		MK_CACHED="Yes"
+	fi
+fi
+if [ "${MK_CACHED}" = "No" ]; then
+	cat << EOT > conftest.c
+#include <tox/toxav.h>
+int main(int argc, char *argv[]) {
+  return (0);
+}
+
+EOT
+	echo "$CC $CFLAGS $TEST_CFLAGS ${TOXAV_CFLAGS} -o $testdir/conftest conftest.c ${TOXAV_LIBS}" >>config.log
+	$CC $CFLAGS $TEST_CFLAGS ${TOXAV_CFLAGS} -o $testdir/conftest conftest.c ${TOXAV_LIBS} 2>>config.log
+	if [ $? != 0 ]; then
+		echo "-> failed ($?)" >> config.log
+		MK_COMPILE_STATUS="FAIL($?)"
+	fi
+fi
+if [ "${MK_COMPILE_STATUS}" = "OK" ]; then
+echo "yes"
+echo "yes" >> config.log
+HAVE_TOXAV="yes"
+echo "#ifndef HAVE_TOXAV" > config/have_toxav.h
+echo "#define HAVE_TOXAV \"$HAVE_TOXAV\"" >> config/have_toxav.h
+echo "#endif" >> config/have_toxav.h
+echo "hdefs[\"HAVE_TOXAV\"] = \"$HAVE_TOXAV\"" >>configure.lua
+else
+echo "no"
+echo "no" >> config.log
+HAVE_TOXAV="no"
+echo "#undef HAVE_TOXAV" >config/have_toxav.h
+echo "hdefs[\"HAVE_TOXAV\"] = nil" >>configure.lua
+fi;
+if [ "${cache}" != "" ]; then
+	echo "$HAVE_TOXAV" > ${cache}/ctest-HAVE_TOXAV
+	echo $MK_COMPILE_STATUS > ${cache}/ctest-status-HAVE_TOXAV
+fi
+rm -f conftest.c $testdir/conftest$EXECSUFFIX
+if [ "${HAVE_TOXAV}" = "yes" ]; then
+echo "#ifndef TOXAV_CFLAGS" > config/toxav_cflags.h
+echo "#define TOXAV_CFLAGS \"$TOXAV_CFLAGS\"" >> config/toxav_cflags.h
+echo "#endif" >> config/toxav_cflags.h
+echo "hdefs[\"TOXAV_CFLAGS\"] = \"$TOXAV_CFLAGS\"" >>configure.lua
+echo "#ifndef TOXAV_LIBS" > config/toxav_libs.h
+echo "#define TOXAV_LIBS \"$TOXAV_LIBS\"" >> config/toxav_libs.h
+echo "#endif" >> config/toxav_libs.h
+echo "hdefs[\"TOXAV_LIBS\"] = \"$TOXAV_LIBS\"" >>configure.lua
+else
+echo "#undef TOXAV_CFLAGS" >config/toxav_cflags.h
+echo "hdefs[\"TOXAV_CFLAGS\"] = nil" >>configure.lua
+TOXAV_CFLAGS=""
+echo "#undef TOXAV_LIBS" >config/toxav_libs.h
+echo "hdefs[\"TOXAV_LIBS\"] = nil" >>configure.lua
+TOXAV_LIBS=""
+fi;
+else
+if [ "${prefix_libtoxav}" != "" ]; then
+echo "no (not in ${prefix_libtoxav})"
+echo "no (not in ${prefix_libtoxav})" >> config.log
+else
+echo "no"
+echo "no" >> config.log
+fi;
+echo "#undef HAVE_TOXAV" >config/have_toxav.h
+echo "hdefs[\"HAVE_TOXAV\"] = nil" >>configure.lua
+fi;
+_SUPPORT_AUDIO="yes"
+echo "#ifndef _SUPPORT_AUDIO" > config/_support_audio.h
+echo "#define _SUPPORT_AUDIO \"$_SUPPORT_AUDIO\"" >> config/_support_audio.h
+echo "#endif" >> config/_support_audio.h
+echo "hdefs[\"_SUPPORT_AUDIO\"] = \"$_SUPPORT_AUDIO\"" >>configure.lua
+	if [ "${HAVE_TOXAV}" != "yes" ]
+ then
+		echo "*"
+		echo "* Tried to enable AV"
+		echo "* But library toxav was not found"
+		echo "*"
+		exit 1
+	fi
+	if [ "${HAVE_OPENAL}" != "yes" ]
+ then
+		echo "*"
+		echo "* Tried to enable AV "
+		echo "* But library openal was not found"
+		echo "*"
+		exit 1
+	fi
+else
+_SUPPORT_AUDIO="no"
+echo "#ifndef _SUPPORT_AUDIO" > config/_support_audio.h
+echo "#define _SUPPORT_AUDIO \"$_SUPPORT_AUDIO\"" >> config/_support_audio.h
+echo "#endif" >> config/_support_audio.h
+echo "hdefs[\"_SUPPORT_AUDIO\"] = \"$_SUPPORT_AUDIO\"" >>configure.lua
+fi
 echo "HAVE_TOXCORE=$HAVE_TOXCORE" >>Makefile.config
 echo "mdefs[\"HAVE_TOXCORE\"] = \"$HAVE_TOXCORE\"" >>configure.lua
 echo "CC=$CC" >>Makefile.config
 echo "mdefs[\"CC\"] = \"$CC\"" >>configure.lua
-echo "LIBTOOLOPTS_CC=$LIBTOOLOPTS_CC" >>Makefile.config
-echo "mdefs[\"LIBTOOLOPTS_CC\"] = \"$LIBTOOLOPTS_CC\"" >>configure.lua
-echo "TOXCORE_LIBS=$TOXCORE_LIBS" >>Makefile.config
-echo "mdefs[\"TOXCORE_LIBS\"] = \"$TOXCORE_LIBS\"" >>configure.lua
 echo "PACKAGE=$PACKAGE" >>Makefile.config
 echo "mdefs[\"PACKAGE\"] = \"$PACKAGE\"" >>configure.lua
 echo "LOCALEDIR=$LOCALEDIR" >>Makefile.config
 echo "mdefs[\"LOCALEDIR\"] = \"$LOCALEDIR\"" >>configure.lua
 echo "LIBEXECDIR=$LIBEXECDIR" >>Makefile.config
 echo "mdefs[\"LIBEXECDIR\"] = \"$LIBEXECDIR\"" >>configure.lua
-echo "LIBDIR=$LIBDIR" >>Makefile.config
-echo "mdefs[\"LIBDIR\"] = \"$LIBDIR\"" >>configure.lua
-echo "EXECSUFFIX=$EXECSUFFIX" >>Makefile.config
-echo "mdefs[\"EXECSUFFIX\"] = \"$EXECSUFFIX\"" >>configure.lua
-echo "HAVE_GETTEXT=$HAVE_GETTEXT" >>Makefile.config
-echo "mdefs[\"HAVE_GETTEXT\"] = \"$HAVE_GETTEXT\"" >>configure.lua
+echo "HAVE_NCURSES=$HAVE_NCURSES" >>Makefile.config
+echo "mdefs[\"HAVE_NCURSES\"] = \"$HAVE_NCURSES\"" >>configure.lua
 echo "DATADIR=$DATADIR" >>Makefile.config
 echo "mdefs[\"DATADIR\"] = \"$DATADIR\"" >>configure.lua
-echo "BINDIR=$BINDIR" >>Makefile.config
-echo "mdefs[\"BINDIR\"] = \"$BINDIR\"" >>configure.lua
-echo "HAVE_SODIUM=$HAVE_SODIUM" >>Makefile.config
-echo "mdefs[\"HAVE_SODIUM\"] = \"$HAVE_SODIUM\"" >>configure.lua
+echo "HAVE_OPENAL=$HAVE_OPENAL" >>Makefile.config
+echo "mdefs[\"HAVE_OPENAL\"] = \"$HAVE_OPENAL\"" >>configure.lua
 echo "TOXCORE_CFLAGS=$TOXCORE_CFLAGS" >>Makefile.config
 echo "mdefs[\"TOXCORE_CFLAGS\"] = \"$TOXCORE_CFLAGS\"" >>configure.lua
+echo "HAVE_SODIUM=$HAVE_SODIUM" >>Makefile.config
+echo "mdefs[\"HAVE_SODIUM\"] = \"$HAVE_SODIUM\"" >>configure.lua
+echo "HAVE_TOXAV=$HAVE_TOXAV" >>Makefile.config
+echo "mdefs[\"HAVE_TOXAV\"] = \"$HAVE_TOXAV\"" >>configure.lua
 echo "HAVE_IEEE754=$HAVE_IEEE754" >>Makefile.config
 echo "mdefs[\"HAVE_IEEE754\"] = \"$HAVE_IEEE754\"" >>configure.lua
+echo "NCURSES_CFLAGS=$NCURSES_CFLAGS" >>Makefile.config
+echo "mdefs[\"NCURSES_CFLAGS\"] = \"$NCURSES_CFLAGS\"" >>configure.lua
 echo "HAVE_CC_WARNINGS=$HAVE_CC_WARNINGS" >>Makefile.config
 echo "mdefs[\"HAVE_CC_WARNINGS\"] = \"$HAVE_CC_WARNINGS\"" >>configure.lua
 echo "ENABLE_NLS=$ENABLE_NLS" >>Makefile.config
 echo "mdefs[\"ENABLE_NLS\"] = \"$ENABLE_NLS\"" >>configure.lua
+echo "TOXAV_CFLAGS=$TOXAV_CFLAGS" >>Makefile.config
+echo "mdefs[\"TOXAV_CFLAGS\"] = \"$TOXAV_CFLAGS\"" >>configure.lua
 echo "CFLAGS=$CFLAGS" >>Makefile.config
 echo "mdefs[\"CFLAGS\"] = \"$CFLAGS\"" >>configure.lua
 echo "MANDIR=$MANDIR" >>Makefile.config
 echo "mdefs[\"MANDIR\"] = \"$MANDIR\"" >>configure.lua
-echo "MODULEDIR=$MODULEDIR" >>Makefile.config
-echo "mdefs[\"MODULEDIR\"] = \"$MODULEDIR\"" >>configure.lua
 echo "HAVE_CYGWIN=$HAVE_CYGWIN" >>Makefile.config
 echo "mdefs[\"HAVE_CYGWIN\"] = \"$HAVE_CYGWIN\"" >>configure.lua
 echo "STATEDIR=$STATEDIR" >>Makefile.config
 echo "mdefs[\"STATEDIR\"] = \"$STATEDIR\"" >>configure.lua
 echo "SYSCONFDIR=$SYSCONFDIR" >>Makefile.config
 echo "mdefs[\"SYSCONFDIR\"] = \"$SYSCONFDIR\"" >>configure.lua
-echo "SODIUM_LIBS=$SODIUM_LIBS" >>Makefile.config
-echo "mdefs[\"SODIUM_LIBS\"] = \"$SODIUM_LIBS\"" >>configure.lua
+echo "TOXAV_LIBS=$TOXAV_LIBS" >>Makefile.config
+echo "mdefs[\"TOXAV_LIBS\"] = \"$TOXAV_LIBS\"" >>configure.lua
 echo "SODIUM_CFLAGS=$SODIUM_CFLAGS" >>Makefile.config
 echo "mdefs[\"SODIUM_CFLAGS\"] = \"$SODIUM_CFLAGS\"" >>configure.lua
+echo "OPENAL_LIBS=$OPENAL_LIBS" >>Makefile.config
+echo "mdefs[\"OPENAL_LIBS\"] = \"$OPENAL_LIBS\"" >>configure.lua
+echo "LIBTOOLOPTS_CC=$LIBTOOLOPTS_CC" >>Makefile.config
+echo "mdefs[\"LIBTOOLOPTS_CC\"] = \"$LIBTOOLOPTS_CC\"" >>configure.lua
+echo "LIBDIR=$LIBDIR" >>Makefile.config
+echo "mdefs[\"LIBDIR\"] = \"$LIBDIR\"" >>configure.lua
+echo "TOXCORE_LIBS=$TOXCORE_LIBS" >>Makefile.config
+echo "mdefs[\"TOXCORE_LIBS\"] = \"$TOXCORE_LIBS\"" >>configure.lua
+echo "EXECSUFFIX=$EXECSUFFIX" >>Makefile.config
+echo "mdefs[\"EXECSUFFIX\"] = \"$EXECSUFFIX\"" >>configure.lua
+echo "HAVE_GETTEXT=$HAVE_GETTEXT" >>Makefile.config
+echo "mdefs[\"HAVE_GETTEXT\"] = \"$HAVE_GETTEXT\"" >>configure.lua
+echo "NCURSES_LIBS=$NCURSES_LIBS" >>Makefile.config
+echo "mdefs[\"NCURSES_LIBS\"] = \"$NCURSES_LIBS\"" >>configure.lua
+echo "BINDIR=$BINDIR" >>Makefile.config
+echo "mdefs[\"BINDIR\"] = \"$BINDIR\"" >>configure.lua
+echo "OPENAL_CFLAGS=$OPENAL_CFLAGS" >>Makefile.config
+echo "mdefs[\"OPENAL_CFLAGS\"] = \"$OPENAL_CFLAGS\"" >>configure.lua
+echo "MODULEDIR=$MODULEDIR" >>Makefile.config
+echo "mdefs[\"MODULEDIR\"] = \"$MODULEDIR\"" >>configure.lua
+echo "SODIUM_LIBS=$SODIUM_LIBS" >>Makefile.config
+echo "mdefs[\"SODIUM_LIBS\"] = \"$SODIUM_LIBS\"" >>configure.lua
 echo "VERSION=$VERSION" >>Makefile.config
 echo "mdefs[\"VERSION\"] = \"$VERSION\"" >>configure.lua
 if [ "${srcdir}" != "" ]; then
