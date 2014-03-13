@@ -12,7 +12,7 @@ REGISTER_SECTION("Toxic features")
 REGISTER("--disable-av",		"Disables calling [no]")
 REGISTER("--enable-unixtime",		"Uses Unix timestamps [no]")
 REGISTER_SECTION("paths")
-REGISTER("--with-dependency-search=DIR",	"search for dependencies in DIR"
+REGISTER("--with-dependency-search=DIR",	"search for dependencies in DIR")
 REGISTER("--with-libtoxcore=DIR",	"search for libtoxcore files in DIR")
 REGISTER("--with-libsodium=DIR",	"search for libsodium files in DIR")
 REGISTER("--with-libtoxav=DIR",	"search for libtoxav files in DIR")
