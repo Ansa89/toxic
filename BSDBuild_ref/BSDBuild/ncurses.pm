@@ -53,7 +53,7 @@ sub Test
 
 BEGIN
 {
-	$DESCR{'ncurses'} = 'ncurses (https://github.com/jedisct1/libsodium)';
+	$DESCR{'ncurses'} = 'ncurses (http://www.gnu.org/software/ncurses/)';
 	$TESTS{'ncurses'} = \&Test;
 	$DEPS{'ncurses'} = 'cc';
 }
