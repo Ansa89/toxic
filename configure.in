@@ -1,3 +1,10 @@
+# Public domain
+#
+# This is a BSDBuild configure script source. The ./configure script is
+# generated from this file via mkconfigure(1). For more information, see:
+# http://bsdbuild.hypertriton.com/.
+#
+
 PACKAGE("Toxic")
 VERSION("0.3.1")
 
@@ -6,11 +13,7 @@ REGISTER("--disable-av",		"Disables calling [no]")
 REGISTER("--enable-unixtime",		"Uses Unix timestamps [no]")
 REGISTER_SECTION("paths")
 REGISTER("--with-dependency-search=DIR",	"search for dependencies in DIR"
-REGISTER("--with-libtoxcore-headers=DIR",	"search for libtoxcore header files in DIR")
-REGISTER("--with-libtoxcore-libs=DIR",	"search for libtoxcore libraries in DIR")
-REGISTER("--with-libsodium-headers=DIR",	"search for libsodium header files in DIR")
-REGISTER("--with-libsodium-libs=DIR",	"search for libsodium libraries in DIR")
-REGISTER("--with-libtoxav-headers=DIR",	"search for libtoxav header files in DIR")
-REGISTER("--with-libtoxav-libs=DIR",	"search for libtoxav libraries in DIR")
-REGISTER("--prefix=PREFIX",	"Installs to PREFIX [/usr/local]")
+REGISTER("--with-libtoxcore=DIR",	"search for libtoxcore files in DIR")
+REGISTER("--with-libsodium=DIR",	"search for libsodium files in DIR")
+REGISTER("--with-libtoxav=DIR",	"search for libtoxav files in DIR")
 
