@@ -10,6 +10,7 @@ VERSION("0.3.1")
 
 REGISTER_SECTION("Toxic features")
 REGISTER("--disable-av",		"Disables calling [no]")
+REGISTER("--enable-debug",                "Builds Toxic with debugging flags [no]")
 REGISTER("--enable-apply-unixtime",		"Applies the unixtime patch")
 REGISTER("--enable-revert-unixtime",           "Reverts the unixtime patch")
 REGISTER_SECTION("paths")
@@ -19,17 +20,21 @@ REGISTER("--with-libsodium=DIR",	"search for libsodium files in DIR")
 REGISTER("--with-libtoxav=DIR",	"search for libtoxav files in DIR")
 REGISTER("--with-libopenal=DIR", "search for libtoxav files in DIR")
 
-
 REQUIRE(cc)
 REQUIRE(ncurses)
 REQUIRE(sodium,0.4.2,${prefix_libsodium})
 REQUIRE(toxcore,0.0.0,${prefix_toxcore})
 
+echo "${TOXIC_VERSION}"
 if [ "${enable_apply_unixtime}" = "yes" ]; then
 	patch -p1 < fun/unixtime.patch
 fi
 if [ "${enable_revert_unixtime}" = "yes" ]; then
         patch -R -p1 < fun/unixtime.patch
+fi
+
+if [ "${enable_debug}" = "yes" ]; then
+	MDEFINE(CFLAGS, "-O0 -g")
 fi
 
 if [ "${enable_av}" != "no" ]; then
@@ -53,3 +58,5 @@ if [ "${enable_av}" != "no" ]; then
 else
         HDEFINE(_SUPPORT_AUDIO,"no")
 fi
+
+CONFIG_SCRIPT(toxic, "-I${INCLDIR} ${CFLAGS}","-L${LIBDIR}")
