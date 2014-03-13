@@ -35,6 +35,8 @@ fi
 
 if [ "${enable_debug}" = "yes" ]; then
 	MDEFINE(CFLAGS, "-O0 -g")
+else
+	MDEFINE(CFLAGS, "-O2")
 fi
 
 if [ "${enable_av}" != "no" ]; then

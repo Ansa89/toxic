@@ -1585,6 +1585,8 @@ fi
 if [ "${enable_debug}" = "yes" ]
  then
 CFLAGS="-O0 -g"
+else
+CFLAGS="-O2"
 fi
 if [ "${enable_av}" != "no" ]
  then
