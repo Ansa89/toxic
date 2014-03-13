@@ -31,3 +31,7 @@ else
 	HDEFINE(_SUPPORT_AUDIO,"yes")
 fi
 
+CHECK(cc)
+#CHECK(curses)
+CHECK(libtoxcore)
+CHECK(libsodium)
