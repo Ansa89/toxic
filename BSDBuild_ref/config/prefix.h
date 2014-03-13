@@ -1,3 +1,3 @@
 #ifndef PREFIX
-#define PREFIX "/usr/local"
+#define PREFIX "/opt/bsdbuild"
 #endif

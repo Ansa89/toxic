@@ -1,3 +1,3 @@
 #ifndef SYSCONFDIR
-#define SYSCONFDIR "/usr/local/etc"
+#define SYSCONFDIR "/opt/bsdbuild/etc"
 #endif

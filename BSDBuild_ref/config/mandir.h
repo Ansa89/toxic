@@ -1,3 +1,3 @@
 #ifndef MANDIR
-#define MANDIR "/usr/local/man"
+#define MANDIR "/opt/bsdbuild/man"
 #endif

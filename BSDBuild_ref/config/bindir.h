@@ -1,3 +1,3 @@
 #ifndef BINDIR
-#define BINDIR "/usr/local/bin"
+#define BINDIR "/opt/bsdbuild/bin"
 #endif

@@ -1,3 +1,3 @@
 #ifndef STATEDIR
-#define STATEDIR "/usr/local/var"
+#define STATEDIR "/opt/bsdbuild/var"
 #endif

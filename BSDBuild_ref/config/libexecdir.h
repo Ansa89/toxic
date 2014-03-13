@@ -1,3 +1,3 @@
 #ifndef LIBEXECDIR
-#define LIBEXECDIR "/usr/local/libexec"
+#define LIBEXECDIR "/opt/bsdbuild/libexec"
 #endif

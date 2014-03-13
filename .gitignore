@@ -11,7 +11,6 @@
 *.la
 m4/*
 !m4/pkg.m4
-configure
 configure_aux
 Makefile.in
 aclocal.m4
@@ -24,4 +23,3 @@ autom4te.cache
 .libs
 *.orig
 build/toxic
-Makefile

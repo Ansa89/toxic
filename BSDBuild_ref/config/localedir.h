@@ -1,3 +1,3 @@
 #ifndef LOCALEDIR
-#define LOCALEDIR "/locale"
+#define LOCALEDIR "/opt/bsdbuild/share/locale"
 #endif

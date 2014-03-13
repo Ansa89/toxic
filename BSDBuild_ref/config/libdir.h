@@ -1,3 +1,3 @@
 #ifndef LIBDIR
-#define LIBDIR "/usr/local/lib"
+#define LIBDIR "/opt/bsdbuild/lib"
 #endif
