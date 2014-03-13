@@ -30,7 +30,7 @@ if [ "${enable_revert_unixtime}" = "yes" ]; then
         patch -R -p1 < fun/unixtime.patch
 fi
 
-if [ "${enable_av}" != "yes" ]; then
+if [ "${enable_av}" != "no" ]; then
 	HDEFINE(_SUPPORT_AUDIO,"yes")
 	CHECK(toxav)
 	CHECK(openal)
