@@ -114,7 +114,10 @@ DATAFILES=Core.pm \
 	siocgifconf.pm \
 	fontconfig.pm \
 	toxcore.pm \
-	sodium.pm
+	sodium.pm \
+	toxav.pm \
+	openal.pm
+
 
 all:
 
