@@ -34,9 +34,9 @@ sub Test
 {
 	my ($ver, $pfx) = @_;
 	
-	MkExecPkgConfig($pfx, 'libtoxav', '--modversion', 'TOXCORE_VERSION');
-	MkExecPkgConfig($pfx, 'libtoxav', '--cflags', 'TOXCORE_CFLAGS');
-	MkExecPkgConfig($pfx, 'libtoxav', '--libs', 'TOXCORE_LIBS');
+	MkExecPkgConfig($pfx, 'libtoxav', '--modversion', 'TOXAV_VERSION');
+	MkExecPkgConfig($pfx, 'libtoxav', '--cflags', 'TOXAV_CFLAGS');
+	MkExecPkgConfig($pfx, 'libtoxav', '--libs', 'TOXAV_LIBS');
 	MkIfNE('${TOXAV_VERSION}', '');
 		MkFoundVer($pfx, $ver, 'TOXAV_VERSION');
 		MkPrintN('checking whether libtoxav works...');
