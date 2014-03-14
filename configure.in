@@ -16,7 +16,7 @@ REGISTER("--with-dependency-search=DIR",	"search for dependencies in DIR")
 REGISTER("--with-libtoxcore=DIR",	"search for libtoxcore files in DIR")
 REGISTER("--with-libsodium=DIR",	"search for libsodium files in DIR")
 REGISTER("--with-libtoxav=DIR",	"search for libtoxav files in DIR")
-REGISTER("--with-libopenal=DIR", "search for libtoxav files in DIR")
+REGISTER("--with-libopenal=DIR", "search for openal files in DIR")
 
 REQUIRE(cc)
 REQUIRE(ncurses)
