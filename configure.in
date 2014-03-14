@@ -25,7 +25,6 @@ REQUIRE(ncurses)
 REQUIRE(sodium,0.4.2,${prefix_libsodium})
 REQUIRE(toxcore,0.0.0,${prefix_toxcore})
 
-echo "${TOXIC_VERSION}"
 if [ "${enable_apply_unixtime}" = "yes" ]; then
 	patch -p1 < fun/unixtime.patch
 fi

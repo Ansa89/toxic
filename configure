@@ -1573,7 +1573,6 @@ echo "* " >> config.log
 echo "configure failed!"
 exit 1
 fi;
-echo "${TOXIC_VERSION}"
 if [ "${enable_apply_unixtime}" = "yes" ]
  then
 	patch -p1 < fun/unixtime.patch
