@@ -11,8 +11,6 @@ VERSION("0.3.1")
 REGISTER_SECTION("Toxic features")
 REGISTER("--disable-av",		"Disables calling [no]")
 REGISTER("--enable-debug",                "Builds Toxic with debugging flags [no]")
-REGISTER("--enable-apply-unixtime",		"Applies the unixtime patch")
-REGISTER("--enable-revert-unixtime",           "Reverts the unixtime patch")
 REGISTER_SECTION("paths")
 REGISTER("--with-dependency-search=DIR",	"search for dependencies in DIR")
 REGISTER("--with-libtoxcore=DIR",	"search for libtoxcore files in DIR")
@@ -24,13 +22,6 @@ REQUIRE(cc)
 REQUIRE(ncurses)
 REQUIRE(sodium,0.4.2,${prefix_libsodium})
 REQUIRE(toxcore,0.0.0,${prefix_toxcore})
-
-if [ "${enable_apply_unixtime}" = "yes" ]; then
-	patch -p1 < fun/unixtime.patch
-fi
-if [ "${enable_revert_unixtime}" = "yes" ]; then
-        patch -R -p1 < fun/unixtime.patch
-fi
 
 if [ "${enable_debug}" = "yes" ]; then
 	MDEFINE(CFLAGS, "-O0 -g")
