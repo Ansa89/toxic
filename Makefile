@@ -2,8 +2,8 @@
   include ${TOP}/Makefile.config
   
   PROG= toxic
-  SRCS= src \
+  SRCS= src/*
   
-  CFLAGS+= ${CFLAGS}
+  #CFLAGS+= ${CFLAGS}
   
   include ${TOP}/mk/build.prog.mk
