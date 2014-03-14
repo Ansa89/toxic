@@ -386,8 +386,6 @@ echo ""
 echo "Toxic features"
 echo "    --disable-av                Disables calling [no]"
 echo "    --enable-debug              Builds Toxic with debugging flags [no]"
-echo "    --enable-apply-unixtime     Applies the unixtime patch"
-echo "    --enable-revert-unixtime    Reverts the unixtime patch"
 echo ""
 echo "paths"
 echo "    --with-dependency-search=DI search for dependencies in DIR"
@@ -1573,14 +1571,6 @@ echo "* " >> config.log
 echo "configure failed!"
 exit 1
 fi;
-if [ "${enable_apply_unixtime}" = "yes" ]
- then
-	patch -p1 < fun/unixtime.patch
-fi
-if [ "${enable_revert_unixtime}" = "yes" ]
- then
-        patch -R -p1 < fun/unixtime.patch
-fi
 if [ "${enable_debug}" = "yes" ]
  then
 CFLAGS="-O0 -g"
