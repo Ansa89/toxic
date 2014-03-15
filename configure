@@ -1039,8 +1039,8 @@ echo "* " >> config.log
 echo "configure failed!"
 exit 1
 fi;
-$ECHO_N "checking for ncurses (http://www.gnu.org/software/ncurses/)..."
-$ECHO_N "checking for ncurses (http://www.gnu.org/software/ncurses/)..." >> config.log
+$ECHO_N "checking for ncurses (https://github.com/jedisct1/libsodium)..."
+$ECHO_N "checking for ncurses (https://github.com/jedisct1/libsodium)..." >> config.log
 if [ "" != "" ]; then
 	MK_EXEC_PKGPREFIX=`$PKGCONFIG --variable=prefix ncurses 2>/dev/null`
 	if [ "$MK_EXEC_PKGPREFIX" != "" ]; then
@@ -1573,9 +1573,9 @@ exit 1
 fi;
 if [ "${enable_debug}" = "yes" ]
  then
-CFLAGS="-O0 -g"
+OPT_CFLAGS="-O0 -g"
 else
-CFLAGS="-O2"
+OPT_CFLAGS="-O2"
 fi
 if [ "${enable_av}" != "no" ]
  then
@@ -2074,6 +2074,8 @@ echo "TOXCORE_LIBS=$TOXCORE_LIBS" >>Makefile.config
 echo "mdefs[\"TOXCORE_LIBS\"] = \"$TOXCORE_LIBS\"" >>configure.lua
 echo "EXECSUFFIX=$EXECSUFFIX" >>Makefile.config
 echo "mdefs[\"EXECSUFFIX\"] = \"$EXECSUFFIX\"" >>configure.lua
+echo "OPT_CFLAGS=$OPT_CFLAGS" >>Makefile.config
+echo "mdefs[\"OPT_CFLAGS\"] = \"$OPT_CFLAGS\"" >>configure.lua
 echo "HAVE_GETTEXT=$HAVE_GETTEXT" >>Makefile.config
 echo "mdefs[\"HAVE_GETTEXT\"] = \"$HAVE_GETTEXT\"" >>configure.lua
 echo "NCURSES_LIBS=$NCURSES_LIBS" >>Makefile.config

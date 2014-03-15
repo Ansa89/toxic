@@ -24,9 +24,9 @@ REQUIRE(sodium,0.4.2,${prefix_libsodium})
 REQUIRE(toxcore,0.0.0,${prefix_toxcore})
 
 if [ "${enable_debug}" = "yes" ]; then
-	MDEFINE(CFLAGS, "-O0 -g")
+	MDEFINE(OPT_CFLAGS, "-O0 -g")
 else
-	MDEFINE(CFLAGS, "-O2")
+	MDEFINE(OPT_CFLAGS, "-O2")
 fi
 
 if [ "${enable_av}" != "no" ]; then
