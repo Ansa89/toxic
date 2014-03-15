@@ -392,7 +392,7 @@ echo "    --with-dependency-search=DI search for dependencies in DIR"
 echo "    --with-libtoxcore=DIR       search for libtoxcore files in DIR"
 echo "    --with-libsodium=DIR        search for libsodium files in DIR"
 echo "    --with-libtoxav=DIR         search for libtoxav files in DIR"
-echo "    --with-libopenal=DIR        search for libtoxav files in DIR"
+echo "    --with-libopenal=DIR        search for openal files in DIR"
 exit 1
 fi;
 if [ "${show_version}" = "yes" ]; then
@@ -1039,8 +1039,8 @@ echo "* " >> config.log
 echo "configure failed!"
 exit 1
 fi;
-$ECHO_N "checking for ncurses (https://github.com/jedisct1/libsodium)..."
-$ECHO_N "checking for ncurses (https://github.com/jedisct1/libsodium)..." >> config.log
+$ECHO_N "checking for ncurses (http://www.gnu.org/software/ncurses/)..."
+$ECHO_N "checking for ncurses (http://www.gnu.org/software/ncurses/)..." >> config.log
 if [ "" != "" ]; then
 	MK_EXEC_PKGPREFIX=`$PKGCONFIG --variable=prefix ncurses 2>/dev/null`
 	if [ "$MK_EXEC_PKGPREFIX" != "" ]; then
@@ -1918,6 +1918,7 @@ echo "#ifndef _SUPPORT_AUDIO" > config/_support_audio.h
 echo "#define _SUPPORT_AUDIO \"$_SUPPORT_AUDIO\"" >> config/_support_audio.h
 echo "#endif" >> config/_support_audio.h
 echo "hdefs[\"_SUPPORT_AUDIO\"] = \"$_SUPPORT_AUDIO\"" >>configure.lua
+CFLAGS="-D_SUPPORT_AUDIO"
 	if [ "${HAVE_TOXAV}" != "yes" ]
  then
 		echo "*"
