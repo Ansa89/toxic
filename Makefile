@@ -1,9 +1,9 @@
-  TOP=  .
-  include ${TOP}/Makefile.config
+TOP=  .
+include ${TOP}/Makefile.config
   
-  PROG= toxic
-  SRCS= src/*
+PROG= toxic
+SRCS= src/*
   
-  #CFLAGS+= ${CFLAGS}
+CFLAGS+= ${TOXAV_CFLAGS} ${TOXCORE_CFLAGS} ${SODIUM_CFLAGS} ${OPENAL_CFLAGS} ${NCURSES_CFLAGS}
   
-  include ${TOP}/mk/build.prog.mk
+include ${TOP}/mk/build.prog.mk
