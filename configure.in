@@ -52,4 +52,8 @@ else
         HDEFINE(_SUPPORT_AUDIO,"no")
 fi
 
+REV=`git rev-list HEAD --count`
+TOXIC_VERSION="${VERSION}_r${REV}"
+MDEFINE(TOXIC_VER,${TOXIC_VERSION})
+
 CONFIG_SCRIPT(toxic, "-I${INCLDIR} ${CFLAGS}","-L${LIBDIR}")

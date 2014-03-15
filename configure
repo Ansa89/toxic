@@ -1039,8 +1039,8 @@ echo "* " >> config.log
 echo "configure failed!"
 exit 1
 fi;
-$ECHO_N "checking for ncurses (https://github.com/jedisct1/libsodium)..."
-$ECHO_N "checking for ncurses (https://github.com/jedisct1/libsodium)..." >> config.log
+$ECHO_N "checking for ncurses (http://www.gnu.org/software/ncurses/)..."
+$ECHO_N "checking for ncurses (http://www.gnu.org/software/ncurses/)..." >> config.log
 if [ "" != "" ]; then
 	MK_EXEC_PKGPREFIX=`$PKGCONFIG --variable=prefix ncurses 2>/dev/null`
 	if [ "$MK_EXEC_PKGPREFIX" != "" ]; then
@@ -1942,6 +1942,9 @@ echo "#define _SUPPORT_AUDIO \"$_SUPPORT_AUDIO\"" >> config/_support_audio.h
 echo "#endif" >> config/_support_audio.h
 echo "hdefs[\"_SUPPORT_AUDIO\"] = \"$_SUPPORT_AUDIO\"" >>configure.lua
 fi
+REV=`git rev-list HEAD --count`
+TOXIC_VERSION="${VERSION}_r${REV}"
+TOXIC_VER="${TOXIC_VERSION}"
 config_script_out="toxic"
 config_script_cflags="-I${INCLDIR} ${CFLAGS}"
 config_script_libs="-L${LIBDIR}"
@@ -2084,6 +2087,8 @@ echo "BINDIR=$BINDIR" >>Makefile.config
 echo "mdefs[\"BINDIR\"] = \"$BINDIR\"" >>configure.lua
 echo "OPENAL_CFLAGS=$OPENAL_CFLAGS" >>Makefile.config
 echo "mdefs[\"OPENAL_CFLAGS\"] = \"$OPENAL_CFLAGS\"" >>configure.lua
+echo "TOXIC_VER=$TOXIC_VER" >>Makefile.config
+echo "mdefs[\"TOXIC_VER\"] = \"$TOXIC_VER\"" >>configure.lua
 echo "MODULEDIR=$MODULEDIR" >>Makefile.config
 echo "mdefs[\"MODULEDIR\"] = \"$MODULEDIR\"" >>configure.lua
 echo "SODIUM_LIBS=$SODIUM_LIBS" >>Makefile.config
