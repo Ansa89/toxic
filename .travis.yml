@@ -51,7 +51,8 @@ before_script:
   - cd ..
   - sudo apt-get install libopenal-dev -yq
 script:
-  - echo Success
+  - ./configure
+  - make depend all
 notifications:
   email: false
 
