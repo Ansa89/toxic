@@ -1360,28 +1360,6 @@ fi;
 echo "#undef HAVE_SODIUM" >config/have_sodium.h
 echo "hdefs[\"HAVE_SODIUM\"] = nil" >>configure.lua
 fi;
-if [ "${HAVE_SODIUM}" != "yes" ]; then
-echo "* "
-echo "* " >> config.log
-echo "* This software requires sodium installed on your system."
-echo "* This software requires sodium installed on your system." >> config.log
-echo "* "
-echo "* " >> config.log
-echo "configure failed!"
-exit 1
-fi;
-if [ "${MK_VERSION_OK}" != "yes" ]; then
-echo "* "
-echo "* " >> config.log
-echo "* This software requires sodium version >= 0.4.2,"
-echo "* This software requires sodium version >= 0.4.2," >> config.log
-echo "* please upgrade and try again."
-echo "* please upgrade and try again." >> config.log
-echo "* "
-echo "* " >> config.log
-echo "configure failed!"
-exit 1
-fi;
 $ECHO_N "checking for libtoxcore (https://github.com/irungentoo/ProjectTox-Core)..."
 $ECHO_N "checking for libtoxcore (https://github.com/irungentoo/ProjectTox-Core)..." >> config.log
 if [ "${prefix_toxcore}" != "" ]; then
