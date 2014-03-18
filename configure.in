@@ -35,6 +35,7 @@ if [ "${enable_av}" != "no" ]; then
 	CHECK(toxav,0.0.0,${prefix_libtoxav})
 	HDEFINE(_SUPPORT_AUDIO,"yes")
 	MDEFINE(CFLAGS, "-D_SUPPORT_AUDIO")
+	MDEFINE(AV_SRCS, src/audio_call.c)
 	if [ "${HAVE_TOXAV}" != "yes" ]; then
 		echo "*"
 		echo "* Tried to enable AV"

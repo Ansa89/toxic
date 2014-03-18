@@ -9,7 +9,7 @@ SRCS= src/chat.c src/chat_commands.c \
 	src/log.c src/main.c \
 	src/misc_tools.c src/prompt.c \
 	src/toxic_strings.c src/windows.c \
-	src/audio_call.c
+	${AV_SRC}
 
 #Note: Only build audio_call.c if ENABLE_AV or something like that is defined
   

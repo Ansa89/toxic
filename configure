@@ -1039,8 +1039,8 @@ echo "* " >> config.log
 echo "configure failed!"
 exit 1
 fi;
-$ECHO_N "checking for ncurses (http://www.gnu.org/software/ncurses/)..."
-$ECHO_N "checking for ncurses (http://www.gnu.org/software/ncurses/)..." >> config.log
+$ECHO_N "checking for ncurses (https://github.com/jedisct1/libsodium)..."
+$ECHO_N "checking for ncurses (https://github.com/jedisct1/libsodium)..." >> config.log
 if [ "" != "" ]; then
 	MK_EXEC_PKGPREFIX=`$PKGCONFIG --variable=prefix ncurses 2>/dev/null`
 	if [ "$MK_EXEC_PKGPREFIX" != "" ]; then
@@ -2538,6 +2538,7 @@ echo "#define _SUPPORT_AUDIO \"$_SUPPORT_AUDIO\"" >> config/_support_audio.h
 echo "#endif" >> config/_support_audio.h
 echo "hdefs[\"_SUPPORT_AUDIO\"] = \"$_SUPPORT_AUDIO\"" >>configure.lua
 CFLAGS="-D_SUPPORT_AUDIO"
+AV_SRCS="src/audio_call.c"
 	if [ "${HAVE_TOXAV}" != "yes" ]
  then
 		echo "*"
@@ -2668,6 +2669,8 @@ echo "HAVE_IEEE754=$HAVE_IEEE754" >>Makefile.config
 echo "mdefs[\"HAVE_IEEE754\"] = \"$HAVE_IEEE754\"" >>configure.lua
 echo "PTHREADS_LIBS=$PTHREADS_LIBS" >>Makefile.config
 echo "mdefs[\"PTHREADS_LIBS\"] = \"$PTHREADS_LIBS\"" >>configure.lua
+echo "AV_SRCS=$AV_SRCS" >>Makefile.config
+echo "mdefs[\"AV_SRCS\"] = \"$AV_SRCS\"" >>configure.lua
 echo "NCURSES_CFLAGS=$NCURSES_CFLAGS" >>Makefile.config
 echo "mdefs[\"NCURSES_CFLAGS\"] = \"$NCURSES_CFLAGS\"" >>configure.lua
 echo "HAVE_CC_WARNINGS=$HAVE_CC_WARNINGS" >>Makefile.config
