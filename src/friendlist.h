@@ -23,7 +23,16 @@
 #ifndef FRIENDLIST_H_53I41IM
 #define FRIENDLIST_H_53I41IM
 
+#include <time.h>
 #include "toxic_windows.h"
+
+#define TIME_STR_SIZE 16
+
+struct LastOnline {
+    uint64_t last_on;
+    struct tm tm;
+    uint8_t hour_min_str[TIME_STR_SIZE];    /* holds 12-hour time string e.g. "10:43 PM" */
+};
 
 typedef struct {
     uint8_t name[TOX_MAX_NAME_LENGTH];
@@ -39,13 +48,9 @@ typedef struct {
     bool is_typing;
     bool logging_on;    /* saves preference for friend irrespective of chat windows */
     TOX_USERSTATUS status;
+    struct LastOnline last_online;
     struct FileReceiver file_receiver;
 } ToxicFriend;
-
-typedef struct {
-    int num;
-    bool active;
-} PendingDel;
 
 ToxWindow new_friendlist(void);
 void disable_chatwin(int f_num);
@@ -54,6 +59,6 @@ int get_friendnum(uint8_t *name);
 void friendlist_onFriendAdded(ToxWindow *self, Tox *m, int num, bool sort);
 
 /* sorts friendlist_index first by connection status then alphabetically */
-void sort_friendlist_index(Tox *m);
+void sort_friendlist_index(void);
 
 #endif /* end of include guard: FRIENDLIST_H_53I41IM */

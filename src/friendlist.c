@@ -27,13 +27,17 @@
 #include <string.h>
 #include <stdint.h>
 #include <stdlib.h>
+#include <time.h>
 
 #include <tox/tox.h>
 
 #include "chat.h"
 #include "friendlist.h"
 #include "misc_tools.h"
+
+#ifdef _SUPPORT_AUDIO
 #include "audio_call.h"
+#endif
 
 extern char *DATA_FILE;
 extern ToxWindow *prompt;
@@ -46,7 +50,10 @@ extern struct _Winthread Winthread;
 ToxicFriend friends[MAX_FRIENDS_NUM];
 static int friendlist_index[MAX_FRIENDS_NUM] = {0};
 
-static PendingDel pendingdelete;
+struct _pendingDel {
+    int num;
+    bool active;
+} pendingdelete;
 
 #define S_WEIGHT 100
 
@@ -62,7 +69,7 @@ static int index_name_cmp(const void *n1, const void *n2)
 }
 
 /* sorts friendlist_index first by connection status then alphabetically */
-void sort_friendlist_index(Tox *m)
+void sort_friendlist_index(void)
 {
     int i;
     int n = 0;
@@ -73,6 +80,14 @@ void sort_friendlist_index(Tox *m)
     }
 
     qsort(friendlist_index, num_friends, sizeof(int), index_name_cmp);
+}
+
+static void update_friend_last_online(int num, uint64_t timestamp)
+{
+    friends[num].last_online.last_on = timestamp;
+    friends[num].last_online.tm = *localtime(&timestamp);
+    strftime(friends[num].last_online.hour_min_str, TIME_STR_SIZE, "%I:%M %p", 
+            &friends[num].last_online.tm);
 }
 
 static void friendlist_onMessage(ToxWindow *self, Tox *m, int num, uint8_t *str, uint16_t len)
@@ -105,7 +120,9 @@ static void friendlist_onConnectionChange(ToxWindow *self, Tox *m, int num, uint
         return;
 
     friends[num].online = status == 1 ? true : false;
-    sort_friendlist_index(m);
+    update_friend_last_online(num, get_unix_time());
+    store_data(m, DATA_FILE);
+    sort_friendlist_index();
 }
 
 static void friendlist_onNickChange(ToxWindow *self, Tox *m, int num, uint8_t *str, uint16_t len)
@@ -117,7 +134,7 @@ static void friendlist_onNickChange(ToxWindow *self, Tox *m, int num, uint8_t *s
     len = strlen(str) + 1;
     memcpy(friends[num].name, str, len);
     friends[num].namelength = len;
-    sort_friendlist_index(m);
+    sort_friendlist_index();
 }
 
 static void friendlist_onStatusChange(ToxWindow *self, Tox *m, int num, TOX_USERSTATUS status)
@@ -153,6 +170,7 @@ void friendlist_onFriendAdded(ToxWindow *self, Tox *m, int num, bool sort)
             friends[i].status = TOX_USERSTATUS_NONE;
             friends[i].namelength = tox_get_name(m, num, friends[i].name);
             tox_get_client_id(m, num, friends[i].pub_key);
+            update_friend_last_online(i, tox_get_last_online(m, i));
 
             if (friends[i].namelength == -1 || friends[i].name[0] == '\0') {
                 strcpy(friends[i].name, (uint8_t *) UNKNOWN_NAME);
@@ -168,7 +186,7 @@ void friendlist_onFriendAdded(ToxWindow *self, Tox *m, int num, bool sort)
                 ++max_friends_index;
 
             if (sort)
-                sort_friendlist_index(m);
+                sort_friendlist_index();
 
             return;
         }
@@ -253,7 +271,7 @@ static void delete_friend(Tox *m, int f_num)
     if (num_friends && num_selected == num_friends)
         --num_selected;
 
-    sort_friendlist_index(m);
+    sort_friendlist_index();
     store_data(m, DATA_FILE);
 }
 
@@ -274,7 +292,7 @@ static void del_friend_deactivate(ToxWindow *self, Tox *m, wint_t key)
     if (key == 'y')
         delete_friend(m, pendingdelete.num);
  
-    memset(&pendingdelete, 0, sizeof(PendingDel));
+    memset(&pendingdelete, 0, sizeof(pendingdelete));
     delwin(self->popup);
     self->popup = NULL;
     clear();
@@ -346,6 +364,9 @@ static void friendlist_onDraw(ToxWindow *self, Tox *m)
     int x2, y2;
     getmaxyx(self->window, y2, x2);
 
+    uint64_t cur_time = get_unix_time();
+    struct tm cur_loc_tm = *localtime(&cur_time);
+
     bool fix_statuses = x2 != self->x;    /* true if window x axis has changed */
 
     wattron(self->window, COLOR_PAIR(CYAN));
@@ -365,8 +386,9 @@ static void friendlist_onDraw(ToxWindow *self, Tox *m)
     pthread_mutex_unlock(&Winthread.lock);
 
     wattron(self->window, A_BOLD);
-    wprintw(self->window, " Online: %d/%d \n\n", nf, num_friends);
+    wprintw(self->window, " Online: ");
     wattroff(self->window, A_BOLD);
+    wprintw(self->window, "%d/%d \n\n", nf, num_friends);
 
     if ((y2 - FLIST_OFST) <= 0)    /* don't allow division by zero */
         return;
@@ -408,32 +430,34 @@ static void friendlist_onDraw(ToxWindow *self, Tox *m)
                     break;
                 }
 
-                wprintw(self->window, "[");
                 wattron(self->window, COLOR_PAIR(colour) | A_BOLD);
-                wprintw(self->window, "O");
+                wprintw(self->window, "O ");
                 wattroff(self->window, COLOR_PAIR(colour) | A_BOLD);
-                wprintw(self->window, "]");
 
                 if (f_selected)
-                    wattron(self->window, A_BOLD);
+                    wattron(self->window, COLOR_PAIR(BLUE));
 
+                wattron(self->window, A_BOLD);
                 wprintw(self->window, "%s", friends[f].name);
+                wattroff(self->window, A_BOLD);
 
                 if (f_selected)
-                    wattroff(self->window, A_BOLD);
+                    wattroff(self->window, COLOR_PAIR(BLUE));
 
                 /* Reset friends[f].statusmsg on window resize */
                 if (fix_statuses) {
                     uint8_t statusmsg[TOX_MAX_STATUSMESSAGE_LENGTH] = {'\0'};
+
                     pthread_mutex_lock(&Winthread.lock);
                     tox_get_status_message(m, friends[f].num, statusmsg, TOX_MAX_STATUSMESSAGE_LENGTH);
                     friends[f].statusmsg_len = tox_get_status_message_size(m, f);
                     pthread_mutex_unlock(&Winthread.lock);
+
                     snprintf(friends[f].statusmsg, sizeof(friends[f].statusmsg), "%s", statusmsg);
                 }
 
                 /* Truncate note if it doesn't fit on one line */
-                uint16_t maxlen = x2 - getcurx(self->window) - 4;
+                uint16_t maxlen = x2 - getcurx(self->window) - 2;
                 if (friends[f].statusmsg_len > maxlen) {
                     friends[f].statusmsg[maxlen-3] = '\0';
                     strcat(friends[f].statusmsg, "...");
@@ -441,21 +465,43 @@ static void friendlist_onDraw(ToxWindow *self, Tox *m)
                     friends[f].statusmsg_len = maxlen;
                 }
 
-                wprintw(self->window, " (%s)\n", friends[f].statusmsg);
+                if (friends[f].statusmsg[0])
+                    wprintw(self->window, " %s", friends[f].statusmsg);
+
+                wprintw(self->window, "\n");
             } else {
-                wprintw(self->window, "[");
+                wprintw(self->window, "o ");
+
+                if (f_selected)
+                    wattron(self->window, COLOR_PAIR(BLUE));
+
                 wattron(self->window, A_BOLD);
-                wprintw(self->window, "O");
+                wprintw(self->window, "%s", friends[f].name);
                 wattroff(self->window, A_BOLD);
-                wprintw(self->window, "]");
 
                 if (f_selected)
-                    wattron(self->window, A_BOLD);
+                    wattroff(self->window, COLOR_PAIR(YELLOW));
+    
+                uint64_t last_seen = friends[f].last_online.last_on;
 
-                wprintw(self->window, "%s\n", friends[f].name);
+                if (last_seen != 0) {
+                    int day_dist = (cur_loc_tm.tm_yday - friends[f].last_online.tm.tm_yday) % 365;
+                    const uint8_t *hourmin = friends[f].last_online.hour_min_str;
 
-                if (f_selected)
-                    wattroff(self->window, A_BOLD);
+                    switch (day_dist) {
+                    case 0:
+                        wprintw(self->window, " Last seen: Today %s\n", hourmin);
+                        break;
+                    case 1:
+                        wprintw(self->window, " Last seen: Yesterday %s\n", hourmin);
+                        break;
+                    default:
+                        wprintw(self->window, " Last seen: %d days ago\n", day_dist);
+                        break;
+                    } 
+                } else {
+                    wprintw(self->window, " Last seen: Never\n");
+                }
             }
         }
     }

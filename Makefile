@@ -17,5 +17,11 @@ CFLAGS+= ${OPT_CFLAGS} ${TOXAV_CFLAGS} ${TOXCORE_CFLAGS} ${SODIUM_CFLAGS} \
 	${OPENAL_CFLAGS} ${NCURSES_CFLAGS} ${PTRHEADS_CFLAGS} '-DTOXICVER="${TOXIC_VER}"'
 
 LIBS+= ${TOXAV_LIBS} ${TOXCORE_LIBS} ${SODIUM_LIBS} ${OPENAL_LIBS} ${NCURSES_LIBS}
+
+config-ok:
+        @if [ "${CONFIGURE_OK}" != "yes" ]; then \
+            echo "Please run ./configure first"; \
+            exit 1; \
+        fi
   
 include ${TOP}/mk/build.prog.mk
