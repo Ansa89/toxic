@@ -60,7 +60,7 @@ void cmd_accept(WINDOW *window, ToxWindow *self, Tox *m, int argc, char (*argv)[
         return;
     }
 
-    int friendnum = tox_add_friend_norequest(m, pending_frnd_requests[req]);
+    int32_t friendnum = tox_add_friend_norequest(m, pending_frnd_requests[req]);
 
     if (friendnum == -1)
         wprintw(window, "Failed to add friend.\n");
@@ -103,7 +103,7 @@ void cmd_add(WINDOW *window, ToxWindow *self, Tox *m, int argc, char (*argv)[MAX
         snprintf(msg, sizeof(msg), "%s", temp);
     } else {
         uint8_t selfname[TOX_MAX_NAME_LENGTH];
-        tox_get_self_name(m, selfname, TOX_MAX_NAME_LENGTH);
+        tox_get_self_name(m, selfname);
         snprintf(msg, sizeof(msg), "Hello, my name is %s. Care to Tox?", selfname);
     }
 
@@ -134,7 +134,7 @@ void cmd_add(WINDOW *window, ToxWindow *self, Tox *m, int argc, char (*argv)[MAX
         id[i] = toupper(id[i]);
     }
 
-    int f_num = tox_add_friend(m, id_bin, msg, strlen(msg) + 1);
+    int32_t f_num = tox_add_friend(m, id_bin, msg, strlen(msg) + 1);
 
     switch (f_num) {
     case TOX_FAERR_TOOLONG:

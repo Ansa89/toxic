@@ -100,7 +100,7 @@ void prompt_update_statusmessage(ToxWindow *prompt, uint8_t *statusmsg, uint16_t
 }
 
 /* Updates own status in prompt statusbar */
-void prompt_update_status(ToxWindow *prompt, TOX_USERSTATUS status)
+void prompt_update_status(ToxWindow *prompt, uint8_t status)
 {
     StatusBar *statusbar = prompt->stb;
     statusbar->status = status;
@@ -325,7 +325,7 @@ static void prompt_onDraw(ToxWindow *self, Tox *m)
 
     if (statusbar->is_online) {
         int colour = WHITE;
-        char *status_text = "Unknown";
+        const uint8_t *status_text = "Unknown";
 
         switch (statusbar->status) {
         case TOX_USERSTATUS_NONE:
@@ -339,6 +339,10 @@ static void prompt_onDraw(ToxWindow *self, Tox *m)
         case TOX_USERSTATUS_BUSY:
             status_text = "Busy";
             colour = RED;
+            break;
+        case TOX_USERSTATUS_INVALID:
+            status_text = "ERROR";
+            colour = MAGENTA;
             break;
         }
         wattron(statusbar->topline, COLOR_PAIR(colour) | A_BOLD);
@@ -385,7 +389,7 @@ static void prompt_onInit(ToxWindow *self, Tox *m)
     wclrtoeol(self->window);
 }
 
-static void prompt_onConnectionChange(ToxWindow *self, Tox *m, int friendnum , uint8_t status)
+static void prompt_onConnectionChange(ToxWindow *self, Tox *m, int32_t friendnum , uint8_t status)
 {
     if (friendnum < 0)
         return;
@@ -404,7 +408,7 @@ static void prompt_onConnectionChange(ToxWindow *self, Tox *m, int friendnum , u
     wprintw(self->window, "\n");
     print_time(self->window);
 
-    uint8_t *msg;
+    const uint8_t *msg;
 
     if (status == 1) {
         msg = "has come online";
@@ -430,7 +434,7 @@ static void prompt_onConnectionChange(ToxWindow *self, Tox *m, int friendnum , u
     }
 }
 
-static void prompt_onFriendRequest(ToxWindow *self, uint8_t *key, uint8_t *data, uint16_t length)
+static void prompt_onFriendRequest(ToxWindow *self, Tox *m, uint8_t *key, uint8_t *data, uint16_t length)
 {
     /* make sure message data is null-terminated */
     data[length - 1] = 0;
@@ -448,7 +452,7 @@ static void prompt_onFriendRequest(ToxWindow *self, uint8_t *key, uint8_t *data,
     int n = add_friend_request(key);
 
     if (n == -1) {
-        uint8_t *errmsg = "Friend request queue is full. Discarding request.\n";
+        const uint8_t *errmsg = "Friend request queue is full. Discarding request.\n";
         wprintw(self->window, "%s", errmsg);
         write_to_log(errmsg, "", prt->log, true);
         return;
@@ -472,9 +476,9 @@ void prompt_init_statusbar(ToxWindow *self, Tox *m)
     uint8_t statusmsg[MAX_STR_SIZE];
 
     pthread_mutex_lock(&Winthread.lock);
-    tox_get_self_name(m, nick, TOX_MAX_NAME_LENGTH);
+    tox_get_self_name(m, nick);
     tox_get_self_status_message(m, statusmsg, MAX_STR_SIZE);
-    TOX_USERSTATUS status = tox_get_self_user_status(m);
+    uint8_t status = tox_get_self_user_status(m);
     pthread_mutex_unlock(&Winthread.lock);
 
     snprintf(statusbar->nick, sizeof(statusbar->nick), "%s", nick);
@@ -482,7 +486,7 @@ void prompt_init_statusbar(ToxWindow *self, Tox *m)
     /* load prev status message or show toxic version if it has never been set */
     uint8_t ver[strlen(TOXICVER) + 1];
     strcpy(ver, TOXICVER);
-    uint8_t *toxic_ver = strtok(ver, "_");
+    const uint8_t *toxic_ver = strtok(ver, "_");
 
     if ( (!strcmp("Online", statusmsg) || !strncmp("Toxing on Toxic", statusmsg, 15)) && toxic_ver != NULL)
         snprintf(statusmsg, MAX_STR_SIZE, "Toxing on Toxic v.%s", toxic_ver);

@@ -41,22 +41,22 @@ typedef struct {
     uint16_t statusmsg_len;
     uint8_t pending_groupchat[TOX_CLIENT_ID_SIZE];
     uint8_t pub_key[TOX_CLIENT_ID_SIZE];
-    int num;
+    int32_t num;
     int chatwin;
     bool active;
     bool online;
     bool is_typing;
     bool logging_on;    /* saves preference for friend irrespective of chat windows */
-    TOX_USERSTATUS status;
+    uint8_t status;
     struct LastOnline last_online;
     struct FileReceiver file_receiver;
 } ToxicFriend;
 
 ToxWindow new_friendlist(void);
-void disable_chatwin(int f_num);
+void disable_chatwin(int32_t f_num);
 int get_friendnum(uint8_t *name);
 
-void friendlist_onFriendAdded(ToxWindow *self, Tox *m, int num, bool sort);
+void friendlist_onFriendAdded(ToxWindow *self, Tox *m, int32_t num, bool sort);
 
 /* sorts friendlist_index first by connection status then alphabetically */
 void sort_friendlist_index(void);
