@@ -2555,6 +2555,7 @@ fi
 REV=`git rev-list HEAD --count`
 TOXIC_VERSION="${VERSION}_r${REV}"
 TOXIC_VER="${TOXIC_VERSION}"
+CONFIGURE_OK="yes"
 config_script_out="toxic"
 config_script_cflags="-I${INCLDIR} ${CFLAGS}"
 config_script_libs="-L${LIBDIR}"
@@ -2715,6 +2716,8 @@ echo "BINDIR=$BINDIR" >>Makefile.config
 echo "mdefs[\"BINDIR\"] = \"$BINDIR\"" >>configure.lua
 echo "OPENAL_CFLAGS=$OPENAL_CFLAGS" >>Makefile.config
 echo "mdefs[\"OPENAL_CFLAGS\"] = \"$OPENAL_CFLAGS\"" >>configure.lua
+echo "CONFIGURE_OK=$CONFIGURE_OK" >>Makefile.config
+echo "mdefs[\"CONFIGURE_OK\"] = \"$CONFIGURE_OK\"" >>configure.lua
 echo "TOXIC_VER=$TOXIC_VER" >>Makefile.config
 echo "mdefs[\"TOXIC_VER\"] = \"$TOXIC_VER\"" >>configure.lua
 echo "MODULEDIR=$MODULEDIR" >>Makefile.config
