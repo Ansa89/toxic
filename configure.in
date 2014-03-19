@@ -19,7 +19,7 @@ REGISTER("--with-libtoxav=DIR",	"search for libtoxav files in DIR")
 REGISTER("--with-libopenal=DIR", "search for openal files in DIR")
 
 REQUIRE(cc)
-REQUIRE(ncurses)
+CHECK(ncurses)
 REQUIRE(pthreads)
 CHECK(sodium,0.4.2,${prefix_libsodium})
 REQUIRE(toxcore,0.0.0,${prefix_toxcore})

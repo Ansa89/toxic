@@ -1039,8 +1039,8 @@ echo "* " >> config.log
 echo "configure failed!"
 exit 1
 fi;
-$ECHO_N "checking for ncurses (https://github.com/jedisct1/libsodium)..."
-$ECHO_N "checking for ncurses (https://github.com/jedisct1/libsodium)..." >> config.log
+$ECHO_N "checking for ncurses (http://www.gnu.org/software/ncurses/)..."
+$ECHO_N "checking for ncurses (http://www.gnu.org/software/ncurses/)..." >> config.log
 if [ "" != "" ]; then
 	MK_EXEC_PKGPREFIX=`$PKGCONFIG --variable=prefix ncurses 2>/dev/null`
 	if [ "$MK_EXEC_PKGPREFIX" != "" ]; then
@@ -1182,16 +1182,6 @@ echo "no" >> config.log
 fi;
 echo "#undef HAVE_NCURSES" >config/have_ncurses.h
 echo "hdefs[\"HAVE_NCURSES\"] = nil" >>configure.lua
-fi;
-if [ "${HAVE_NCURSES}" != "yes" ]; then
-echo "* "
-echo "* " >> config.log
-echo "* This software requires ncurses installed on your system."
-echo "* This software requires ncurses installed on your system." >> config.log
-echo "* "
-echo "* " >> config.log
-echo "configure failed!"
-exit 1
 fi;
 $ECHO_N "checking for POSIX threads..."
 $ECHO_N "checking for POSIX threads..." >> config.log
