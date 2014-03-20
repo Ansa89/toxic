@@ -51,9 +51,7 @@ before_script:
   - cd ..
   - sudo apt-get install libopenal-dev -yq
 script:
-  - autoreconf -i
-  - ./configure
-  - make -j2
+  - sh build.sh
 notifications:
   email: false
 
