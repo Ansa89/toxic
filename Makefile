@@ -18,6 +18,8 @@ CFLAGS+= ${OPT_CFLAGS} ${TOXAV_CFLAGS} ${TOXCORE_CFLAGS} ${SODIUM_CFLAGS} \
 
 LIBS+= ${TOXAV_LIBS} ${TOXCORE_LIBS} ${SODIUM_LIBS} ${OPENAL_LIBS} ${NCURSES_LIBS} ${PTHREADS_LIBS}
 
+all: config-ok ${PROG}
+
 config-ok:
 	@if [ "${CONFIGURE_OK}" != "yes" ]; then \
 	    echo "Please run ./configure first"; \
