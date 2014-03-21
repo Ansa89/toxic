@@ -2,9 +2,9 @@ TOXCORE=${TOXCORE_FILES:-"-ltoxcore"}
 TOXAV=${TOXAV_FILES:-"-ltoxav"}
 CRYPTO_LIB=${CRYPTO_LIB_FILES:-"-lsodium"}
 PREFIX=${PREFIX:-"/usr/local"}
-TOXIC_VERSION=0.3.1
+TOXIC_VERSION="0.3.1"
 REV=`git rev-list HEAD --count`
-VERSION="${TOXIC_VERSION}_r${REV}"
+VERSION="\"${TOXIC_VERSION}_r${REV}\""
 echo ${VERSION}
 
 
