@@ -8,6 +8,15 @@ install: $(BUILD_DIR)/toxic
 	@mkdir -p $(abspath $(DESTDIR)/$(APPDIR))
 	@install -m 0644 $(MISC_DIR)/$(DESKFILE) $(abspath $(DESTDIR)/$(APPDIR)/$(DESKFILE))
 	
+	@echo "Installing translations"
+	@for i in $(LANGS) ; do \
+		if [ ! -e $(TRANSLATIONS_DIR)/$$i.mo ]; then \
+			continue ; \
+		fi ; \
+		mkdir -p $(abspath $(DESTDIR)/$(LOCALEDIR)/$$i/LC_MESSAGES) ; \
+		install -m 0644 $(TRANSLATIONS_DIR)/$$i.mo $(abspath $(DESTDIR)/$(LOCALEDIR)/$$i/LC_MESSAGES/toxic.mo) ; \
+	done
+	
 	@echo "Installing data files"
 	@mkdir -p $(abspath $(DESTDIR)/$(DATADIR))
 	@for f in $(DATAFILES) ; do \

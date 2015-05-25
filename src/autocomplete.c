@@ -23,6 +23,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <limits.h>
+#include <libintl.h>
 
 #ifdef __APPLE__
     #include <sys/types.h>
@@ -117,7 +118,7 @@ int complete_line(ToxWindow *self, const void *list, int n_items, int size)
     char *sub = malloc(strlen(ubuf) + 1);
 
     if (sub == NULL)
-        exit_toxic_err("failed in complete_line", FATALERR_MEMORY);
+        exit_toxic_err(gettext("failed in complete_line"), FATALERR_MEMORY);
 
     if (!s && !dir_search) {
         strcpy(sub, tmp);

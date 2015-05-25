@@ -23,6 +23,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <libintl.h>
 
 #include "misc_tools.h"
 #include "file_transfers.h"
@@ -59,7 +60,7 @@ int avatar_send(Tox *m, uint32_t friendnum)
         return 0;
 
     if (err != TOX_ERR_FILE_SEND_OK) {
-        fprintf(stderr, "tox_file_send failed for friendnumber %d (error %d)\n", friendnum, err);
+        fprintf(stderr, gettext("tox_file_send failed for friendnumber %d (error %d)\n"), friendnum, err);
         return -1;
     }
 
@@ -203,7 +204,7 @@ void on_avatar_chunk_request(Tox *m, struct FileTransfer *ft, uint64_t position,
     tox_file_send_chunk(m, ft->friendnum, ft->filenum, position, send_data, send_length, &err);
 
     if (err != TOX_ERR_FILE_SEND_CHUNK_OK)
-        fprintf(stderr, "tox_file_send_chunk failed in avatar callback (error %d)\n", err);
+        fprintf(stderr, gettext("tox_file_send_chunk failed in avatar callback (error %d)\n"), err);
 
     ft->position += send_length;
 }

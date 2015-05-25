@@ -23,6 +23,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <assert.h>
+#include <libintl.h>
 
 #include "toxic.h"
 #include "windows.h"
@@ -98,7 +99,7 @@ static int parse_command(WINDOW *w, ToxWindow *self, const char *input, char (*a
     char *cmd = strdup(input);
 
     if (cmd == NULL)
-        exit_toxic_err("failed in parse_command", FATALERR_MEMORY);
+        exit_toxic_err(gettext("failed in parse_command"), FATALERR_MEMORY);
 
     int num_args = 0;
     int i = 0;    /* index of last char in an argument */
@@ -112,7 +113,7 @@ static int parse_command(WINDOW *w, ToxWindow *self, const char *input, char (*a
             i = char_find(1, cmd, '\"');
 
             if (cmd[i] == '\0') {
-                const char *errmsg = "Invalid argument. Did you forget a closing \"?";
+                const char *errmsg = gettext("Invalid argument. Did you forget a closing \"?");
                 line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, errmsg);
                 free(cmd);
                 return -1;
@@ -183,5 +184,5 @@ void execute(WINDOW *w, ToxWindow *self, Tox *m, const char *input, int mode)
     if (do_command(w, self, m, num_args, global_commands, args) == 0)
         return;
 
-    line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, "Invalid command.");
+    line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, gettext("Invalid command."));
 }
