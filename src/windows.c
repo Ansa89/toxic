@@ -24,7 +24,12 @@
 #include <string.h>
 #include <pthread.h>
 #include <ctype.h>
+
+#ifdef NO_GETTEXT
+#define gettext(A) (A)
+#else
 #include <libintl.h>
+#endif
 
 #include "friendlist.h"
 #include "prompt.h"

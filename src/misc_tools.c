@@ -27,7 +27,12 @@
 #include <limits.h>
 #include <dirent.h>
 #include <sys/stat.h>
+
+#ifdef NO_GETTEXT
+#define gettext(A) (A)
+#else
 #include <libintl.h>
+#endif
 
 #include "toxic.h"
 #include "windows.h"
@@ -116,7 +121,7 @@ char *hex_string_to_bin(const char *hex_string)
     char *val = malloc(len);
 
     if (val == NULL)
-        exit_toxic_err("failed in hex_string_to_bin", FATALERR_MEMORY);
+        exit_toxic_err(gettext("failed in hex_string_to_bin"), FATALERR_MEMORY);
 
     size_t i;
 

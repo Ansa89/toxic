@@ -23,7 +23,12 @@
 #include <stdlib.h>
 #include <string.h>
 #include <limits.h>
+
+#ifdef NO_GETTEXT
+#define gettext(A) (A)
+#else
 #include <libintl.h>
+#endif
 
 #ifdef __APPLE__
     #include <sys/types.h>

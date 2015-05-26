@@ -22,7 +22,12 @@
 
 #include <string.h>
 #include <stdlib.h>
+
+#ifdef NO_GETTEXT
+#define gettext(A) (A)
+#else
 #include <libintl.h>
+#endif
 
 #include "toxic.h"
 #include "windows.h"
@@ -37,7 +42,7 @@ void cmd_chatid(WINDOW *window, ToxWindow *self, Tox *m, int argc, char (*argv)[
     char chat_public_key[TOX_GROUP_CHAT_ID_SIZE];
 
     if (tox_group_get_chat_id(m, self->num, (uint8_t *) chat_public_key) == -1) {
-        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, "Error retreiving chat id.");
+        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, gettext("Error retreiving chat id."));
         return;
     }
 
@@ -122,7 +127,7 @@ void cmd_set_passwd(WINDOW *window, ToxWindow *self, Tox *m, int argc, char (*ar
     }
 
     if (len > TOX_MAX_GROUP_PASSWD_SIZE) {
-        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, "Password exceeds %d character limit", TOX_MAX_GROUP_PASSWD_SIZE);
+        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, gettext("Password exceeds %d character limit"), TOX_MAX_GROUP_PASSWD_SIZE);
         return;
     }
 
@@ -197,19 +202,19 @@ void cmd_set_privacy(WINDOW *window, ToxWindow *self, Tox *m, int argc, char (*a
         privacy_state = tox_group_get_privacy_state(m, self->num);
 
         if (privacy_state == TOX_GP_INVALID) {
-            line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, "Failed to retrieve privacy state");
+            line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, gettext("Failed to retrieve privacy state"));
             return;
         }
 
         pstate_str = privacy_state == TOX_GP_PRIVATE ? "private" : "public";
-        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, "Privacy state is set to %s.", pstate_str);
+        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, gettext("Privacy state is set to %s."), pstate_str);
         return;
     }
 
     pstate_str = argv[1];
 
     if (strcasecmp(pstate_str, "private") != 0 && strcasecmp(pstate_str, "public") != 0) {
-        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, "Privacy state must be \"private\" or \"public\".");
+        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, gettext("Privacy state must be \"%s\" or \"%s\"."), "private", "public");
         return;
     }
 
@@ -219,15 +224,15 @@ void cmd_set_privacy(WINDOW *window, ToxWindow *self, Tox *m, int argc, char (*a
 
     switch (ret) {
         case 0: {
-            line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, "Privacy state has been set to %s.", pstate_str);
+            line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, gettext("Privacy state has been set to %s."), pstate_str);
             return;
         }
         case -2: {
-            line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, "You do not have permission to set the privacy state.");
+            line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, gettext("You do not have permission to set the privacy state."));
             return;
         }
         default: {
-            line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, "Error setting privacy state.");
+            line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, gettext("Error setting privacy state."));
             return;
         }
     }
@@ -238,7 +243,7 @@ void cmd_rejoin(WINDOW *window, ToxWindow *self, Tox *m, int argc, char (*argv)[
     if (tox_group_reconnect(m, self->num) == -1)
         return;
 
-    line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, "Reconnecting to group...");
+    line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, gettext("Reconnecting to group..."));
 }
 
 void cmd_set_topic(WINDOW *window, ToxWindow *self, Tox *m, int argc, char (*argv)[MAX_STR_SIZE])
@@ -249,9 +254,9 @@ void cmd_set_topic(WINDOW *window, ToxWindow *self, Tox *m, int argc, char (*arg
 
         if (tlen > 0) {
             cur_topic[tlen] = '\0';
-            line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, "Topic is set to: %s", cur_topic);
+            line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, gettext("Topic is set to: %s"), cur_topic);
         } else {
-            line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, "Topic is not set");
+            line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, gettext("Topic is not set"));
         }
 
         return;
@@ -260,7 +265,7 @@ void cmd_set_topic(WINDOW *window, ToxWindow *self, Tox *m, int argc, char (*arg
     const char *topic = argv[1];
 
     if (tox_group_set_topic(m, self->num, (uint8_t *) topic, strlen(topic)) != 0) {
-        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, "Failed to set topic.");
+        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, gettext("Failed to set topic."));
         return;
     }
 

@@ -23,7 +23,12 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+
+#ifdef NO_GETTEXT
+#define gettext(A) (A)
+#else
 #include <libintl.h>
+#endif
 
 #include "misc_tools.h"
 #include "file_transfers.h"

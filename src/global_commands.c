@@ -23,7 +23,12 @@
 #include <stdlib.h>
 #include <string.h>
 #include <arpa/inet.h>
+
+#ifdef NO_GETTEXT
+#define gettext(A) (A)
+#else
 #include <libintl.h>
+#endif
 
 #include "toxic.h"
 #include "windows.h"
@@ -67,7 +72,7 @@ void cmd_accept(WINDOW *window, ToxWindow *self, Tox *m, int argc, char (*argv)[
     uint32_t friendnum = tox_friend_add_norequest(m, FrndRequests.request[req].key, &err);
 
     if (err != TOX_ERR_FRIEND_ADD_OK) {
-        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, gettext("Failed to add friend (error %d\n)"), err);
+        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, gettext("Failed to add friend (error %d)\n"), err);
         return;
     } else {
         line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, gettext("Friend request accepted."));
@@ -461,8 +466,8 @@ void cmd_log(WINDOW *window, ToxWindow *self, Tox *m, int argc, char (*argv)[MAX
         return;
     }
 
-    msg = gettext("Invalid option. Use \"/log %s\" to toggle logging.", "on|off");
-    line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, msg);
+    msg = gettext("Invalid option. Use \"%s\" to toggle logging.");
+    line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, msg, "/log on|off");
 }
 
 void cmd_myid(WINDOW *window, ToxWindow *self, Tox *m, int argc, char (*argv)[MAX_STR_SIZE])

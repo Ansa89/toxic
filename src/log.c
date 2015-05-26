@@ -24,7 +24,12 @@
 #include <string.h>
 #include <time.h>
 #include <sys/stat.h>
+
+#ifdef NO_GETTEXT
+#define gettext(A) (A)
+#else
 #include <libintl.h>
+#endif
 
 #include "configdir.h"
 #include "toxic.h"

@@ -39,7 +39,12 @@
 #include <unistd.h>
 #include <limits.h>
 #include <termios.h>
+
+#ifdef NO_GETTEXT
+#define gettext(A) (A)
+#else
 #include <libintl.h>
+#endif
 
 #include <tox/tox.h>
 #include <tox/toxencryptsave.h>
@@ -170,7 +175,10 @@ static void init_term(void)
 
 #endif
 
+#ifndef NO_GETTEXT
     textdomain("toxic");
+#endif
+
     initscr();
     cbreak();
     keypad(stdscr, 1);
@@ -896,7 +904,7 @@ static void print_usage(void)
     fprintf(stderr, "  -t, --force-tcp          ");
     fprintf(stderr, gettext("Force TCP connection (use this with proxies)\n"));
     fprintf(stderr, "  -u, --unencrypt-data     ");
-    fpritnf(stderr, gettext("Unencrypt an encrypted data file\n"));
+    fprintf(stderr, gettext("Unencrypt an encrypted data file\n"));
 }
 
 static void set_default_opts(void)

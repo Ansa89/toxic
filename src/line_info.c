@@ -24,7 +24,12 @@
 #include <string.h>
 #include <stdbool.h>
 #include <stdarg.h>
+
+#ifdef NO_GETTEXT
+#define gettext(A) (A)
+#else
 #include <libintl.h>
+#endif
 
 #include "toxic.h"
 #include "windows.h"

@@ -1,14 +1,9 @@
-# English translations for h package.
-# Copyright (C) 2015 THE h'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the h package.
-# Automatically generated, 2015.
-#
 msgid ""
 msgstr ""
-"Project-Id-Version: h 3r0\n"
+"Project-Id-Version: Toxic 0.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-25 15:01+0200\n"
-"PO-Revision-Date: 2015-05-25 15:01+0200\n"
+"POT-Creation-Date: 2015-05-28 15:52+0200\n"
+"PO-Revision-Date: 2015-05-26 11:43+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -16,565 +11,530 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/audio_call.c:128
+#: ../src/audio_call.c:133
 msgid "Failed to init devices"
 msgstr "Failed to init devices"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/audio_call.c:190
-#: /home/h3r0/Programmi/toxic_mio-git/src/audio_call.c:196
+#: ../src/audio_call.c:195 ../src/audio_call.c:201
 msgid "Could not prepare transmission"
 msgstr "Could not prepare transmission"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/audio_call.c:212
+#: ../src/audio_call.c:217
 msgid "Failed to open input device!"
 msgstr "Failed to open input device!"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/audio_call.c:217
+#: ../src/audio_call.c:222
 msgid "Failed to register input handler!"
 msgstr "Failed to register input handler!"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/audio_call.c:221
+#: ../src/audio_call.c:226
 msgid "Failed to open output device!"
 msgstr "Failed to open output device!"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/audio_call.c:279
-#: /home/h3r0/Programmi/toxic_mio-git/src/audio_call.c:298
+#: ../src/audio_call.c:284 ../src/audio_call.c:303
 msgid "Error starting transmission!"
 msgstr "Error starting transmission!"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/audio_call.c:352
-#: /home/h3r0/Programmi/toxic_mio-git/src/audio_call.c:387
-#: /home/h3r0/Programmi/toxic_mio-git/src/audio_call.c:418
-#: /home/h3r0/Programmi/toxic_mio-git/src/audio_call.c:449
+#: ../src/audio_call.c:357 ../src/audio_call.c:392 ../src/audio_call.c:423
+#: ../src/audio_call.c:454
 msgid "Unknown arguments."
 msgstr "Unknown arguments."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/audio_call.c:357
-#: /home/h3r0/Programmi/toxic_mio-git/src/audio_call.c:392
-#: /home/h3r0/Programmi/toxic_mio-git/src/audio_call.c:423
-#: /home/h3r0/Programmi/toxic_mio-git/src/audio_call.c:454
+#: ../src/audio_call.c:362 ../src/audio_call.c:397 ../src/audio_call.c:428
+#: ../src/audio_call.c:459
 msgid "Audio not supported!"
 msgstr "Audio not supported!"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/audio_call.c:362
+#: ../src/audio_call.c:367
 msgid "Friend is offline."
 msgstr "Friend is offline."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/audio_call.c:369
+#: ../src/audio_call.c:374
 msgid "Already in a call!"
 msgstr "Already in a call!"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/audio_call.c:370
-#: /home/h3r0/Programmi/toxic_mio-git/src/audio_call.c:401
-#: /home/h3r0/Programmi/toxic_mio-git/src/audio_call.c:432
-#: /home/h3r0/Programmi/toxic_mio-git/src/audio_call.c:474
+#: ../src/audio_call.c:375 ../src/audio_call.c:406 ../src/audio_call.c:437
+#: ../src/audio_call.c:479
 msgid "Internal error!"
 msgstr "Internal error!"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/audio_call.c:375
+#: ../src/audio_call.c:380
 #, c-format
 msgid "Calling... idx: %d"
 msgstr "Calling... idx: %d"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/audio_call.c:399
+#: ../src/audio_call.c:404
 msgid "Cannot answer in invalid state!"
 msgstr "Cannot answer in invalid state!"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/audio_call.c:400
-#: /home/h3r0/Programmi/toxic_mio-git/src/audio_call.c:431
+#: ../src/audio_call.c:405 ../src/audio_call.c:436
 msgid "No incoming call!"
 msgstr "No incoming call!"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/audio_call.c:427
+#: ../src/audio_call.c:432
 msgid "Why not?"
 msgstr "Why not?"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/audio_call.c:430
+#: ../src/audio_call.c:435
 msgid "Cannot reject in invalid state!"
 msgstr "Cannot reject in invalid state!"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/audio_call.c:462
+#: ../src/audio_call.c:467
 msgid "Only those who appreciate small things know the beauty that is life"
 msgstr "Only those who appreciate small things know the beauty that is life"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/audio_call.c:466
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat.c:648
+#: ../src/audio_call.c:471 ../src/chat.c:647
 msgid "Call canceled!"
 msgstr "Call canceled!"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/audio_call.c:472
+#: ../src/audio_call.c:477
 msgid "Cannot hangup in invalid state!"
 msgstr "Cannot hangup in invalid state!"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/audio_call.c:473
+#: ../src/audio_call.c:478
 msgid "No call!"
 msgstr "No call!"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/audio_call.c:489
-#: /home/h3r0/Programmi/toxic_mio-git/src/audio_call.c:521
-#: /home/h3r0/Programmi/toxic_mio-git/src/audio_call.c:565
-#: /home/h3r0/Programmi/toxic_mio-git/src/audio_call.c:638
+#: ../src/audio_call.c:494 ../src/audio_call.c:526 ../src/audio_call.c:570
+#: ../src/audio_call.c:643
 msgid "Type must be specified!"
 msgstr "Type must be specified!"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/audio_call.c:490
+#: ../src/audio_call.c:495
 msgid "Only one argument allowed!"
 msgstr "Only one argument allowed!"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/audio_call.c:504
-#: /home/h3r0/Programmi/toxic_mio-git/src/audio_call.c:537
-#: /home/h3r0/Programmi/toxic_mio-git/src/audio_call.c:581
-#: /home/h3r0/Programmi/toxic_mio-git/src/audio_call.c:653
+#: ../src/audio_call.c:509 ../src/audio_call.c:542 ../src/audio_call.c:586
+#: ../src/audio_call.c:658
 #, c-format
 msgid "Invalid type: %s"
 msgstr "Invalid type: %s"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/audio_call.c:522
-#: /home/h3r0/Programmi/toxic_mio-git/src/audio_call.c:566
+#: ../src/audio_call.c:527 ../src/audio_call.c:571
 msgid "Must have id!"
 msgstr "Must have id!"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/audio_call.c:523
-#: /home/h3r0/Programmi/toxic_mio-git/src/audio_call.c:567
-#: /home/h3r0/Programmi/toxic_mio-git/src/audio_call.c:639
-#: /home/h3r0/Programmi/toxic_mio-git/src/audio_call.c:685
+#: ../src/audio_call.c:528 ../src/audio_call.c:572 ../src/audio_call.c:644
+#: ../src/audio_call.c:690
 msgid "Only two arguments allowed!"
 msgstr "Only two arguments allowed!"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/audio_call.c:546
-#: /home/h3r0/Programmi/toxic_mio-git/src/audio_call.c:590
-#: /home/h3r0/Programmi/toxic_mio-git/src/audio_call.c:694
+#: ../src/audio_call.c:551 ../src/audio_call.c:595 ../src/audio_call.c:699
 msgid "Invalid input"
 msgstr "Invalid input"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/audio_call.c:551
-#: /home/h3r0/Programmi/toxic_mio-git/src/audio_call.c:595
+#: ../src/audio_call.c:556 ../src/audio_call.c:600
 msgid "Invalid selection!"
 msgstr "Invalid selection!"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/audio_call.c:684
+#: ../src/audio_call.c:689
 msgid "Must have value!"
 msgstr "Must have value!"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/audio_call.c:723
+#: ../src/audio_call.c:728
 msgid "Not interested anymore"
 msgstr "Not interested anymore"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/audio_call.c:726
+#: ../src/audio_call.c:731
 msgid "Not interested"
 msgstr "Not interested"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/autocomplete.c:121
+#: ../src/autocomplete.c:126
 msgid "failed in complete_line"
 msgstr "failed in complete_line"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/avatars.c:63
+#: ../src/avatars.c:68
 #, c-format
 msgid "tox_file_send failed for friendnumber %d (error %d)\n"
 msgstr "tox_file_send failed for friendnumber %d (error %d)\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/avatars.c:207
+#: ../src/avatars.c:212
 #, c-format
 msgid "tox_file_send_chunk failed in avatar callback (error %d)\n"
 msgstr "tox_file_send_chunk failed in avatar callback (error %d)\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat.c:51
+#: ../src/chat.c:56
 msgid "yes"
 msgstr "yes"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat.c:52
+#: ../src/chat.c:57
 msgid "no"
 msgstr "no"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat.c:218
-#: /home/h3r0/Programmi/toxic_mio-git/src/prompt.c:355
+#: ../src/chat.c:224 ../src/prompt.c:361
 msgid "has come online"
 msgstr "has come online"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat.c:229
-#: /home/h3r0/Programmi/toxic_mio-git/src/prompt.c:367
+#: ../src/chat.c:235 ../src/prompt.c:373
 msgid "has gone offline"
 msgstr "has gone offline"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat.c:314
+#: ../src/chat.c:320
 #, c-format
 msgid "File '%s' successfully sent."
 msgstr "File '%s' successfully sent."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat.c:321
+#: ../src/chat.c:327
 #, c-format
 msgid "File transfer for '%s' failed: Null file pointer."
 msgstr "File transfer for '%s' failed: Null file pointer."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat.c:328
+#: ../src/chat.c:334
 #, c-format
 msgid "File transfer for '%s' failed: Seek fail."
 msgstr "File transfer for '%s' failed: Seek fail."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat.c:340
+#: ../src/chat.c:346
 #, c-format
 msgid "File transfer for '%s' failed: Read fail."
 msgstr "File transfer for '%s' failed: Read fail."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat.c:349
+#: ../src/chat.c:355
 #, c-format
 msgid "tox_file_send_chunk failed in chat callback (error %d)\n"
 msgstr "tox_file_send_chunk failed in chat callback (error %d)\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat.c:372
+#: ../src/chat.c:378
 #, c-format
 msgid "File '%s' successfully received."
 msgstr "File '%s' successfully received."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat.c:379
+#: ../src/chat.c:385
 #, c-format
 msgid "File transfer for '%s' failed: Invalid file pointer."
 msgstr "File transfer for '%s' failed: Invalid file pointer."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat.c:385
+#: ../src/chat.c:391
 #, c-format
 msgid "File transfer for '%s' failed: Write fail."
 msgstr "File transfer for '%s' failed: Write fail."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat.c:411
+#: ../src/chat.c:417
 #, c-format
 msgid "File transfer [%d] for '%s' accepted."
 msgstr "File transfer [%d] for '%s' accepted."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat.c:429
+#: ../src/chat.c:435
 #, c-format
 msgid "File transfer for '%s' was aborted."
 msgstr "File transfer for '%s' was aborted."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat.c:445
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat_commands.c:304
+#: ../src/chat.c:451 ../src/chat_commands.c:305
 msgid "File transfer failed: Too many concurrent file transfers."
 msgstr "File transfer failed: Too many concurrent file transfers."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat.c:451
+#: ../src/chat.c:457
 #, c-format
 msgid "File transfer request for '%s' (%s)"
 msgstr "File transfer request for '%s' (%s)"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat.c:466
+#: ../src/chat.c:472
 msgid "File transfer faield: File path too long."
 msgstr "File transfer faield: File path too long."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat.c:492
+#: ../src/chat.c:498
 msgid "File transfer failed: invalid file path."
 msgstr "File transfer failed: invalid file path."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat.c:497
+#: ../src/chat.c:503
 #, c-format
-msgid "Type '/savefile %d' to accept the file transfer."
-msgstr "Type '/savefile %d' to accept the file transfer."
+msgid "Type '%s %d' to accept the file transfer."
+msgstr "Type '%s %d' to accept the file transfer."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat.c:510
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat.c:513
+#: ../src/chat.c:516 ../src/chat.c:519
 #, c-format
 msgid "Incoming file: %s"
 msgstr "Incoming file: %s"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat.c:542
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat.c:544
+#: ../src/chat.c:541 ../src/chat.c:543
 msgid "invites you to join group chat"
 msgstr "invites you to join group chat"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat.c:546
+#: ../src/chat.c:545
 #, c-format
 msgid "%s has invited you to a group chat."
 msgstr "%s has invited you to a group chat."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat.c:547
-msgid "Type \"/join\" to join the chat."
-msgstr "Type \"/join\" to join the chat."
+#: ../src/chat.c:546
+#, c-format
+msgid "Type \"%s\" to join the chat."
+msgstr "Type \"%s\" to join the chat."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat.c:561
-msgid "Incoming audio call! Type: \"/answer\" or \"/reject\""
-msgstr "Incoming audio call! Type: \"/answer\" or \"/reject\""
+#: ../src/chat.c:560
+#, c-format
+msgid "Incoming audio call! Type: \"%s\" or \"%s\""
+msgstr "Incoming audio call! Type: \"%s\" or \"%s\""
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat.c:568
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat.c:570
+#: ../src/chat.c:567 ../src/chat.c:569
 msgid "Incoming audio call!"
 msgstr "Incoming audio call!"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat.c:578
-msgid "Ringing...type \"/hangup\" to cancel it."
-msgstr "Ringing...type \"/hangup\" to cancel it."
+#: ../src/chat.c:577
+#, c-format
+msgid "Ringing...type \"%s\" to cancel it."
+msgstr "Ringing...type \"%s\" to cancel it."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat.c:593
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat.c:634
-msgid "Call started! Type: \"/hangup\" to end it."
-msgstr "Call started! Type: \"/hangup\" to end it."
+#: ../src/chat.c:592 ../src/chat.c:633
+#, c-format
+msgid "Call started! Type: \"%s\" to end it."
+msgstr "Call started! Type: \"%s\" to end it."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat.c:607
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat.c:675
+#: ../src/chat.c:606 ../src/chat.c:674
 msgid "Call ended!"
 msgstr "Call ended!"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat.c:620
+#: ../src/chat.c:619
 msgid "Error!"
 msgstr "Error!"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat.c:661
+#: ../src/chat.c:660
 msgid "Rejected!"
 msgstr "Rejected!"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat.c:688
+#: ../src/chat.c:687
 msgid "No answer!"
 msgstr "No answer!"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat.c:702
+#: ../src/chat.c:701
 msgid "Peer disconnected; call ended!"
 msgstr "Peer disconnected; call ended!"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat.c:764
+#: ../src/chat.c:763
 msgid "    Call Active\n"
 msgstr "    Call Active\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat.c:768
+#: ../src/chat.c:767
 msgid " Duration: "
 msgstr " Duration: "
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat.c:773
+#: ../src/chat.c:772
 msgid " In muted: "
 msgstr " In muted: "
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat.c:778
+#: ../src/chat.c:777
 msgid " Out muted: "
 msgstr " Out muted: "
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat.c:783
+#: ../src/chat.c:782
 msgid " VAD level: "
 msgstr " VAD level: "
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat.c:1075
+#: ../src/chat.c:1074
 msgid "failed in chat_onInit"
 msgstr "failed in chat_onInit"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat.c:1147
+#: ../src/chat.c:1146
 msgid "failed in new_chat"
 msgstr "failed in new_chat"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat_commands.c:43
+#: ../src/chat_commands.c:48
 #, c-format
 msgid "Requires type %s and the file ID."
 msgstr "Requires type %s and the file ID."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat_commands.c:52
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat_commands.c:69
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat_commands.c:74
+#: ../src/chat_commands.c:57 ../src/chat_commands.c:74
+#: ../src/chat_commands.c:79
 msgid "Invalid file ID."
 msgstr "Invalid file ID."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat_commands.c:64
+#: ../src/chat_commands.c:69
 #, c-format
 msgid "Type must be '%s' or '%s'."
 msgstr "Type must be '%s' or '%s'."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat_commands.c:78
+#: ../src/chat_commands.c:83
 #, c-format
 msgid "File transfer for '%s' aborted."
 msgstr "File transfer for '%s' aborted."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat_commands.c:85
-msgid "Group number required."
-msgstr "Group number required."
-
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat_commands.c:92
-msgid "Invalid group number."
-msgstr "Invalid group number."
-
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat_commands.c:97
-msgid "Failed to invite contact to group."
-msgstr "Failed to invite contact to group."
-
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat_commands.c:101
-#, c-format
-msgid "Invited contact to Group %d."
-msgstr "Invited contact to Group %d."
-
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat_commands.c:107
-#: /home/h3r0/Programmi/toxic_mio-git/src/global_commands.c:319
+#: ../src/chat_commands.c:90 ../src/global_commands.c:324
+#: ../src/global_commands.c:368
 msgid " * Warning: Too many windows are open."
 msgstr " * Warning: Too many windows are open."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat_commands.c:116
-msgid "No pending group chat invite."
-msgstr "No pending group chat invite."
+#: ../src/chat_commands.c:95
+msgid "No pending group invite"
+msgstr "No pending group invite"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat_commands.c:131
-#: /home/h3r0/Programmi/toxic_mio-git/src/global_commands.c:349
-msgid "Group chat instance failed to initialize."
-msgstr "Group chat instance failed to initialize."
+#: ../src/chat_commands.c:111 ../src/global_commands.c:414
+msgid "Failed to join group."
+msgstr "Failed to join group."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat_commands.c:136
-#: /home/h3r0/Programmi/toxic_mio-git/src/global_commands.c:354
+#: ../src/chat_commands.c:116 ../src/global_commands.c:359
+#: ../src/global_commands.c:419
 msgid "Group chat window failed to initialize."
 msgstr "Group chat window failed to initialize."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat_commands.c:146
+#: ../src/chat_commands.c:125
+msgid "Group number required."
+msgstr "Group number required."
+
+#: ../src/chat_commands.c:132
+msgid "Invalid group number."
+msgstr "Invalid group number."
+
+#: ../src/chat_commands.c:137
+msgid "Failed to invite contact to group."
+msgstr "Failed to invite contact to group."
+
+#: ../src/chat_commands.c:147
 msgid "File ID required."
 msgstr "File ID required."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat_commands.c:153
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat_commands.c:160
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat_commands.c:165
+#: ../src/chat_commands.c:154 ../src/chat_commands.c:161
+#: ../src/chat_commands.c:166
 msgid "No pending file transfers with that ID."
 msgstr "No pending file transfers with that ID."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat_commands.c:170
+#: ../src/chat_commands.c:171
 msgid "File transfer failed: Invalid file path."
 msgstr "File transfer failed: Invalid file path."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat_commands.c:181
+#: ../src/chat_commands.c:182
 #, c-format
 msgid "Saving file [%d] as: '%s'"
 msgstr "Saving file [%d] as: '%s'"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat_commands.c:196
+#: ../src/chat_commands.c:197
 msgid "File transfer failed: Friend not found."
 msgstr "File transfer failed: Friend not found."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat_commands.c:200
+#: ../src/chat_commands.c:201
 msgid "File transfer failed: Friend is not online."
 msgstr "File transfer failed: Friend is not online."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat_commands.c:204
+#: ../src/chat_commands.c:205
 msgid "File transfer failed: Invalid filenumber."
 msgstr "File transfer failed: Invalid filenumber."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat_commands.c:208
+#: ../src/chat_commands.c:209
 msgid "File transfer failed: Connection error."
 msgstr "File transfer failed: Connection error."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat_commands.c:212
+#: ../src/chat_commands.c:213
 #, c-format
 msgid "File transfer failed (error %d)\n"
 msgstr "File transfer failed (error %d)\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat_commands.c:222
+#: ../src/chat_commands.c:223
 msgid "File path required."
 msgstr "File path required."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat_commands.c:227
+#: ../src/chat_commands.c:228
 msgid "File path must be enclosed in quotes."
 msgstr "File path must be enclosed in quotes."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat_commands.c:238
+#: ../src/chat_commands.c:239
 msgid "File path exceeds character limit."
 msgstr "File path exceeds character limit."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat_commands.c:245
+#: ../src/chat_commands.c:246
 msgid "File not found."
 msgstr "File not found."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat_commands.c:252
+#: ../src/chat_commands.c:253
 msgid "Invalid file."
 msgstr "Invalid file."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat_commands.c:285
+#: ../src/chat_commands.c:286
 #, c-format
 msgid "Sending file [%d]: '%s' (%s)"
 msgstr "Sending file [%d]: '%s' (%s)"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat_commands.c:292
+#: ../src/chat_commands.c:293
 msgid "File transfer failed: Invalid friend."
 msgstr "File transfer failed: Invalid friend."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat_commands.c:296
+#: ../src/chat_commands.c:297
 msgid "File transfer failed: Friend is offline."
 msgstr "File transfer failed: Friend is offline."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat_commands.c:300
+#: ../src/chat_commands.c:301
 msgid "File transfer failed: Filename is too long."
 msgstr "File transfer failed: Filename is too long."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/chat_commands.c:308
+#: ../src/chat_commands.c:309
 msgid "File transfer failed."
 msgstr "File transfer failed."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/configdir.c:120
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:1031
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:1037
+#: ../src/configdir.c:125 ../src/toxic.c:1058 ../src/toxic.c:1064
 msgid "failed in load_data_structures"
 msgstr "failed in load_data_structures"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/dns.c:150
+#: ../src/dns.c:155
 #, c-format
 msgid "User lookup failed: %s"
 msgstr "User lookup failed: %s"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/dns.c:176
+#: ../src/dns.c:181
 msgid "dn_expand failed."
 msgstr "dn_expand failed."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/dns.c:181
-#: /home/h3r0/Programmi/toxic_mio-git/src/dns.c:204
+#: ../src/dns.c:186 ../src/dns.c:209
 msgid "DNS reply was too short."
 msgstr "DNS reply was too short."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/dns.c:187
+#: ../src/dns.c:192
 msgid "Broken DNS reply."
 msgstr "Broken DNS reply."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/dns.c:199
+#: ../src/dns.c:204
 msgid "Second dn_expand failed."
 msgstr "Second dn_expand failed."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/dns.c:212
+#: ../src/dns.c:217
 msgid "RR overflow."
 msgstr "RR overflow."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/dns.c:217
+#: ../src/dns.c:222
 msgid "DNS response failed."
 msgstr "DNS response failed."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/dns.c:222
+#: ../src/dns.c:227
 msgid "No record found."
 msgstr "No record found."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/dns.c:225
+#: ../src/dns.c:230
 msgid "Invalid DNS response."
 msgstr "Invalid DNS response."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/dns.c:302
+#: ../src/dns.c:307
 msgid "Must be a Tox ID or an address in the form username@domain"
 msgstr "Must be a Tox ID or an address in the form username@domain"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/dns.c:312
+#: ../src/dns.c:317
 msgid "Domain not found."
 msgstr "Domain not found."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/dns.c:319
+#: ../src/dns.c:324
 msgid "Core failed to create DNS object."
 msgstr "Core failed to create DNS object."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/dns.c:330
+#: ../src/dns.c:335
 msgid "Core failed to generate DNS3 string."
 msgstr "Core failed to generate DNS3 string."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/dns.c:344
+#: ../src/dns.c:349
 msgid "DNS query failed."
 msgstr "DNS query failed."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/dns.c:359
+#: ../src/dns.c:364
 msgid "Bad DNS3 TXT response."
 msgstr "Bad DNS3 TXT response."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/dns.c:367
+#: ../src/dns.c:372
 msgid "Core failed to decrypt DNS response."
 msgstr "Core failed to decrypt DNS response."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/dns.c:383
+#: ../src/dns.c:388
 msgid "DNS lookups are disabled."
 msgstr "DNS lookups are disabled."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/dns.c:388
+#: ../src/dns.c:393
 msgid "Please wait for previous user lookup to finish."
 msgstr "Please wait for previous user lookup to finish."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/dns.c:398
+#: ../src/dns.c:403
 #, c-format
 msgid ""
 "DNS server list failed to load with error code %d. Falling back to hard-"
@@ -583,100 +543,97 @@ msgstr ""
 "DNS server list failed to load with error code %d. Falling back to hard-"
 "coded list."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/dns.c:411
+#: ../src/dns.c:416
 msgid "Error: DNS thread attr failed to init"
 msgstr "Error: DNS thread attr failed to init"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/dns.c:417
+#: ../src/dns.c:422
 msgid "Error: DNS thread attr failed to set"
 msgstr "Error: DNS thread attr failed to set"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/dns.c:424
+#: ../src/dns.c:429
 msgid "Error: DNS thread failed to init"
 msgstr "Error: DNS thread failed to init"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/execute.c:102
+#: ../src/execute.c:176
 msgid "failed in parse_command"
 msgstr "failed in parse_command"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/execute.c:116
+#: ../src/execute.c:190
 msgid "Invalid argument. Did you forget a closing \"?"
 msgstr "Invalid argument. Did you forget a closing \"?"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/execute.c:187
+#: ../src/execute.c:270
 msgid "Invalid command."
 msgstr "Invalid command."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/friendlist.c:88
+#: ../src/friendlist.c:93
 msgid "failed in realloc_friends"
 msgstr "failed in realloc_friends"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/friendlist.c:108
+#: ../src/friendlist.c:113
 msgid "failed in realloc_blocklist"
 msgstr "failed in realloc_blocklist"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/friendlist.c:136
+#: ../src/friendlist.c:141
 msgid "Failed in save_blocklist"
 msgstr "Failed in save_blocklist"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/friendlist.c:203
+#: ../src/friendlist.c:208
 msgid "Failed in load_blocklist"
 msgstr "Failed in load_blocklist"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/friendlist.c:326
-#: /home/h3r0/Programmi/toxic_mio-git/src/friendlist.c:761
-#: /home/h3r0/Programmi/toxic_mio-git/src/friendlist.c:1071
+#: ../src/friendlist.c:331 ../src/friendlist.c:763 ../src/friendlist.c:1073
 msgid "* Warning: Too many windows are open."
 msgstr "* Warning: Too many windows are open."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/friendlist.c:341
+#: ../src/friendlist.c:346
 #, c-format
 msgid "avatar_send failed for friend %d\n"
 msgstr "avatar_send failed for friend %d\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/friendlist.c:416
+#: ../src/friendlist.c:421
 #, c-format
 msgid "tox_friend_get_public_key failed (error %d)\n"
 msgstr "tox_friend_get_public_key failed (error %d)\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/friendlist.c:495
+#: ../src/friendlist.c:500
 #, c-format
 msgid "* File transfer from %s failed: too many windows are open."
 msgstr "* File transfer from %s failed: too many windows are open."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/friendlist.c:518
+#: ../src/friendlist.c:523
 #, c-format
 msgid "* Group chat invite from %s failed: too many windows are open."
 msgstr "* Group chat invite from %s failed: too many windows are open."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/friendlist.c:541
+#: ../src/friendlist.c:546
 #, c-format
 msgid "tox_friend_delete failed with error %d\n"
 msgstr "tox_friend_delete failed with error %d\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/friendlist.c:621
+#: ../src/friendlist.c:623
 msgid "Delete contact "
 msgstr "Delete contact "
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/friendlist.c:702
+#: ../src/friendlist.c:704
 #, c-format
 msgid "Failed to unblock friend (error %d)\n"
 msgstr "Failed to unblock friend (error %d)\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/friendlist.c:798
+#: ../src/friendlist.c:800
 msgid " Blocked: "
 msgstr " Blocked: "
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/friendlist.c:850
-#: /home/h3r0/Programmi/toxic_mio-git/src/friendlist.c:1030
+#: ../src/friendlist.c:852 ../src/friendlist.c:1032
 msgid "Key: "
 msgstr "Key: "
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/friendlist.c:876
+#: ../src/friendlist.c:878
 msgid " Press the"
 msgstr " Press the"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/friendlist.c:880
+#: ../src/friendlist.c:882
 msgid ""
 "key for help\n"
 "\n"
@@ -684,133 +641,131 @@ msgstr ""
 "key for help\n"
 "\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/friendlist.c:892
+#: ../src/friendlist.c:894
 msgid " Online: "
 msgstr " Online: "
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/friendlist.c:1006
+#: ../src/friendlist.c:1008
 #, c-format
 msgid " Last seen: Today %s\n"
 msgstr " Last seen: Today %s\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/friendlist.c:1010
+#: ../src/friendlist.c:1012
 #, c-format
 msgid " Last seen: Yesterday %s\n"
 msgstr " Last seen: Yesterday %s\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/friendlist.c:1014
+#: ../src/friendlist.c:1016
 #, c-format
 msgid " Last seen: %d days ago\n"
 msgstr " Last seen: %d days ago\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/friendlist.c:1018
+#: ../src/friendlist.c:1020
 msgid " Last seen: Never\n"
 msgstr " Last seen: Never\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/friendlist.c:1069
+#: ../src/friendlist.c:1071
 #, c-format
 msgid "Audio action from: %s!"
 msgstr "Audio action from: %s!"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/friendlist.c:1121
+#: ../src/friendlist.c:1123
 msgid "failed in new_friendlist"
 msgstr "failed in new_friendlist"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/friendlist.c:1124
+#: ../src/friendlist.c:1126
 msgid "contacts"
 msgstr "contacts"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/global_commands.c:50
-#: /home/h3r0/Programmi/toxic_mio-git/src/global_commands.c:287
+#: ../src/global_commands.c:55 ../src/global_commands.c:292
 msgid "Request ID required."
 msgstr "Request ID required."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/global_commands.c:57
-#: /home/h3r0/Programmi/toxic_mio-git/src/global_commands.c:62
-#: /home/h3r0/Programmi/toxic_mio-git/src/global_commands.c:294
-#: /home/h3r0/Programmi/toxic_mio-git/src/global_commands.c:299
+#: ../src/global_commands.c:62 ../src/global_commands.c:67
+#: ../src/global_commands.c:299 ../src/global_commands.c:304
 msgid "No pending friend request with that ID."
 msgstr "No pending friend request with that ID."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/global_commands.c:70
-#, c-format
-msgid ""
-"Failed to add friend (error %d\n"
-")"
+#: ../src/global_commands.c:75
+#, fuzzy, c-format
+#| msgid ""
+#| "Failed to add friend (error %d\n"
+#| ")"
+msgid "Failed to add friend (error %d)\n"
 msgstr ""
 "Failed to add friend (error %d\n"
 ")"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/global_commands.c:73
+#: ../src/global_commands.c:78
 msgid "Friend request accepted."
 msgstr "Friend request accepted."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/global_commands.c:100
+#: ../src/global_commands.c:105
 msgid "Message is too long."
 msgstr "Message is too long."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/global_commands.c:104
+#: ../src/global_commands.c:109
 msgid "Please add a message to your request."
 msgstr "Please add a message to your request."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/global_commands.c:108
+#: ../src/global_commands.c:113
 msgid "That appears to be your own ID."
 msgstr "That appears to be your own ID."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/global_commands.c:112
+#: ../src/global_commands.c:117
 msgid "Friend request has already been sent."
 msgstr "Friend request has already been sent."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/global_commands.c:116
+#: ../src/global_commands.c:121
 msgid "Bad checksum in address."
 msgstr "Bad checksum in address."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/global_commands.c:120
+#: ../src/global_commands.c:125
 msgid "Nospam was different."
 msgstr "Nospam was different."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/global_commands.c:124
+#: ../src/global_commands.c:129
 msgid "Core memory allocation failed."
 msgstr "Core memory allocation failed."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/global_commands.c:128
+#: ../src/global_commands.c:133
 msgid "Friend request sent."
 msgstr "Friend request sent."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/global_commands.c:135
+#: ../src/global_commands.c:140
 msgid "Failed to add friend: Unknown error."
 msgstr "Failed to add friend: Unknown error."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/global_commands.c:145
+#: ../src/global_commands.c:150
 msgid "Tox ID or address required."
 msgstr "Tox ID or address required."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/global_commands.c:154
+#: ../src/global_commands.c:159
 msgid "Message must be enclosed in quotes."
 msgstr "Message must be enclosed in quotes."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/global_commands.c:170
+#: ../src/global_commands.c:175
 #, c-format
 msgid "Hello, my name is %s. Care to Tox?"
 msgstr "Hello, my name is %s. Care to Tox?"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/global_commands.c:188
+#: ../src/global_commands.c:193
 msgid "Invalid Tox ID."
 msgstr "Invalid Tox ID."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/global_commands.c:205
+#: ../src/global_commands.c:210
 msgid "Avatar is not set."
 msgstr "Avatar is not set."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/global_commands.c:210
+#: ../src/global_commands.c:215
 msgid "Path must be enclosed in quotes."
 msgstr "Path must be enclosed in quotes."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/global_commands.c:220
+#: ../src/global_commands.c:225
 msgid "Invalid path."
 msgstr "Invalid path."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/global_commands.c:230
+#: ../src/global_commands.c:235
 #, c-format
 msgid ""
 "Failed to set avatar. Avatars must be in PNG format and may not exceed %d "
@@ -819,270 +774,455 @@ msgstr ""
 "Failed to set avatar. Avatars must be in PNG format and may not exceed %d "
 "bytes."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/global_commands.c:235
+#: ../src/global_commands.c:240
 #, c-format
 msgid "Avatar set to '%s'"
 msgstr "Avatar set to '%s'"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/global_commands.c:247
+#: ../src/global_commands.c:252
 msgid "Require: <ip> <port> <key>"
 msgstr "Require: <ip> <port> <key>"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/global_commands.c:256
+#: ../src/global_commands.c:261
 msgid "Invalid port."
 msgstr "Invalid port."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/global_commands.c:269
+#: ../src/global_commands.c:274
 msgid "Bootstrap failed: Invalid IP."
 msgstr "Bootstrap failed: Invalid IP."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/global_commands.c:273
+#: ../src/global_commands.c:278
 msgid "Bootstrap failed: Invalid port."
 msgstr "Bootstrap failed: Invalid port."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/global_commands.c:277
+#: ../src/global_commands.c:282
 msgid "Bootstrap failed."
 msgstr "Bootstrap failed."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/global_commands.c:324
-#, c-format
-msgid "Please specify group type: %s"
-msgstr "Please specify group type: %s"
+#: ../src/global_commands.c:329
+msgid "Group name required"
+msgstr "Group name required"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/global_commands.c:335
-#, c-format
-msgid "Valid group types are: %s"
-msgstr "Valid group types are: %s"
+#: ../src/global_commands.c:337
+msgid "Invalid group name."
+msgstr "Invalid group name."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/global_commands.c:359
-#, c-format
-msgid "Group chat [%d] created."
-msgstr "Group chat [%d] created."
+#: ../src/global_commands.c:354
+msgid "Group chat instance failed to initialize."
+msgstr "Group chat instance failed to initialize."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/global_commands.c:369
+#: ../src/global_commands.c:373
+msgid "Chat ID is required."
+msgstr "Chat ID is required."
+
+#: ../src/global_commands.c:380
+msgid "Invalid chat ID"
+msgstr "Invalid chat ID"
+
+#: ../src/global_commands.c:396
+msgid "Invalid chat ID."
+msgstr "Invalid chat ID."
+
+#: ../src/global_commands.c:432
 msgid "Logging for this window is ON. Type \"/log off\" to disable."
 msgstr "Logging for this window is ON. Type \"/log off\" to disable."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/global_commands.c:371
+#: ../src/global_commands.c:434
 msgid "Logging for this window is OFF. Type \"/log on\" to enable."
 msgstr "Logging for this window is OFF. Type \"/log on\" to enable."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/global_commands.c:392
+#: ../src/global_commands.c:455
 msgid "Logging enabled"
 msgstr "Logging enabled"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/global_commands.c:401
+#: ../src/global_commands.c:464
 msgid "Logging disabled"
 msgstr "Logging disabled"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/global_commands.c:406
+#: ../src/global_commands.c:469
 #, c-format
-msgid "Invalid option. Use \"/log %s\" to toggle logging."
-msgstr "Invalid option. Use \"/log %s\" to toggle logging."
+msgid "Invalid option. Use \"%s\" to toggle logging."
+msgstr "Invalid option. Use \"%s\" to toggle logging."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/global_commands.c:430
-#: /home/h3r0/Programmi/toxic_mio-git/src/global_commands.c:463
+#: ../src/global_commands.c:493 ../src/global_commands.c:527
 msgid "Input required."
 msgstr "Input required."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/global_commands.c:447
+#: ../src/global_commands.c:510
 msgid "Invalid name."
 msgstr "Invalid name."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/global_commands.c:468
-#: /home/h3r0/Programmi/toxic_mio-git/src/global_commands.c:556
-msgid "Note must be enclosed in quotes."
-msgstr "Note must be enclosed in quotes."
-
-#: /home/h3r0/Programmi/toxic_mio-git/src/global_commands.c:494
+#: ../src/global_commands.c:547
 msgid "No pending friend requests."
 msgstr "No pending friend requests."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/global_commands.c:531
+#: ../src/global_commands.c:584
 #, c-format
 msgid "Require a status. Statuses are: %s."
 msgstr "Require a status. Statuses are: %s."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/global_commands.c:546
+#: ../src/global_commands.c:599
 #, c-format
 msgid "Invalid status. Valid statuses are: %s."
 msgstr "Invalid status. Valid statuses are: %s."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/group_commands.c:41
+#: ../src/global_commands.c:610
+msgid "Note must be enclosed in quotes."
+msgstr "Note must be enclosed in quotes."
+
+#: ../src/group_commands.c:45
+msgid "Error retreiving chat id."
+msgstr "Error retreiving chat id."
+
+#: ../src/group_commands.c:63 ../src/group_commands.c:89
+msgid "Peer name must be specified."
+msgstr "Peer name must be specified."
+
+#: ../src/group_commands.c:71 ../src/group_commands.c:97
+#: ../src/groupchat.c:709
+msgid "Invalid peer name"
+msgstr "Invalid peer name"
+
+#: ../src/group_commands.c:76
 #, c-format
-msgid "Title is set to: %s"
-msgstr "Title is set to: %s"
+msgid "Failed to ignore %s"
+msgstr "Failed to ignore %s"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/group_commands.c:43
-msgid "Title is not set"
-msgstr "Title is not set"
-
-#: /home/h3r0/Programmi/toxic_mio-git/src/group_commands.c:50
-msgid "Title must be enclosed in quotes."
-msgstr "Title must be enclosed in quotes."
-
-#: /home/h3r0/Programmi/toxic_mio-git/src/group_commands.c:60
-msgid "Failed to set title."
-msgstr "Failed to set title."
-
-#: /home/h3r0/Programmi/toxic_mio-git/src/group_commands.c:75
-#: /home/h3r0/Programmi/toxic_mio-git/src/groupchat.c:332
+#: ../src/group_commands.c:83
 #, c-format
-msgid " set the group title to: %s"
-msgstr " set the group title to: %s"
+msgid "-!- Ignoring %s"
+msgstr "-!- Ignoring %s"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/group_commands.c:78
-#: /home/h3r0/Programmi/toxic_mio-git/src/groupchat.c:335
+#: ../src/group_commands.c:105
 #, c-format
-msgid "set title to %s"
-msgstr "set title to %s"
+msgid "You have kicked %s from the group."
+msgstr "You have kicked %s from the group."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/groupchat.c:138
+#: ../src/group_commands.c:109
+#, c-format
+msgid "Failed to kick %s from the group."
+msgstr "Failed to kick %s from the group."
+
+#: ../src/group_commands.c:113
+#, c-format
+msgid "You do not have permission to kick %s."
+msgstr "You do not have permission to kick %s."
+
+#: ../src/group_commands.c:130
+#, c-format
+msgid "Password exceeds %d character limit"
+msgstr "Password exceeds %d character limit"
+
+#: ../src/group_commands.c:139
+#, c-format
+msgid "Password has been set to %s"
+msgstr "Password has been set to %s"
+
+#: ../src/group_commands.c:141
+msgid "Password has been unset"
+msgstr "Password has been unset"
+
+#: ../src/group_commands.c:145
+msgid "You do not have permission to set the password"
+msgstr "You do not have permission to set the password"
+
+#: ../src/group_commands.c:149
+msgid "Error setting password"
+msgstr "Error setting password"
+
+#: ../src/group_commands.c:163
+msgid "Failed to retrieve peer limit"
+msgstr "Failed to retrieve peer limit"
+
+#: ../src/group_commands.c:167
+#, c-format
+msgid "Peer limit is set to %d"
+msgstr "Peer limit is set to %d"
+
+#: ../src/group_commands.c:174
+msgid "Peer limit must be a value greater than 0"
+msgstr "Peer limit must be a value greater than 0"
+
+#: ../src/group_commands.c:182
+#, c-format
+msgid "Peer limit has been set to %d"
+msgstr "Peer limit has been set to %d"
+
+#: ../src/group_commands.c:186
+msgid "You do not have permission to set the peer limit."
+msgstr "You do not have permission to set the peer limit."
+
+#: ../src/group_commands.c:190
+msgid "Failed to set the peer limit"
+msgstr "Failed to set the peer limit"
+
+#: ../src/group_commands.c:205
+msgid "Failed to retrieve privacy state"
+msgstr "Failed to retrieve privacy state"
+
+#: ../src/group_commands.c:210
+#, c-format
+msgid "Privacy state is set to %s."
+msgstr "Privacy state is set to %s."
+
+#: ../src/group_commands.c:217
+#, c-format
+msgid "Privacy state must be \"%s\" or \"%s\"."
+msgstr "Privacy state must be \"%s\" or \"%s\"."
+
+#: ../src/group_commands.c:227
+#, c-format
+msgid "Privacy state has been set to %s."
+msgstr "Privacy state has been set to %s."
+
+#: ../src/group_commands.c:231
+msgid "You do not have permission to set the privacy state."
+msgstr "You do not have permission to set the privacy state."
+
+#: ../src/group_commands.c:235
+msgid "Error setting privacy state."
+msgstr "Error setting privacy state."
+
+#: ../src/group_commands.c:246
+msgid "Reconnecting to group..."
+msgstr "Reconnecting to group..."
+
+#: ../src/group_commands.c:257
+#, c-format
+msgid "Topic is set to: %s"
+msgstr "Topic is set to: %s"
+
+#: ../src/group_commands.c:259
+msgid "Topic is not set"
+msgstr "Topic is not set"
+
+#: ../src/group_commands.c:268
+msgid "Failed to set topic."
+msgstr "Failed to set topic."
+
+#: ../src/group_commands.c:281
+#, c-format
+msgid "-!- You set the topic to: %s"
+msgstr "-!- You set the topic to: %s"
+
+#: ../src/group_commands.c:284
+#, c-format
+msgid "set topic to %s"
+msgstr "set topic to %s"
+
+#: ../src/group_commands.c:291
+msgid "Who do you want to unignore?"
+msgstr "Who do you want to unignore?"
+
+#: ../src/group_commands.c:299
+#, c-format
+msgid "Peer '%s' does not exist"
+msgstr "Peer '%s' does not exist"
+
+#: ../src/group_commands.c:304
+#, c-format
+msgid "Failed to unignore %s"
+msgstr "Failed to unignore %s"
+
+#: ../src/group_commands.c:311
+#, c-format
+msgid "-!- You are no longer ignoring %s"
+msgstr "-!- You are no longer ignoring %s"
+
+#: ../src/groupchat.c:151
 msgid "failed in init_groupchat_win"
 msgstr "failed in init_groupchat_win"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/groupchat.c:146
-#, c-format
-msgid "Group Audio failed to init\n"
-msgstr "Group Audio failed to init\n"
+#: ../src/groupchat.c:220
+msgid "Invalid nick"
+msgstr "Invalid nick"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/groupchat.c:357
+#: ../src/groupchat.c:222
+msgid "-!- That nick is already in use"
+msgstr "-!- That nick is already in use"
+
+#: ../src/groupchat.c:224
+msgid "You are now known as "
+msgstr "You are now known as "
+
+#: ../src/groupchat.c:402
+#, c-format
+msgid "-!- %s set the topic to: %s"
+msgstr "-!- %s set the topic to: %s"
+
+#: ../src/groupchat.c:405
+#, c-format
+msgid " set the group topic to %s"
+msgstr " set the group topic to %s"
+
+#: ../src/groupchat.c:421
 msgid "failed in copy_peernames"
 msgstr "failed in copy_peernames"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/groupchat.c:414
+#: ../src/groupchat.c:478
 msgid "has joined the room"
 msgstr "has joined the room"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/groupchat.c:512
-msgid "has left the room"
-msgstr "has left the room"
+#: ../src/groupchat.c:481
+#, c-format
+msgid "%s has joined the room"
+msgstr "%s has joined the room"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/groupchat.c:529
+#: ../src/groupchat.c:502
+#, c-format
+msgid "has left the room (%s)"
+msgstr "has left the room (%s)"
+
+#: ../src/groupchat.c:505
+#, c-format
+msgid "%s has left the room (%s)"
+msgstr "%s has left the room (%s)"
+
+#: ../src/groupchat.c:548
+#, c-format
+msgid "-!- Topic set to: %s"
+msgstr "-!- Topic set to: %s"
+
+#: ../src/groupchat.c:560
+msgid "Nick already in use. Change your nick and use the '/rejoin' command."
+msgstr "Nick already in use. Change your nick and use the '/rejoin' command."
+
+#: ../src/groupchat.c:563
+msgid "Group is full. Try again with the '/rejoin' command."
+msgstr "Group is full. Try again with the '/rejoin' command."
+
+#: ../src/groupchat.c:566
+msgid "Invalid password."
+msgstr "Invalid password."
+
+#: ../src/groupchat.c:569
+msgid "Invite failed. Try again with the '/rejoin' command."
+msgstr "Invite failed. Try again with the '/rejoin' command."
+
+#: ../src/groupchat.c:601
+msgid "kicked"
+msgstr "kicked"
+
+#: ../src/groupchat.c:604
+msgid "banned"
+msgstr "banned"
+
+#: ../src/groupchat.c:607
+msgid "silenced"
+msgstr "silenced"
+
+#: ../src/groupchat.c:615
+#, c-format
+msgid "-!- %s has been %s by %s"
+msgstr "-!- %s has been %s by %s"
+
+#: ../src/groupchat.c:629
 msgid " is now known as "
 msgstr " is now known as "
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/groupchat.c:533
-#, c-format
-msgid "is now known as %s"
-msgstr "is now known as %s"
-
-#: /home/h3r0/Programmi/toxic_mio-git/src/groupchat.c:544
+#: ../src/groupchat.c:638 ../src/groupchat.c:663 ../src/groupchat.c:688
 msgid "Invalid syntax.\n"
 msgstr "Invalid syntax.\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/groupchat.c:549
-msgid " * Failed to send action."
-msgstr " * Failed to send action."
+#: ../src/groupchat.c:643
+msgid " * Failed to send message"
+msgstr " * Failed to send message"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/groupchat.c:636
-msgid " * Failed to send message."
-msgstr " * Failed to send message."
+#: ../src/groupchat.c:668
+msgid " * Failed to send action"
+msgstr " * Failed to send action"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/groupchat.c:673
+#: ../src/groupchat.c:721
+msgid " * Failed to send private message"
+msgstr " * Failed to send private message"
+
+#: ../src/groupchat.c:863
 #, c-format
 msgid "Peers: %d\n"
 msgstr "Peers: %d\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/groupchat.c:723
+#: ../src/groupchat.c:929
 msgid "failed in groupchat_onInit"
 msgstr "failed in groupchat_onInit"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/groupchat.c:808
-#, c-format
-msgid "source: %d, queued: %d, processed: %d\n"
-msgstr "source: %d, queued: %d, processed: %d\n"
+#: ../src/groupchat.c:972
+msgid "failed in new_group_chat"
+msgstr "failed in new_group_chat"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/groupchat.c:847
-#, c-format
-msgid "dvhandle is null)\n"
-msgstr "dvhandle is null)\n"
-
-#: /home/h3r0/Programmi/toxic_mio-git/src/groupchat.c:850
-#, c-format
-msgid "ctx is null\n"
-msgstr "ctx is null\n"
-
-#: /home/h3r0/Programmi/toxic_mio-git/src/groupchat.c:853
-#, c-format
-msgid "write: %d\n"
-msgstr "write: %d\n"
-
-#: /home/h3r0/Programmi/toxic_mio-git/src/groupchat.c:877
+#: ../src/groupchat.c:984
 #, c-format
 msgid "Group %d"
 msgstr "Group %d"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/groupchat.c:883
-msgid "failed in new_group_chat"
-msgstr "failed in new_group_chat"
-
-#: /home/h3r0/Programmi/toxic_mio-git/src/help.c:143
+#: ../src/help.c:148
 msgid "Global Commands:\n"
 msgstr "Global Commands:\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/help.c:147
+#: ../src/help.c:152
 msgid "Add contact with optional message\n"
 msgstr "Add contact with optional message\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/help.c:149
+#: ../src/help.c:154
 msgid "Accept friend request\n"
 msgstr "Accept friend request\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/help.c:151
+#: ../src/help.c:156
 msgid "Set an avatar (leave path empty to unset)\n"
 msgstr "Set an avatar (leave path empty to unset)\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/help.c:153
+#: ../src/help.c:158
 msgid "Decline friend request\n"
 msgstr "Decline friend request\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/help.c:155
+#: ../src/help.c:160
 msgid "List pending friend requests\n"
 msgstr "List pending friend requests\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/help.c:157
+#: ../src/help.c:162
 msgid "Manually connect to a DHT node\n"
 msgstr "Manually connect to a DHT node\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/help.c:159
+#: ../src/help.c:164
 msgid "Set status with optional note\n"
 msgstr "Set status with optional note\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/help.c:161
+#: ../src/help.c:166
 msgid "Set a personal note\n"
 msgstr "Set a personal note\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/help.c:163
+#: ../src/help.c:168
+msgid "Create a group chat\n"
+msgstr "Create a group chat\n"
+
+#: ../src/help.c:170
+msgid "Join a group chat with optional password\n"
+msgstr "Join a group chat with optional password\n"
+
+#: ../src/help.c:172
 msgid "Set your nickname\n"
 msgstr "Set your nickname\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/help.c:165
+#: ../src/help.c:174
 msgid "Enable/disable logging\n"
 msgstr "Enable/disable logging\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/help.c:167
-msgid "Create a group chat where type: text | audio\n"
-msgstr "Create a group chat where type: text | audio\n"
-
-#: /home/h3r0/Programmi/toxic_mio-git/src/help.c:169
+#: ../src/help.c:176
 msgid "Print your Tox ID\n"
 msgstr "Print your Tox ID\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/help.c:171
+#: ../src/help.c:178
 msgid "Clear window history\n"
 msgstr "Clear window history\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/help.c:173
+#: ../src/help.c:180
 msgid "Close the current chat window\n"
 msgstr "Close the current chat window\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/help.c:175
+#: ../src/help.c:182
 msgid "Exit Toxic\n"
 msgstr "Exit Toxic\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/help.c:179
-#: /home/h3r0/Programmi/toxic_mio-git/src/help.c:219
+#: ../src/help.c:186 ../src/help.c:224
 msgid ""
 "\n"
 " Audio:\n"
@@ -1090,91 +1230,87 @@ msgstr ""
 "\n"
 " Audio:\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/help.c:183
+#: ../src/help.c:190
 msgid "List devices where type:"
 msgstr "List devices where type:"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/help.c:186
+#: ../src/help.c:193
 msgid "Set active device\n"
 msgstr "Set active device\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/help.c:202
+#: ../src/help.c:209
 msgid "Chat Commands:\n"
 msgstr "Chat Commands:\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/help.c:206
-msgid "Invite contact to a group chat\n"
-msgstr "Invite contact to a group chat\n"
+#: ../src/help.c:213
+msgid "Accept a group invite with optional password\n"
+msgstr "Accept a group invite with optional password\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/help.c:208
-msgid "Join a pending group chat\n"
-msgstr "Join a pending group chat\n"
-
-#: /home/h3r0/Programmi/toxic_mio-git/src/help.c:210
+#: ../src/help.c:215
 msgid "Send a file\n"
 msgstr "Send a file\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/help.c:212
+#: ../src/help.c:217
 msgid "Receive a file\n"
 msgstr "Receive a file\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/help.c:214
+#: ../src/help.c:219
 msgid "Cancel file transfer where type:"
 msgstr "Cancel file transfer where type:"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/help.c:223
+#: ../src/help.c:228
 msgid "Audio call\n"
 msgstr "Audio call\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/help.c:225
+#: ../src/help.c:230
 msgid "Answer incoming call\n"
 msgstr "Answer incoming call\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/help.c:227
+#: ../src/help.c:232
 msgid "Reject incoming call\n"
 msgstr "Reject incoming call\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/help.c:229
+#: ../src/help.c:234
 msgid "Hangup active call\n"
 msgstr "Hangup active call\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/help.c:231
+#: ../src/help.c:236
 msgid "Change active device\n"
 msgstr "Change active device\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/help.c:233
+#: ../src/help.c:238
 msgid "Mute active device if in call\n"
 msgstr "Mute active device if in call\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/help.c:235
+#: ../src/help.c:240
 msgid "VAD sensitivity threshold\n"
 msgstr "VAD sensitivity threshold\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/help.c:251
+#: ../src/help.c:256
 msgid "Key bindings:\n"
 msgstr "Key bindings:\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/help.c:255
+#: ../src/help.c:260
 msgid "Navigate through the tabs\n"
 msgstr "Navigate through the tabs\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/help.c:257
+#: ../src/help.c:262
 msgid "Scroll window history one line\n"
 msgstr "Scroll window history one line\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/help.c:259
+#: ../src/help.c:264
 msgid "Scroll window history half a page\n"
 msgstr "Scroll window history half a page\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/help.c:261
+#: ../src/help.c:266
 msgid "Move to the bottom of window history\n"
 msgstr "Move to the bottom of window history\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/help.c:263
+#: ../src/help.c:268
 msgid "Scroll peer list in groupchats\n"
 msgstr "Scroll peer list in groupchats\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/help.c:265
+#: ../src/help.c:270
 msgid ""
 "Toggle the groupchat peerlist\n"
 "\n"
@@ -1182,7 +1318,7 @@ msgstr ""
 "Toggle the groupchat peerlist\n"
 "\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/help.c:266
+#: ../src/help.c:271
 msgid ""
 "  (Note: Custom keybindings override these defaults.)\n"
 "\n"
@@ -1190,27 +1326,63 @@ msgstr ""
 "  (Note: Custom keybindings override these defaults.)\n"
 "\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/help.c:281
+#: ../src/help.c:286
 msgid "Group commands:\n"
 msgstr "Group commands:\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/help.c:285
+#: ../src/help.c:290
+msgid "Print the group chat id to share with others.\n"
+msgstr "Print the group chat id to share with others.\n"
+
+#: ../src/help.c:292
+msgid "Ignore peer\n"
+msgstr "Ignore peer\n"
+
+#: ../src/help.c:294
+msgid "Kick peer\n"
+msgstr "Kick peer\n"
+
+#: ../src/help.c:296
+msgid "Set group password (leave blank to unset)\n"
+msgstr "Set group password (leave blank to unset)\n"
+
+#: ../src/help.c:298
+msgid "Set group peer limit\n"
+msgstr "Set group peer limit\n"
+
+#: ../src/help.c:300
+msgid "Set group privacy state:"
+msgstr "Set group privacy state:"
+
+#: ../src/help.c:303
+msgid "Rejoin the group\n"
+msgstr "Rejoin the group\n"
+
+#: ../src/help.c:305
+msgid "Set group topic (show current topic if no msg)\n"
+msgstr "Set group topic (show current topic if no msg)\n"
+
+#: ../src/help.c:307
+msgid "Unignore peer \n"
+msgstr "Unignore peer \n"
+
+#: ../src/help.c:309
 msgid ""
-"Set group title (show current title if no msg)\n"
+"Send private message to nick\n"
 "\n"
 msgstr ""
-"Set group title (show current title if no msg)\n"
+"Send private message to nick\n"
 "\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/help.c:300
+#: ../src/help.c:326
 msgid "Friendlist controls:\n"
 msgstr "Friendlist controls:\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/help.c:303
+#: ../src/help.c:329
 msgid "  Up and Down arrows            : Scroll through list\n"
 msgstr "  Up and Down arrows            : Scroll through list\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/help.c:304
+#: ../src/help.c:330
 msgid ""
 "  Right and Left arrows         : Switch between friendlist and blocked "
 "list\n"
@@ -1218,135 +1390,133 @@ msgstr ""
 "  Right and Left arrows         : Switch between friendlist and blocked "
 "list\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/help.c:305
+#: ../src/help.c:331
 msgid ""
 "  Enter                         : Open a chat window with selected contact\n"
 msgstr ""
 "  Enter                         : Open a chat window with selected contact\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/help.c:306
+#: ../src/help.c:332
 msgid "  Delete                        : Permanently delete a contact\n"
 msgstr "  Delete                        : Permanently delete a contact\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/help.c:308
+#: ../src/help.c:334
 msgid "Block or unblock a contact\n"
 msgstr "Block or unblock a contact\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/line_info.c:45
+#: ../src/line_info.c:50
 msgid "failed in line_info_init"
 msgstr "failed in line_info_init"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/line_info.c:145
+#: ../src/line_info.c:150
 msgid "failed in line_info_add"
 msgstr "failed in line_info_add"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/log.c:184
+#: ../src/log.c:189
 msgid "failed in load_chat_history"
 msgstr "failed in load_chat_history"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/log.c:188
-#: /home/h3r0/Programmi/toxic_mio-git/src/log.c:194
+#: ../src/log.c:193 ../src/log.c:199
 msgid " * Failed to read log file"
 msgstr " * Failed to read log file"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/message_queue.c:51
+#: ../src/message_queue.c:56
 msgid "failed in cqueue_message"
 msgstr "failed in cqueue_message"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/misc_tools.c:235
-#: /home/h3r0/Programmi/toxic_mio-git/src/misc_tools.c:243
+#: ../src/misc_tools.c:124
+msgid "failed in hex_string_to_bin"
+msgstr "failed in hex_string_to_bin"
+
+#: ../src/misc_tools.c:240 ../src/misc_tools.c:248
 msgid "failed in get_file_name"
 msgstr "failed in get_file_name"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/prompt.c:134
+#: ../src/prompt.c:140
 #, c-format
 msgid "Failed to set note (error %d)\n"
 msgstr "Failed to set note (error %d)\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/prompt.c:266
+#: ../src/prompt.c:272
 msgid "ERROR"
 msgstr "ERROR"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/prompt.c:270
+#: ../src/prompt.c:276
 msgid "Online"
 msgstr "Online"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/prompt.c:274
+#: ../src/prompt.c:280
 msgid "Away"
 msgstr "Away"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/prompt.c:278
+#: ../src/prompt.c:284
 msgid "Busy"
 msgstr "Busy"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/prompt.c:291
+#: ../src/prompt.c:297
 msgid " [Offline]"
 msgstr " [Offline]"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/prompt.c:361
-#: /home/h3r0/Programmi/toxic_mio-git/src/prompt.c:364
+#: ../src/prompt.c:367 ../src/prompt.c:370
 #, c-format
 msgid "%s has come online"
 msgstr "%s has come online"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/prompt.c:373
-#: /home/h3r0/Programmi/toxic_mio-git/src/prompt.c:376
+#: ../src/prompt.c:379 ../src/prompt.c:382
 #, c-format
 msgid "%s has gone offline"
 msgstr "%s has gone offline"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/prompt.c:387
-#: /home/h3r0/Programmi/toxic_mio-git/src/prompt.c:388
+#: ../src/prompt.c:393 ../src/prompt.c:394
 #, c-format
 msgid "Friend request with the message '%s'"
 msgstr "Friend request with the message '%s'"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/prompt.c:393
+#: ../src/prompt.c:399
 msgid "Friend request queue is full. Discarding request."
 msgstr "Friend request queue is full. Discarding request."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/prompt.c:398
+#: ../src/prompt.c:404
 #, c-format
 msgid "Type \"%s %d\" or \"%s %d\""
 msgstr "Type \"%s %d\" or \"%s %d\""
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/prompt.c:427
-#: /home/h3r0/Programmi/toxic_mio-git/src/prompt.c:428
+#: ../src/prompt.c:433 ../src/prompt.c:434
 #, c-format
 msgid "Toxing on Toxic"
 msgstr "Toxing on Toxic"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/prompt.c:450
+#: ../src/prompt.c:456
 msgid ""
 "Welcome to Toxic, a free, open source Tox-based instant messenging client."
 msgstr ""
 "Welcome to Toxic, a free, open source Tox-based instant messenging client."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/prompt.c:452
+#: ../src/prompt.c:458
 #, c-format
 msgid "Type \"%s\" for assistance. Further help may be found via the man page."
 msgstr ""
 "Type \"%s\" for assistance. Further help may be found via the man page."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/prompt.c:471
+#: ../src/prompt.c:477
 msgid "failed in prompt_onInit"
 msgstr "failed in prompt_onInit"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/prompt.c:509
+#: ../src/prompt.c:515
 msgid "failed in new_prompt"
 msgstr "failed in new_prompt"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:107
+#: ../src/toxic.c:113
 #, c-format
 msgid "Caught SIGSEGV: Aborting toxic session.\n"
 msgstr "Caught SIGSEGV: Aborting toxic session.\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:156
+#: ../src/toxic.c:162
 #, c-format
 msgid "Toxic session aborted with error code %d (%s)\n"
 msgstr "Toxic session aborted with error code %d (%s)\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:166
+#: ../src/toxic.c:172
 msgid ""
 "Could not set your locale, please check your locale settings or disable "
 "unicode support with the -d flag."
@@ -1354,272 +1524,264 @@ msgstr ""
 "Could not set your locale, please check your locale settings or disable "
 "unicode support with the -d flag."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:223
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:228
+#: ../src/toxic.c:232 ../src/toxic.c:237
 msgid "Failed in queue_init_message"
 msgstr "Failed in queue_init_message"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:320
+#: ../src/toxic.c:329
 #, c-format
 msgid "Failed to bootstrap %s:%d\n"
 msgstr "Failed to bootstrap %s:%d\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:327
+#: ../src/toxic.c:336
 #, c-format
 msgid "Failed to add TCP relay %s:%d\n"
 msgstr "Failed to add TCP relay %s:%d\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:458
+#: ../src/toxic.c:478
 #, c-format
 msgid "Enter a new password (must be at least %d characters) "
 msgstr "Enter a new password (must be at least %d characters) "
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:468
+#: ../src/toxic.c:488
 #, c-format
 msgid "Password must be between %d and %d characters long. "
 msgstr "Password must be between %d and %d characters long. "
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:473
+#: ../src/toxic.c:493
 #, c-format
 msgid "Enter password again "
 msgstr "Enter password again "
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:481
+#: ../src/toxic.c:501
 #, c-format
 msgid "Passwords don't match. Try again. "
 msgstr "Passwords don't match. Try again. "
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:488
+#: ../src/toxic.c:508
 #, c-format
 msgid "Data file '%s' is encrypted"
 msgstr "Data file '%s' is encrypted"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:525
+#: ../src/toxic.c:545
 #, c-format
 msgid "tox_pass_encrypt() failed with error %d\n"
 msgstr "tox_pass_encrypt() failed with error %d\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:576
+#: ../src/toxic.c:603
 msgid "Forcing IPv4 connection"
 msgstr "Forcing IPv4 connection"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:584
+#: ../src/toxic.c:611
 #, c-format
 msgid "Using %s proxy %s : %d"
 msgstr "Using %s proxy %s : %d"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:589
+#: ../src/toxic.c:616
 msgid "UDP disabled"
 msgstr "UDP disabled"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:591
+#: ../src/toxic.c:618
 msgid ""
 "WARNING: Using a proxy without disabling UDP may leak your real IP address."
 msgstr ""
 "WARNING: Using a proxy without disabling UDP may leak your real IP address."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:593
+#: ../src/toxic.c:620
 msgid "Use the -t option to disable UDP."
 msgstr "Use the -t option to disable UDP."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:612
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:619
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:627
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:704
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:714
+#: ../src/toxic.c:639 ../src/toxic.c:646 ../src/toxic.c:654 ../src/toxic.c:731
+#: ../src/toxic.c:741
 msgid "failed in load_toxic"
 msgstr "failed in load_toxic"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:631
+#: ../src/toxic.c:658
 #, c-format
 msgid "Data file '%s' has been unencrypted"
 msgstr "Data file '%s' has been unencrypted"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:633
+#: ../src/toxic.c:660
 #, c-format
 msgid "Warning: passed --unencrypt-data option with unencrypted data file '%s'"
 msgstr ""
 "Warning: passed --unencrypt-data option with unencrypted data file '%s'"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:641
+#: ../src/toxic.c:668
 #, c-format
 msgid "Enter password (\"%s\" to quit) "
 msgstr "Enter password (\"%s\" to quit) "
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:658
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:682
+#: ../src/toxic.c:685 ../src/toxic.c:709
 #, c-format
 msgid "Invalid password. Try again. "
 msgstr "Invalid password. Try again. "
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:685
+#: ../src/toxic.c:712
 msgid "tox_pass_decrypt() failed"
 msgstr "tox_pass_decrypt() failed"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:729
+#: ../src/toxic.c:756
 msgid "Falling back to ipv4"
 msgstr "Falling back to ipv4"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:735
+#: ../src/toxic.c:762
 msgid "tox_new returned fatal error"
 msgstr "tox_new returned fatal error"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:738
+#: ../src/toxic.c:765
 #, c-format
 msgid "tox_new returned non-fatal error %d"
 msgstr "tox_new returned non-fatal error %d"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:745
+#: ../src/toxic.c:772
 msgid "Toxic User"
 msgstr "Toxic User"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:771
+#: ../src/toxic.c:798
 #, c-format
 msgid "Auto-connect failed with error code %d"
 msgstr "Auto-connect failed with error code %d"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:852
+#: ../src/toxic.c:879
 #, c-format
 msgid "usage: toxic [OPTION] [FILE ...]\n"
 msgstr "usage: toxic [OPTION] [FILE ...]\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:854
+#: ../src/toxic.c:881
 #, c-format
 msgid "Force IPv4 connection\n"
 msgstr "Force IPv4 connection\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:856
+#: ../src/toxic.c:883
 #, c-format
 msgid "Enable stderr for debugging\n"
 msgstr "Enable stderr for debugging\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:858
+#: ../src/toxic.c:885
 #, c-format
 msgid "Use specified config file\n"
 msgstr "Use specified config file\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:860
+#: ../src/toxic.c:887
 #, c-format
 msgid "Use default POSIX locale\n"
 msgstr "Use default POSIX locale\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:862
+#: ../src/toxic.c:889
 #, c-format
 msgid "Encrypt an unencrypted data file\n"
 msgstr "Encrypt an unencrypted data file\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:864
+#: ../src/toxic.c:891
 #, c-format
 msgid "Use specified data file\n"
 msgstr "Use specified data file\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:866
+#: ../src/toxic.c:893
 #, c-format
 msgid "Show this message and exit\n"
 msgstr "Show this message and exit\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:868
+#: ../src/toxic.c:895
 #, c-format
 msgid "Use specified DHTnodes file\n"
 msgstr "Use specified DHTnodes file\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:870
+#: ../src/toxic.c:897
 #, c-format
 msgid "Do not connect to the DHT network\n"
 msgstr "Do not connect to the DHT network\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:872
+#: ../src/toxic.c:899
 #, c-format
 msgid "Use SOCKS5 proxy: Requires [IP] [port]\n"
 msgstr "Use SOCKS5 proxy: Requires [IP] [port]\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:874
+#: ../src/toxic.c:901
 #, c-format
 msgid "Use HTTP proxy: Requires [IP] [port]\n"
 msgstr "Use HTTP proxy: Requires [IP] [port]\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:876
+#: ../src/toxic.c:903
 #, c-format
 msgid "Use specified DNSservers file\n"
 msgstr "Use specified DNSservers file\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:878
+#: ../src/toxic.c:905
 #, c-format
 msgid "Force TCP connection (use this with proxies)\n"
 msgstr "Force TCP connection (use this with proxies)\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:880
+#: ../src/toxic.c:907
+#, c-format
 msgid "Unencrypt an encrypted data file\n"
 msgstr "Unencrypt an encrypted data file\n"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:924
+#: ../src/toxic.c:951
 msgid "stderr enabled"
 msgstr "stderr enabled"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:931
+#: ../src/toxic.c:958
 msgid "Config file not found"
 msgstr "Config file not found"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:937
+#: ../src/toxic.c:964
 msgid "Using default POSIX locale"
 msgstr "Using default POSIX locale"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:950
+#: ../src/toxic.c:977
 msgid "failed in parse_args"
 msgstr "failed in parse_args"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:955
+#: ../src/toxic.c:982
 #, c-format
 msgid "Using '%s' data file"
 msgstr "Using '%s' data file"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:963
+#: ../src/toxic.c:990
 msgid "DHTnodes file not found"
 msgstr "DHTnodes file not found"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:969
+#: ../src/toxic.c:996
 msgid "DHT disabled"
 msgstr "DHT disabled"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:977
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:987
+#: ../src/toxic.c:1004 ../src/toxic.c:1014
 msgid "Proxy error"
 msgstr "Proxy error"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:996
+#: ../src/toxic.c:1023
 msgid "DNSservers file not found"
 msgstr "DNSservers file not found"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:1093
+#: ../src/toxic.c:1120
 #, c-format
 msgid "Warning: Using \"%s\" and \"%s\" simultaneously has no effect"
 msgstr "Warning: Using \"%s\" and \"%s\" simultaneously has no effect"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:1106
+#: ../src/toxic.c:1133
 msgid "Creating new data file. Would you like to encrypt it? Y/n (q to quit)"
 msgstr "Creating new data file. Would you like to encrypt it? Y/n (q to quit)"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:1108
+#: ../src/toxic.c:1135
 msgid "Encrypt existing data file? Y/n (q to quit)"
 msgstr "Encrypt existing data file? Y/n (q to quit)"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:1115
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:1138
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:1141
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:1145
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:1153
+#: ../src/toxic.c:1142 ../src/toxic.c:1165 ../src/toxic.c:1168
+#: ../src/toxic.c:1172 ../src/toxic.c:1180
 msgid "failed in main"
 msgstr "failed in main"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:1122
+#: ../src/toxic.c:1149
 msgid "X failed to initialize"
 msgstr "X failed to initialize"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:1160
+#: ../src/toxic.c:1187
 msgid "Failed to init audio devices"
 msgstr "Failed to init audio devices"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:1169
+#: ../src/toxic.c:1196
 msgid ""
 "Unable to determine configuration directory. Defaulting to 'data' for data "
 "file..."
@@ -1627,22 +1789,32 @@ msgstr ""
 "Unable to determine configuration directory. Defaulting to 'data' for data "
 "file..."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:1174
+#: ../src/toxic.c:1201
 msgid "Failed to load user settings"
 msgstr "Failed to load user settings"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:1178
+#: ../src/toxic.c:1205
 msgid "Failed to init mplex auto-away."
 msgstr "Failed to init mplex auto-away."
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/toxic.c:1201
+#: ../src/toxic.c:1229
 msgid "WARNING: Failed to save to data file"
 msgstr "WARNING: Failed to save to data file"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/windows.c:363
+#: ../src/toxic.h:43
+msgid "Anonymous"
+msgstr ""
+
+#: ../src/toxic.h:44
+#, fuzzy
+#| msgid "Toxic User"
+msgid "Tox User"
+msgstr "Toxic User"
+
+#: ../src/windows.c:457
 msgid "failed in set_next_window"
 msgstr "failed in set_next_window"
 
-#: /home/h3r0/Programmi/toxic_mio-git/src/windows.c:385
+#: ../src/windows.c:479
 msgid "failed in init_windows"
 msgstr "failed in init_windows"

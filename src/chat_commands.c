@@ -22,7 +22,12 @@
 
 #include <stdlib.h>
 #include <string.h>
+
+#ifdef NO_GETTEXT
+#define gettext(A) (A)
+#else
 #include <libintl.h>
+#endif
 
 #include "toxic.h"
 #include "windows.h"
@@ -117,7 +122,7 @@ void cmd_groupaccept(WINDOW *window, ToxWindow *self, Tox *m, int argc, char (*a
 void cmd_groupinvite(WINDOW *window, ToxWindow *self, Tox *m, int argc, char (*argv)[MAX_STR_SIZE])
 {
     if (argc < 1) {
-        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, "Group number required.");
+        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, gettext("Group number required."));
         return;
     }
 
@@ -133,7 +138,7 @@ void cmd_groupinvite(WINDOW *window, ToxWindow *self, Tox *m, int argc, char (*a
         return;
     }
 
-    line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, "Invited contact to Group %d.", groupnum);
+    line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, gettext/"Invited contact to Group %d."), groupnum);
 }
 
 void cmd_savefile(WINDOW *window, ToxWindow *self, Tox *m, int argc, char (*argv)[MAX_STR_SIZE])

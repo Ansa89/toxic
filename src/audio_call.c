@@ -36,7 +36,12 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <assert.h>
+
+#ifdef NO_GETTEXT
+#define gettext(A) (A)
+#else
 #include <libintl.h>
+#endif
 
 #ifdef __APPLE__
 #include <OpenAL/al.h>

@@ -25,7 +25,12 @@
 #include <sys/types.h> /* for u_char */
 #include <netinet/in.h>
 #include <resolv.h>
+
+#ifdef NO_GETTEXT
+#define gettext(A) (A)
+#else
 #include <libintl.h>
+#endif
 
 #ifdef __APPLE__
     #include <arpa/nameser_compat.h>

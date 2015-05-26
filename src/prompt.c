@@ -27,7 +27,12 @@
 #include <stdlib.h>
 #include <string.h>
 #include <wchar.h>
+
+#ifdef NO_GETTEXT
+#define gettext(A) (A)
+#else
 #include <libintl.h>
+#endif
 
 #include "toxic.h"
 #include "windows.h"

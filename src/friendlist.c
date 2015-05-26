@@ -25,7 +25,12 @@
 #include <stdlib.h>
 #include <time.h>
 #include <arpa/inet.h>
+
+#ifdef NO_GETTEXT
+#define gettext(A) (A)
+#else
 #include <libintl.h>
+#endif
 
 #include <tox/tox.h>
 

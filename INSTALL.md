@@ -40,7 +40,7 @@ brew link gettext
 
 You can omit `libnotify` if you intend to build without desktop notifications enabled. 
 
-<a name="Compiling">
+<a name="compiling">
 ## Compiling
 ```
 make PREFIX="/where/to/install"
@@ -57,7 +57,7 @@ Run `make doc` in the build directory after editing the asciidoc files to regene
 ## Translating
 Toxic uses gettext to localize some strings in various languages.<br />
 These notes are for people who want help translating toxic in new languages (or improve an existing translation).<br />
-The following example shows how to create/update the translation for german (de).
+The following example shows how to create/update german translation (de).
 
 <a name="new_lang_1" />
 #### Create new translation 1: PO file
@@ -104,6 +104,7 @@ Then you need to translate new/changed strings and after you fully updated the P
   * `DISABLE_AV=1` → build toxic without audio call support
   * `DISABLE_SOUND_NOTIFY=1` → build toxic without sound notifications support
   * `DISABLE_DESKTOP_NOTIFY=1` → build toxic without desktop notifications support
+  * `DISABLE_LOCALIZATION=1` → build toxic without localization support
 
 <a name="packaging" />
 #### Packaging

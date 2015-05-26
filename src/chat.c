@@ -30,7 +30,12 @@
 #include <wchar.h>
 #include <assert.h>
 #include <limits.h>
+
+#ifdef NO_GETTEXT
+#define gettext(A) (A)
+#else
 #include <libintl.h>
+#endif
 
 #include "toxic.h"
 #include "windows.h"
@@ -495,7 +500,7 @@ static void chat_onFileRecv(ToxWindow *self, Tox *m, uint32_t friendnum, uint32_
         }
     }
 
-    line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, gettext("Type '/savefile %d' to accept the file transfer."), ft->index);
+    line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, gettext("Type '%s %d' to accept the file transfer."), "/savefile", ft->index);
 
     ft->state = FILE_TRANSFER_PENDING;
     ft->direction = FILE_TRANSFER_RECV;
@@ -552,7 +557,7 @@ void chat_onInvite (ToxWindow *self, ToxAv *av, int call_index)
     /* call_index is set here and reset on call end */
 
     self->call_idx = call_index;
-    line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, gettext("Incoming audio call! Type: \"/answer\" or \"/reject\""));
+    line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, gettext("Incoming audio call! Type: \"%s\" or \"%s\""), "/answer", "/reject");
 
     if (self->ringing_sound == -1)
         sound_notify(self, call_incoming, NT_LOOP, &self->ringing_sound);
@@ -569,7 +574,7 @@ void chat_onRinging (ToxWindow *self, ToxAv *av, int call_index)
     if ( !self || self->call_idx != call_index || self->num != toxav_get_peer_id(av, call_index, 0))
         return;
 
-    line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, gettext("Ringing...type \"/hangup\" to cancel it."));
+    line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, gettext("Ringing...type \"%s\" to cancel it."), "/hangup");
 
 #ifdef SOUND_NOTIFY
     if (self->ringing_sound == -1)
@@ -584,7 +589,7 @@ void chat_onStarting (ToxWindow *self, ToxAv *av, int call_index)
 
     init_infobox(self);
 
-    line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, gettext("Call started! Type: \"/hangup\" to end it."));
+    line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, gettext("Call started! Type: \"%s\" to end it."), "/hangup");
 
 #ifdef SOUND_NOTIFY
     stop_sound(self->ringing_sound);
@@ -625,7 +630,7 @@ void chat_onStart (ToxWindow *self, ToxAv *av, int call_index)
 
     init_infobox(self);
 
-    line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, gettext("Call started! Type: \"/hangup\" to end it."));
+    line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, gettext("Call started! Type: \"%s\" to end it."), "/hangup");
 
 #ifdef SOUND_NOTIFY
     stop_sound(self->ringing_sound);

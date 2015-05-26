@@ -30,7 +30,12 @@
 #include <time.h>
 #include <wchar.h>
 #include <unistd.h>
+
+#ifdef NO_GETTEXT
+#define gettext(A) (A)
+#else
 #include <libintl.h>
+#endif
 
 #ifdef AUDIO
 #ifdef __APPLE__
@@ -212,11 +217,11 @@ void set_nick_all_groups(Tox *m, const char *nick, uint16_t length)
             int ret = tox_group_set_self_name(m, groupchats[i].groupnumber, (uint8_t *) nick, length);
 
             if (ret == -1 && groupchats[i].is_connected)
-                line_info_add(self, NULL, NULL, 0, SYS_MSG, 0, 0, "Invalid nick");
+                line_info_add(self, NULL, NULL, 0, SYS_MSG, 0, 0, gettext("Invalid nick"));
             else if (ret == -2)
-                line_info_add(self, NULL, NULL, 0, SYS_MSG, 0, RED, "-!- That nick is already in use");
+                line_info_add(self, NULL, NULL, 0, SYS_MSG, 0, RED, gettext("-!- That nick is already in use"));
             else
-                line_info_add(self, timefrmt, NULL, nick, NAME_CHANGE, 0, MAGENTA, "You are now known as ");
+                line_info_add(self, timefrmt, NULL, nick, NAME_CHANGE, 0, MAGENTA, gettext("You are now known as "));
         }
     }
 }
@@ -494,10 +499,10 @@ static void groupchat_onGroupPeerExit(ToxWindow *self, Tox *m, int groupnum, uin
     char timefrmt[TIME_STR_SIZE];
     get_time_str(timefrmt, sizeof(timefrmt));
 
-    line_info_add(self, timefrmt, name, NULL, DISCONNECTION, 0, RED, "has left the room (%s)", partmessage);
+    line_info_add(self, timefrmt, name, NULL, DISCONNECTION, 0, RED, gettext("has left the room (%s)"), partmessage);
 
     char log_str[TOXIC_MAX_NAME_LENGTH + MAX_STR_SIZE];
-    snprintf(log_str, sizeof(log_str), "%s has left the room (%s)", name, partmessage);
+    snprintf(log_str, sizeof(log_str), gettext("%s has left the room (%s)"), name, partmessage);
 
     write_to_log(log_str, name, self->chatwin->log, true);
     sound_notify(self, silent, NT_WNDALERT_2, NULL);
@@ -552,16 +557,16 @@ static void groupchat_onGroupRejected(ToxWindow *self, Tox *m, int groupnum, uin
 
     switch (type) {
         case TOX_GJ_NICK_TAKEN:
-            msg = gettext("Nick already in use. Change your nick and use the 'rejoin' command.");
+            msg = gettext("Nick already in use. Change your nick and use the '/rejoin' command.");
             break;
         case TOX_GJ_GROUP_FULL:
-            msg = gettext("Group is full. Try again with the 'rejoin' command.");
+            msg = gettext("Group is full. Try again with the '/rejoin' command.");
             break;
         case TOX_GJ_INCORRECT_PASSWORD:
             msg = gettext("Invalid password.");
             break;
         case TOX_GJ_INVITE_FAILED:
-            msg = gettext("Invite failed. Try again with the 'rejoin' command.");
+            msg = gettext("Invite failed. Try again with the '/rejoin' command.");
             break;
         default:
             return;
@@ -621,7 +626,7 @@ static void groupchat_onGroupNickChange(ToxWindow *self, Tox *m, int groupnum, u
 
     char timefrmt[TIME_STR_SIZE];
     get_time_str(timefrmt, sizeof(timefrmt));
-    line_info_add(self, timefrmt, oldnick, newnick, NAME_CHANGE, 0, MAGENTA, " is now known as ");
+    line_info_add(self, timefrmt, oldnick, newnick, NAME_CHANGE, 0, MAGENTA, gettext(" is now known as "));
 }
 
 
@@ -630,12 +635,12 @@ static void send_group_message(ToxWindow *self, Tox *m, int groupnum, const char
     ChatContext *ctx = self->chatwin;
 
     if (msg == NULL) {
-        wprintw(ctx->history, "Invalid syntax.\n");
+        wprintw(ctx->history, gettext("Invalid syntax.\n"));
         return;
     }
 
     if (tox_group_message_send(m, self->num, (uint8_t *) msg, strlen(msg)) == -1) {
-        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, RED, " * Failed to send message");
+        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, RED, gettext(" * Failed to send message"));
         return;
     }
 
@@ -713,7 +718,7 @@ static void send_group_prvt_message(ToxWindow *self, Tox *m, int groupnum, const
     const char *msg = data + groupchats[groupnum].peer_name_lengths[peernum] + 1;
 
     if (tox_group_private_message_send(m, groupnum, peernum, (uint8_t *) msg, msg_len) == -1) {
-        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, RED, " * Failed to send private message");
+        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, RED, gettext(" * Failed to send private message"));
         return;
     }
 
