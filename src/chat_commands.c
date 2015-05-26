@@ -79,10 +79,45 @@ void cmd_cancelfile(WINDOW *window, ToxWindow *self, Tox *m, int argc, char (*ar
     close_file_transfer(self, m, ft, TOX_FILE_CONTROL_CANCEL, msg, silent);
 }
 
+void cmd_groupaccept(WINDOW *window, ToxWindow *self, Tox *m, int argc, char (*argv)[MAX_STR_SIZE])
+{
+    if (get_num_active_windows() >= MAX_WINDOWS_NUM) {
+        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, RED, gettext(" * Warning: Too many windows are open."));
+        return;
+    }
+
+    if (Friends.list[self->num].group_invite.length == 0) {
+        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, gettext("No pending group invite"));
+        return;
+    }
+
+    const char *passwd = NULL;
+    uint16_t passwd_len = 0;
+
+    if (argc > 0) {
+        passwd = argv[1];
+        passwd_len = strlen(passwd);
+    }
+
+    int groupnumber = tox_group_accept_invite(m, Friends.list[self->num].group_invite.data,
+                                              Friends.list[self->num].group_invite.length,
+                                              (uint8_t *) passwd, passwd_len);
+    if (groupnumber == -1) {
+        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, gettext("Failed to join group."));
+        return;
+    }
+
+    if (init_groupchat_win(m, groupnumber, NULL, 0) == -1) {
+        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, gettext("Group chat window failed to initialize."));
+        tox_group_delete(m, groupnumber, NULL, 0);
+        return;
+    }
+}
+
 void cmd_groupinvite(WINDOW *window, ToxWindow *self, Tox *m, int argc, char (*argv)[MAX_STR_SIZE])
 {
     if (argc < 1) {
-        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, gettext("Group number required."));
+        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, "Group number required.");
         return;
     }
 
@@ -93,51 +128,12 @@ void cmd_groupinvite(WINDOW *window, ToxWindow *self, Tox *m, int argc, char (*a
         return;
     }
 
-    if (tox_invite_friend(m, self->num, groupnum) == -1) {
+    if (tox_group_invite_friend(m, groupnum, self->num) == -1) {
         line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, gettext("Failed to invite contact to group."));
         return;
     }
 
-    line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, gettext("Invited contact to Group %d."), groupnum);
-}
-
-void cmd_join_group(WINDOW *window, ToxWindow *self, Tox *m, int argc, char (*argv)[MAX_STR_SIZE])
-{
-    if (get_num_active_windows() >= MAX_WINDOWS_NUM) {
-        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, RED, gettext(" * Warning: Too many windows are open."));
-        return;
-    }
-
-    const char *groupkey = Friends.list[self->num].group_invite.key;
-    uint16_t length = Friends.list[self->num].group_invite.length;
-    uint8_t type = Friends.list[self->num].group_invite.type;
-
-    if (!Friends.list[self->num].group_invite.pending) {
-        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, gettext("No pending group chat invite."));
-        return;
-    }
-
-    int groupnum = -1;
-
-    if (type == TOX_GROUPCHAT_TYPE_TEXT)
-        groupnum = tox_join_groupchat(m, self->num, (uint8_t *) groupkey, length);
-#ifdef AUDIO
-    else
-        groupnum = toxav_join_av_groupchat(m, self->num, (uint8_t *) groupkey, length,
-                                           NULL, NULL);
-#endif
-
-    if (groupnum == -1) {
-        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, gettext("Group chat instance failed to initialize."));
-        return;
-    }
-
-    if (init_groupchat_win(prompt, m, groupnum, type) == -1) {
-        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, gettext("Group chat window failed to initialize."));
-        tox_del_groupchat(m, groupnum);
-        return;
-    }
-
+    line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, "Invited contact to Group %d.", groupnum);
 }
 
 void cmd_savefile(WINDOW *window, ToxWindow *self, Tox *m, int argc, char (*argv)[MAX_STR_SIZE])

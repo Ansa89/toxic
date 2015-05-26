@@ -288,7 +288,7 @@ size_t get_nick_truncate(Tox *m, char *buf, uint32_t friendnum)
 /* same as get_nick_truncate but for groupchats */
 int get_group_nick_truncate(Tox *m, char *buf, int peernum, int groupnum)
 {
-    int len = tox_group_peername(m, groupnum, peernum, (uint8_t *) buf);
+    int len = tox_group_get_peer_name(m, groupnum, peernum, (uint8_t *) buf);
 
     if (len == -1) {
         strcpy(buf, UNKNOWN_NAME);
@@ -302,13 +302,18 @@ int get_group_nick_truncate(Tox *m, char *buf, int peernum, int groupnum)
 }
 
 /* copies data to msg buffer.
-   returns length of msg, which will be no larger than size-1 */
+   returns length of msg.
+   returns 0 and nulls msg if length is too big for buffer size */
 size_t copy_tox_str(char *msg, size_t size, const char *data, size_t length)
 {
-    size_t len = MIN(length, size - 1);
-    memcpy(msg, data, len);
-    msg[len] = '\0';
-    return len;
+    if (length > size - 1) {
+        msg[0] = '\0';
+        return 0;
+    }
+
+    memcpy(msg, data, length);
+    msg[length] = '\0';
+    return length;
 }
 
 /* returns index of the first instance of ch in s starting at idx.

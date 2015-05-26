@@ -107,11 +107,6 @@ void on_nickchange(Tox *m, uint32_t friendnumber, const uint8_t *string, size_t 
 void on_statuschange(Tox *m, uint32_t friendnumber, TOX_USER_STATUS status, void *userdata);
 void on_statusmessagechange(Tox *m, uint32_t friendnumber, const uint8_t *string, size_t length, void *userdata);
 void on_friendadded(Tox *m, uint32_t friendnumber, bool sort);
-void on_groupmessage(Tox *m, int groupnumber, int peernumber, const uint8_t *message, uint16_t length, void *userdata);
-void on_groupaction(Tox *m, int groupnumber, int peernumber, const uint8_t *action, uint16_t length, void *userdata);
-void on_groupinvite(Tox *m, int32_t friendnumber, uint8_t type, const uint8_t *group_pub_key, uint16_t length, void *userdata);
-void on_group_namelistchange(Tox *m, int groupnumber, int peernumber, uint8_t change, void *userdata);
-void on_group_titlechange(Tox *m, int groupnumber, int peernumber, const uint8_t *title, uint8_t length, void *userdata);
 void on_file_chunk_request(Tox *m, uint32_t friendnumber, uint32_t filenumber, uint64_t position, size_t length, void *userdata);
 void on_file_recv_chunk(Tox *m, uint32_t friendnumber, uint32_t filenumber, uint64_t position, const uint8_t *data,
                         size_t length, void *userdata);
@@ -120,5 +115,19 @@ void on_file_recv(Tox *m, uint32_t friendnumber, uint32_t filenumber, uint32_t k
                   const uint8_t *filename, size_t filename_length, void *userdata);
 void on_typing_change(Tox *m, uint32_t friendnumber, bool is_typing, void *userdata);
 void on_read_receipt(Tox *m, uint32_t friendnumber, uint32_t receipt, void *userdata);
+
+void on_group_invite(Tox *m, int32_t friendnumber, const uint8_t *invite_data, uint16_t length, void *userdata);
+void on_group_message(Tox *m, int groupnumber, uint32_t peernumber, const uint8_t *message, uint16_t length, void *userdata);
+void on_group_action(Tox *m, int groupnumber, uint32_t peernumber, const uint8_t *action, uint16_t length, void *userdata);
+void on_group_private_message(Tox *m, int groupnumber, uint32_t peernumber, const uint8_t *message, uint16_t length, void *userdata);
+void on_group_namelistchange(Tox *m, int groupnumber, void *userdata);
+void on_group_peer_join(Tox *m, int groupnumber, uint32_t peernumber, void *userdata);
+void on_group_peer_exit(Tox *m, int groupnumber, uint32_t peernumber, const uint8_t *partmsg, uint16_t length, void *userdata);
+void on_group_topic_change(Tox *m, int groupnumber, uint32_t peernumber, const uint8_t *topic, uint16_t length, void *userdata);
+void on_group_nick_change(Tox *m, int groupnumber, uint32_t peernumber, const uint8_t *newname, uint16_t length, void *userdata);
+void on_group_self_join(Tox *m, int groupnumber, void *userdata);
+void on_group_rejected(Tox *m, int groupnumber, uint8_t type, void *userdata);
+void on_group_moderation(Tox *m, int groupnumber, uint32_t source_peernum, uint32_t target_peernum,
+                         TOX_GROUP_MOD_TYPE type, void *userdata);
 
 #endif  /* #define TOXIC_H */

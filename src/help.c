@@ -143,7 +143,7 @@ static void help_draw_global(ToxWindow *self)
     wprintw(win, gettext("Global Commands:\n"));
     wattroff(win, A_BOLD | COLOR_PAIR(RED));
 
-    wprintw(win, "  /add <ToxID> <msg>         : ");
+    wprintw(win, "  /add <addr> <msg>          : ");
     wprintw(win, gettext("Add contact with optional message\n"));
     wprintw(win, "  /accept <id>               : ");
     wprintw(win, gettext("Accept friend request\n"));
@@ -159,19 +159,21 @@ static void help_draw_global(ToxWindow *self)
     wprintw(win, gettext("Set status with optional note\n"));
     wprintw(win, "  /note <msg>                : ");
     wprintw(win, gettext("Set a personal note\n"));
+    wprintw(win, "  /group                     : ");
+    wprintw(win, gettext("Create a group chat\n"));
+    wprintw(win, "  /join <chat id> <passwd>   : ");
+    wpritnw(win, gettext("Join a group chat with optional password\n"));
     wprintw(win, "  /nick <nick>               : ");
     wprintw(win, gettext("Set your nickname\n"));
-    wprintw(win, "  /log <on> or <off>         : ");
+    wprintw(win, "  /log <on> -- <off>         : ");
     wprintw(win, gettext("Enable/disable logging\n"));
-    wprintw(win, "  /group <type>              : ");
-    wprintw(win, gettext("Create a group chat where type: text | audio\n"));
     wprintw(win, "  /myid                      : ");
     wprintw(win, gettext("Print your Tox ID\n"));
     wprintw(win, "  /clear                     : ");
     wprintw(win, gettext("Clear window history\n"));
     wprintw(win, "  /close                     : ");
     wprintw(win, gettext("Close the current chat window\n"));
-    wprintw(win, "  /quit or /exit             : ");
+    wprintw(win, "  /quit -- /exit             : ");
     wprintw(win, gettext("Exit Toxic\n"));
 
 #ifdef AUDIO
@@ -202,17 +204,15 @@ static void help_draw_chat(ToxWindow *self)
     wprintw(win, gettext("Chat Commands:\n"));
     wattroff(win, A_BOLD | COLOR_PAIR(RED));
 
-    wprintw(win, "  /invite <n>                : ");
-    wprintw(win, gettext("Invite contact to a group chat\n"));
-    wprintw(win, "  /join                      : ");
-    wprintw(win, gettext("Join a pending group chat\n"));
+    wprintw(win, "  /gaccept <password>        : ");
+    wprintw(win, gettext("Accept a group invite with optional password\n"));
     wprintw(win, "  /sendfile <path>           : ");
     wprintw(win, gettext("Send a file\n"));
     wprintw(win, "  /savefile <id>             : ");
     wprintw(win, gettext("Receive a file\n"));
     wprintw(win, "  /cancel <type> <id>        : ");
-    wprintw(win, gettext("Cancel file transfer where type:"));
-    wprintw(win, " in|out\n");
+    wprintw(win, gettext("Cancel file transfer where type:");
+    wprintw(win, " in|out\n"));
 
 #ifdef AUDIO
     wattron(win, A_BOLD);
@@ -281,9 +281,30 @@ static void help_draw_group(ToxWindow *self)
     wprintw(win, gettext("Group commands:\n"));
     wattroff(win, A_BOLD | COLOR_PAIR(RED));
 
-    wprintw(win, "  /title <msg>               : ");
-    wprintw(win, gettext("Set group title (show current title if no msg)\n\n"));
+    wprintw(win, "  /chatid                    : ");
+    wprintw(win, gettext("Print the group chat id to share with others.\n"));
+    wprintw(win, "  /ignore <nick>             : ");
+    wprintw(win, gettext("Ignore peer\n"));
+    wprintw(win, "  /kick <nick>               : ");
+    wprintw(win, gettext("Kick peer\n"));
+    wprintw(win, "  /passwd <password>         : ");
+    wprintw(win, gettext("Set group password (leave blank to unset)\n"));
+    wprintw(win, "  /peerlimit <num>           : ");
+    wprintw(win, gettext("Set group peer limit\n"));
+    wprintw(win, "  /privacy <state>           : ");
+    wprintw(win, gettext("Set group privacy state:"));
+    wprintw(win, "private|public\n");
+    wprintw(win, "  /rejoin                    : ");
+    wprintw(win, gettext("Rejoin the group\n"));
+    wprintw(win, "  /topic <msg>               : ");
+    wprintw(win, gettext("Set group topic (show current topic if no msg)\n"));
+    wprintw(win, "  /unignore <nick>           : ");
+    wprintw(win, gettext("Unignore peer \n"));
+    wprintw(win, "  /whisper <nick> <msg>      : ");
+    wprintw(win, gettext("Send private message to nick\n\n"));
 
+#ifdef AUDIO
+#endif /* AUDIO */
     help_draw_bottom_menu(win);
 
     box(win, ACS_VLINE, ACS_HLINE);
@@ -323,24 +344,24 @@ void help_onKey(ToxWindow *self, wint_t key)
 
         case 'c':
 #ifdef AUDIO
-            help_init_window(self, 19, 80);
+            help_init_window(self, 18, 80);
 #else
-            help_init_window(self, 9, 80);
+            help_init_window(self, 8, 80);
 #endif
             self->help->type = HELP_CHAT;
             break;
 
         case 'g':
 #ifdef AUDIO
-            help_init_window(self, 24, 80);
+            help_init_window(self, 25, 80);
 #else
-            help_init_window(self, 20, 80);
+            help_init_window(self, 21, 80);
 #endif
             self->help->type = HELP_GLOBAL;
             break;
 
         case 'r':
-            help_init_window(self, 6, 80);
+            help_init_window(self, 15, 80);
             self->help->type = HELP_GROUP;
             break;
 
