@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Copyright (C) YEAR Toxic Team
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-28 15:52+0200\n"
+"Project-Id-Version: Toxic 0.6.0\n"
+"Report-Msgid-Bugs-To: JFreegman@tox.im\n"
+"POT-Creation-Date: 2015-05-30 11:52+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -558,15 +558,15 @@ msgstr ""
 msgid "Error: DNS thread failed to init"
 msgstr ""
 
-#: ../src/execute.c:176
+#: ../src/execute.c:180
 msgid "failed in parse_command"
 msgstr ""
 
-#: ../src/execute.c:190
+#: ../src/execute.c:194
 msgid "Invalid argument. Did you forget a closing \"?"
 msgstr ""
 
-#: ../src/execute.c:270
+#: ../src/execute.c:274
 msgid "Invalid command."
 msgstr ""
 
@@ -873,7 +873,7 @@ msgid "Peer name must be specified."
 msgstr ""
 
 #: ../src/group_commands.c:71 ../src/group_commands.c:97
-#: ../src/groupchat.c:709
+#: ../src/groupchat.c:713
 msgid "Invalid peer name"
 msgstr ""
 
@@ -902,248 +902,256 @@ msgstr ""
 msgid "You do not have permission to kick %s."
 msgstr ""
 
-#: ../src/group_commands.c:130
+#: ../src/group_commands.c:196
 #, c-format
 msgid "Password exceeds %d character limit"
 msgstr ""
 
-#: ../src/group_commands.c:139
+#: ../src/group_commands.c:205
 #, c-format
 msgid "Password has been set to %s"
 msgstr ""
 
-#: ../src/group_commands.c:141
+#: ../src/group_commands.c:207
 msgid "Password has been unset"
 msgstr ""
 
-#: ../src/group_commands.c:145
+#: ../src/group_commands.c:211
 msgid "You do not have permission to set the password"
 msgstr ""
 
-#: ../src/group_commands.c:149
+#: ../src/group_commands.c:215
 msgid "Error setting password"
 msgstr ""
 
-#: ../src/group_commands.c:163
+#: ../src/group_commands.c:229
 msgid "Failed to retrieve peer limit"
 msgstr ""
 
-#: ../src/group_commands.c:167
+#: ../src/group_commands.c:233
 #, c-format
 msgid "Peer limit is set to %d"
 msgstr ""
 
-#: ../src/group_commands.c:174
+#: ../src/group_commands.c:240
 msgid "Peer limit must be a value greater than 0"
 msgstr ""
 
-#: ../src/group_commands.c:182
+#: ../src/group_commands.c:248
 #, c-format
 msgid "Peer limit has been set to %d"
 msgstr ""
 
-#: ../src/group_commands.c:186
+#: ../src/group_commands.c:252
 msgid "You do not have permission to set the peer limit."
 msgstr ""
 
-#: ../src/group_commands.c:190
+#: ../src/group_commands.c:256
 msgid "Failed to set the peer limit"
 msgstr ""
 
-#: ../src/group_commands.c:205
+#: ../src/group_commands.c:271
 msgid "Failed to retrieve privacy state"
 msgstr ""
 
-#: ../src/group_commands.c:210
+#: ../src/group_commands.c:276
 #, c-format
 msgid "Privacy state is set to %s."
 msgstr ""
 
-#: ../src/group_commands.c:217
+#: ../src/group_commands.c:283
 #, c-format
 msgid "Privacy state must be \"%s\" or \"%s\"."
 msgstr ""
 
-#: ../src/group_commands.c:227
+#: ../src/group_commands.c:293
 #, c-format
 msgid "Privacy state has been set to %s."
 msgstr ""
 
-#: ../src/group_commands.c:231
+#: ../src/group_commands.c:297
 msgid "You do not have permission to set the privacy state."
 msgstr ""
 
-#: ../src/group_commands.c:235
+#: ../src/group_commands.c:301
 msgid "Error setting privacy state."
 msgstr ""
 
-#: ../src/group_commands.c:246
+#: ../src/group_commands.c:314
 msgid "Reconnecting to group..."
 msgstr ""
 
-#: ../src/group_commands.c:257
+#: ../src/group_commands.c:325
 #, c-format
 msgid "Topic is set to: %s"
 msgstr ""
 
-#: ../src/group_commands.c:259
+#: ../src/group_commands.c:327
 msgid "Topic is not set"
 msgstr ""
 
-#: ../src/group_commands.c:268
+#: ../src/group_commands.c:336
 msgid "Failed to set topic."
 msgstr ""
 
-#: ../src/group_commands.c:281
+#: ../src/group_commands.c:349
 #, c-format
 msgid "-!- You set the topic to: %s"
 msgstr ""
 
-#: ../src/group_commands.c:284
+#: ../src/group_commands.c:352
 #, c-format
 msgid "set topic to %s"
 msgstr ""
 
-#: ../src/group_commands.c:291
+#: ../src/group_commands.c:359
 msgid "Who do you want to unignore?"
 msgstr ""
 
-#: ../src/group_commands.c:299
+#: ../src/group_commands.c:367
 #, c-format
 msgid "Peer '%s' does not exist"
 msgstr ""
 
-#: ../src/group_commands.c:304
+#: ../src/group_commands.c:372
 #, c-format
 msgid "Failed to unignore %s"
 msgstr ""
 
-#: ../src/group_commands.c:311
+#: ../src/group_commands.c:379
 #, c-format
 msgid "-!- You are no longer ignoring %s"
 msgstr ""
 
-#: ../src/groupchat.c:151
+#: ../src/groupchat.c:153
 msgid "failed in init_groupchat_win"
 msgstr ""
 
-#: ../src/groupchat.c:220
+#: ../src/groupchat.c:222
 msgid "Invalid nick"
 msgstr ""
 
-#: ../src/groupchat.c:222
+#: ../src/groupchat.c:224
 msgid "-!- That nick is already in use"
 msgstr ""
 
-#: ../src/groupchat.c:224
+#: ../src/groupchat.c:226
 msgid "You are now known as "
 msgstr ""
 
-#: ../src/groupchat.c:402
+#: ../src/groupchat.c:404
 #, c-format
 msgid "-!- %s set the topic to: %s"
 msgstr ""
 
-#: ../src/groupchat.c:405
+#: ../src/groupchat.c:407
 #, c-format
 msgid " set the group topic to %s"
 msgstr ""
 
-#: ../src/groupchat.c:421
+#: ../src/groupchat.c:423
 msgid "failed in copy_peernames"
 msgstr ""
 
-#: ../src/groupchat.c:478
+#: ../src/groupchat.c:480
 msgid "has joined the room"
 msgstr ""
 
-#: ../src/groupchat.c:481
+#: ../src/groupchat.c:483
 #, c-format
 msgid "%s has joined the room"
 msgstr ""
 
-#: ../src/groupchat.c:502
+#: ../src/groupchat.c:504
 #, c-format
 msgid "has left the room (%s)"
 msgstr ""
 
-#: ../src/groupchat.c:505
+#: ../src/groupchat.c:507
 #, c-format
 msgid "%s has left the room (%s)"
 msgstr ""
 
-#: ../src/groupchat.c:548
+#: ../src/groupchat.c:550
 #, c-format
 msgid "-!- Topic set to: %s"
 msgstr ""
 
-#: ../src/groupchat.c:560
+#: ../src/groupchat.c:562
 msgid "Nick already in use. Change your nick and use the '/rejoin' command."
 msgstr ""
 
-#: ../src/groupchat.c:563
+#: ../src/groupchat.c:565
 msgid "Group is full. Try again with the '/rejoin' command."
 msgstr ""
 
-#: ../src/groupchat.c:566
+#: ../src/groupchat.c:568
 msgid "Invalid password."
 msgstr ""
 
-#: ../src/groupchat.c:569
+#: ../src/groupchat.c:571
 msgid "Invite failed. Try again with the '/rejoin' command."
 msgstr ""
 
-#: ../src/groupchat.c:601
-msgid "kicked"
+#: ../src/groupchat.c:603
+#, c-format
+msgid "-!- %s has been kicked by %s"
 msgstr ""
 
-#: ../src/groupchat.c:604
-msgid "banned"
+#: ../src/groupchat.c:606
+#, c-format
+msgid "-!- %s has been banned by %s"
 msgstr ""
 
-#: ../src/groupchat.c:607
-msgid "silenced"
+#: ../src/groupchat.c:609
+#, c-format
+msgid "-!- %s has been silenced by %s"
+msgstr ""
+
+#: ../src/groupchat.c:612
+#, c-format
+msgid "-!- %s has been user'd by %s"
 msgstr ""
 
 #: ../src/groupchat.c:615
 #, c-format
-msgid "-!- %s has been %s by %s"
+msgid "-!- %s has been promoted to moderator by %s"
 msgstr ""
 
-#: ../src/groupchat.c:629
+#: ../src/groupchat.c:633
 msgid " is now known as "
 msgstr ""
 
-#: ../src/groupchat.c:638 ../src/groupchat.c:663 ../src/groupchat.c:688
+#: ../src/groupchat.c:642 ../src/groupchat.c:667 ../src/groupchat.c:692
 msgid "Invalid syntax.\n"
 msgstr ""
 
-#: ../src/groupchat.c:643
+#: ../src/groupchat.c:647
 msgid " * Failed to send message"
 msgstr ""
 
-#: ../src/groupchat.c:668
+#: ../src/groupchat.c:672
 msgid " * Failed to send action"
 msgstr ""
 
-#: ../src/groupchat.c:721
+#: ../src/groupchat.c:725
 msgid " * Failed to send private message"
 msgstr ""
 
-#: ../src/groupchat.c:863
+#: ../src/groupchat.c:867
 #, c-format
 msgid "Peers: %d\n"
 msgstr ""
 
-#: ../src/groupchat.c:929
+#: ../src/groupchat.c:952
 msgid "failed in groupchat_onInit"
 msgstr ""
 
-#: ../src/groupchat.c:972
+#: ../src/groupchat.c:995
 msgid "failed in new_group_chat"
 msgstr ""
 
-#: ../src/groupchat.c:984
+#: ../src/groupchat.c:1007
 #, c-format
 msgid "Group %d"
 msgstr ""
