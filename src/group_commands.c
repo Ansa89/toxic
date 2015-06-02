@@ -98,7 +98,7 @@ void cmd_kick(WINDOW *window, ToxWindow *self, Tox *m, int argc, char (*argv)[MA
         return;
     }
 
-    int ret = tox_group_op_kick_peer(m, self->num, (uint32_t) peernumber);
+    int ret = tox_group_kick_peer(m, self->num, (uint32_t) peernumber);
 
     switch (ret) {
         case 0: {
@@ -146,7 +146,23 @@ void cmd_mod(WINDOW *window, ToxWindow *self, Tox *m, int argc, char (*argv)[MAX
             line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0,  "You do not have permission to promote moderators.");
             return;
         }
+        case -3: {
+            line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0,  "Moderator list is full. Use the \"/prune\" command to remove all offline mods from the mod list.");
+            return;
+        }
     }
+}
+
+void cmd_prune(WINDOW *window, ToxWindow *self, Tox *m, int argc, char (*argv)[MAX_STR_SIZE])
+{
+    int num_pruned = tox_group_prune_moderator_list(m, self->num);
+
+    if (num_pruned == -1) {
+        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, "Failed to prune moderator list.");
+        return;
+    }
+
+    line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, "%d offline moderators have been pruned from the list.", num_pruned);
 }
 
 void cmd_unmod(WINDOW *window, ToxWindow *self, Tox *m, int argc, char (*argv)[MAX_STR_SIZE])
