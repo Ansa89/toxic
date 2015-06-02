@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Toxic 0.6.0\n"
 "Report-Msgid-Bugs-To: JFreegman@tox.im\n"
-"POT-Creation-Date: 2015-05-30 11:52+0200\n"
+"POT-Creation-Date: 2015-06-02 08:06+0200\n"
 "PO-Revision-Date: 2015-05-30 11:52+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -560,15 +560,15 @@ msgstr "Error: DNS thread attr failed to set"
 msgid "Error: DNS thread failed to init"
 msgstr "Error: DNS thread failed to init"
 
-#: ../src/execute.c:180
+#: ../src/execute.c:181
 msgid "failed in parse_command"
 msgstr "failed in parse_command"
 
-#: ../src/execute.c:194
+#: ../src/execute.c:195
 msgid "Invalid argument. Did you forget a closing \"?"
 msgstr "Invalid argument. Did you forget a closing \"?"
 
-#: ../src/execute.c:274
+#: ../src/execute.c:275
 msgid "Invalid command."
 msgstr "Invalid command."
 
@@ -875,6 +875,7 @@ msgid "Error retreiving chat id."
 msgstr "Error retreiving chat id."
 
 #: ../src/group_commands.c:63 ../src/group_commands.c:89
+#: ../src/group_commands.c:122 ../src/group_commands.c:171
 msgid "Peer name must be specified."
 msgstr "Peer name must be specified."
 
@@ -908,123 +909,185 @@ msgstr "Failed to kick %s from the group."
 msgid "You do not have permission to kick %s."
 msgstr "You do not have permission to kick %s."
 
-#: ../src/group_commands.c:196
+#: ../src/group_commands.c:130 ../src/group_commands.c:179
+#, fuzzy
+#| msgid "Invalid peer name"
+msgid "Invalid peer name."
+msgstr "Invalid peer name"
+
+#: ../src/group_commands.c:138
+#, fuzzy, c-format
+#| msgid "-!- %s has been promoted to moderator by %s"
+msgid "You have promoted %s to moderator."
+msgstr "-!- %s has been promoted to moderator by %s"
+
+#: ../src/group_commands.c:142
+#, fuzzy
+#| msgid "Failed to retrieve peer limit"
+msgid "Failed to promote peer to moderator"
+msgstr "Failed to retrieve peer limit"
+
+#: ../src/group_commands.c:146
+#, fuzzy
+#| msgid "You do not have permission to kick %s."
+msgid "You do not have permission to promote moderators."
+msgstr "You do not have permission to kick %s."
+
+#: ../src/group_commands.c:150
+#, c-format
+msgid ""
+"Moderator list is full. Use the \"%s\" command to remove all offline mods "
+"from the mod list."
+msgstr ""
+
+#: ../src/group_commands.c:161
+#, fuzzy
+#| msgid "Failed to retrieve peer limit"
+msgid "Failed to prune moderator list."
+msgstr "Failed to retrieve peer limit"
+
+#: ../src/group_commands.c:165
+#, c-format
+msgid "%d offline moderators have been pruned from the list."
+msgstr ""
+
+#: ../src/group_commands.c:187
+#, c-format
+msgid "You have revoked moderator powers from %s."
+msgstr ""
+
+#: ../src/group_commands.c:191
+#, c-format
+msgid "Failed to revoke moderator powers from %s."
+msgstr ""
+
+#: ../src/group_commands.c:195
+msgid "Nice try."
+msgstr ""
+
+#: ../src/group_commands.c:212
 #, c-format
 msgid "Password exceeds %d character limit"
 msgstr "Password exceeds %d character limit"
 
-#: ../src/group_commands.c:205
+#: ../src/group_commands.c:221
 #, c-format
 msgid "Password has been set to %s"
 msgstr "Password has been set to %s"
 
-#: ../src/group_commands.c:207
+#: ../src/group_commands.c:223
 msgid "Password has been unset"
 msgstr "Password has been unset"
 
-#: ../src/group_commands.c:211
+#: ../src/group_commands.c:227
 msgid "You do not have permission to set the password"
 msgstr "You do not have permission to set the password"
 
-#: ../src/group_commands.c:215
+#: ../src/group_commands.c:231
 msgid "Error setting password"
 msgstr "Error setting password"
 
-#: ../src/group_commands.c:229
+#: ../src/group_commands.c:245
 msgid "Failed to retrieve peer limit"
 msgstr "Failed to retrieve peer limit"
 
-#: ../src/group_commands.c:233
+#: ../src/group_commands.c:249
 #, c-format
 msgid "Peer limit is set to %d"
 msgstr "Peer limit is set to %d"
 
-#: ../src/group_commands.c:240
+#: ../src/group_commands.c:256
 msgid "Peer limit must be a value greater than 0"
 msgstr "Peer limit must be a value greater than 0"
 
-#: ../src/group_commands.c:248
+#: ../src/group_commands.c:264
 #, c-format
 msgid "Peer limit has been set to %d"
 msgstr "Peer limit has been set to %d"
 
-#: ../src/group_commands.c:252
+#: ../src/group_commands.c:268
 msgid "You do not have permission to set the peer limit."
 msgstr "You do not have permission to set the peer limit."
 
-#: ../src/group_commands.c:256
+#: ../src/group_commands.c:272
 msgid "Failed to set the peer limit"
 msgstr "Failed to set the peer limit"
 
-#: ../src/group_commands.c:271
+#: ../src/group_commands.c:287
 msgid "Failed to retrieve privacy state"
 msgstr "Failed to retrieve privacy state"
 
-#: ../src/group_commands.c:276
+#: ../src/group_commands.c:292
 #, c-format
 msgid "Privacy state is set to %s."
 msgstr "Privacy state is set to %s."
 
-#: ../src/group_commands.c:283
+#: ../src/group_commands.c:299
 #, c-format
 msgid "Privacy state must be \"%s\" or \"%s\"."
 msgstr "Privacy state must be \"%s\" or \"%s\"."
 
-#: ../src/group_commands.c:293
+#: ../src/group_commands.c:309
 #, c-format
 msgid "Privacy state has been set to %s."
 msgstr "Privacy state has been set to %s."
 
-#: ../src/group_commands.c:297
+#: ../src/group_commands.c:313
 msgid "You do not have permission to set the privacy state."
 msgstr "You do not have permission to set the privacy state."
 
-#: ../src/group_commands.c:301
+#: ../src/group_commands.c:317
 msgid "Error setting privacy state."
 msgstr "Error setting privacy state."
 
-#: ../src/group_commands.c:314
+#: ../src/group_commands.c:326
+#, fuzzy
+#| msgid "Failed to join group."
+msgid "Failed to rejoin group."
+msgstr "Failed to join group."
+
+#: ../src/group_commands.c:330
 msgid "Reconnecting to group..."
 msgstr "Reconnecting to group..."
 
-#: ../src/group_commands.c:325
+#: ../src/group_commands.c:341
 #, c-format
 msgid "Topic is set to: %s"
 msgstr "Topic is set to: %s"
 
-#: ../src/group_commands.c:327
+#: ../src/group_commands.c:343
 msgid "Topic is not set"
 msgstr "Topic is not set"
 
-#: ../src/group_commands.c:336
+#: ../src/group_commands.c:352
 msgid "Failed to set topic."
 msgstr "Failed to set topic."
 
-#: ../src/group_commands.c:349
+#: ../src/group_commands.c:365
 #, c-format
 msgid "-!- You set the topic to: %s"
 msgstr "-!- You set the topic to: %s"
 
-#: ../src/group_commands.c:352
+#: ../src/group_commands.c:368
 #, c-format
 msgid "set topic to %s"
 msgstr "set topic to %s"
 
-#: ../src/group_commands.c:359
+#: ../src/group_commands.c:375
 msgid "Who do you want to unignore?"
 msgstr "Who do you want to unignore?"
 
-#: ../src/group_commands.c:367
+#: ../src/group_commands.c:383
 #, c-format
 msgid "Peer '%s' does not exist"
 msgstr "Peer '%s' does not exist"
 
-#: ../src/group_commands.c:372
+#: ../src/group_commands.c:388
 #, c-format
 msgid "Failed to unignore %s"
 msgstr "Failed to unignore %s"
 
-#: ../src/group_commands.c:379
+#: ../src/group_commands.c:395
 #, c-format
 msgid "-!- You are no longer ignoring %s"
 msgstr "-!- You are no longer ignoring %s"
@@ -1115,8 +1178,9 @@ msgid "-!- %s has been silenced by %s"
 msgstr "-!- %s has been silenced by %s"
 
 #: ../src/groupchat.c:612
-#, c-format
-msgid "-!- %s has been user'd by %s"
+#, fuzzy, c-format
+#| msgid "-!- %s has been user'd by %s"
+msgid "-!- %s has been made a normal user by %s"
 msgstr "-!- %s has been user'd by %s"
 
 #: ../src/groupchat.c:615

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Toxic 0.6.0\n"
 "Report-Msgid-Bugs-To: JFreegman@tox.im\n"
-"POT-Creation-Date: 2015-05-30 11:52+0200\n"
+"POT-Creation-Date: 2015-06-02 08:06+0200\n"
 "PO-Revision-Date: 2015-05-30 11:52+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -560,15 +560,15 @@ msgstr "Errore: configurazione thread DNS fallita"
 msgid "Error: DNS thread failed to init"
 msgstr "Errore: inizializzazione thread DNS fallita"
 
-#: ../src/execute.c:180
+#: ../src/execute.c:181
 msgid "failed in parse_command"
 msgstr "errore in \"parse_command\""
 
-#: ../src/execute.c:194
+#: ../src/execute.c:195
 msgid "Invalid argument. Did you forget a closing \"?"
 msgstr "Argomento non valido. Hai dimenticato un \"?"
 
-#: ../src/execute.c:274
+#: ../src/execute.c:275
 msgid "Invalid command."
 msgstr "Comando non valido."
 
@@ -878,6 +878,7 @@ msgid "Error retreiving chat id."
 msgstr "Errore nel recuperare il chat ID."
 
 #: ../src/group_commands.c:63 ../src/group_commands.c:89
+#: ../src/group_commands.c:122 ../src/group_commands.c:171
 msgid "Peer name must be specified."
 msgstr "Devi specificare il nome dell'utente."
 
@@ -911,123 +912,176 @@ msgstr "Errore nell'espellere %s dalla chat di gruppo."
 msgid "You do not have permission to kick %s."
 msgstr "Non hai i permessi per espellere %s."
 
-#: ../src/group_commands.c:196
+#: ../src/group_commands.c:130 ../src/group_commands.c:179
+msgid "Invalid peer name."
+msgstr "Nome utente non valido."
+
+#: ../src/group_commands.c:138
+#, c-format
+msgid "You have promoted %s to moderator."
+msgstr "Hai promossso %s a \"moderatore\"."
+
+#: ../src/group_commands.c:142
+msgid "Failed to promote peer to moderator"
+msgstr "Errore nel promuovere l'utente a moderatore"
+
+#: ../src/group_commands.c:146
+msgid "You do not have permission to promote moderators."
+msgstr "Non hai i permessi per promuovere a moderatore."
+
+#: ../src/group_commands.c:150
+#, c-format
+msgid ""
+"Moderator list is full. Use the \"%s\" command to remove all offline mods "
+"from the mod list."
+msgstr ""
+"La lista dei moderatori è piena. Usa \"%s\" per rimuovere tutti i moderatori "
+"offline dalla lista."
+
+#: ../src/group_commands.c:161
+msgid "Failed to prune moderator list."
+msgstr "Errore nel ripulire la lista moderatori."
+
+#: ../src/group_commands.c:165
+#, c-format
+msgid "%d offline moderators have been pruned from the list."
+msgstr "%d moderatori offline sono stati rimossi dalla lista."
+
+#: ../src/group_commands.c:187
+#, c-format
+msgid "You have revoked moderator powers from %s."
+msgstr "Hai tolto i permessi di moderatore da %s."
+
+#: ../src/group_commands.c:191
+#, c-format
+msgid "Failed to revoke moderator powers from %s."
+msgstr "Errore nel rimuovere i permessi di moderatore da %s."
+
+#: ../src/group_commands.c:195
+msgid "Nice try."
+msgstr "Ci hai provato."
+
+#: ../src/group_commands.c:212
 #, c-format
 msgid "Password exceeds %d character limit"
 msgstr "La password eccede il limite di %d caratteri"
 
-#: ../src/group_commands.c:205
+#: ../src/group_commands.c:221
 #, c-format
 msgid "Password has been set to %s"
 msgstr "Password impostata a: \"%s\""
 
-#: ../src/group_commands.c:207
+#: ../src/group_commands.c:223
 msgid "Password has been unset"
 msgstr "Password rimossa"
 
-#: ../src/group_commands.c:211
+#: ../src/group_commands.c:227
 msgid "You do not have permission to set the password"
 msgstr "Non hai i permessi per impostare la password"
 
-#: ../src/group_commands.c:215
+#: ../src/group_commands.c:231
 msgid "Error setting password"
 msgstr "Errore nell'impostare la password"
 
-#: ../src/group_commands.c:229
+#: ../src/group_commands.c:245
 msgid "Failed to retrieve peer limit"
 msgstr "Errore nel recuperare il limite di utenti"
 
-#: ../src/group_commands.c:233
+#: ../src/group_commands.c:249
 #, c-format
 msgid "Peer limit is set to %d"
 msgstr "Limite utenti impostato a %d"
 
-#: ../src/group_commands.c:240
+#: ../src/group_commands.c:256
 msgid "Peer limit must be a value greater than 0"
 msgstr "Il limite utenti deve essere maggiore di 0"
 
-#: ../src/group_commands.c:248
+#: ../src/group_commands.c:264
 #, c-format
 msgid "Peer limit has been set to %d"
 msgstr "Limite utenti impostato a %d"
 
-#: ../src/group_commands.c:252
+#: ../src/group_commands.c:268
 msgid "You do not have permission to set the peer limit."
 msgstr "Non hai i permessi per impostare il limite utenti."
 
-#: ../src/group_commands.c:256
+#: ../src/group_commands.c:272
 msgid "Failed to set the peer limit"
 msgstr "Errore nell'impostare il limite utenti"
 
-#: ../src/group_commands.c:271
+#: ../src/group_commands.c:287
 msgid "Failed to retrieve privacy state"
 msgstr "Errore nel recuperare lo stato della privacy"
 
-#: ../src/group_commands.c:276
+#: ../src/group_commands.c:292
 #, c-format
 msgid "Privacy state is set to %s."
 msgstr "Stato della privacy impostato a \"%s\"."
 
-#: ../src/group_commands.c:283
+#: ../src/group_commands.c:299
 #, c-format
 msgid "Privacy state must be \"%s\" or \"%s\"."
 msgstr "Lo stato della privacy deve essere \"%s\" o \"%s\"."
 
-#: ../src/group_commands.c:293
+#: ../src/group_commands.c:309
 #, c-format
 msgid "Privacy state has been set to %s."
 msgstr "Stato della privacy impostato a \"%s\"."
 
-#: ../src/group_commands.c:297
+#: ../src/group_commands.c:313
 msgid "You do not have permission to set the privacy state."
 msgstr "Non hai i permessi per impostare lo stato della privacy."
 
-#: ../src/group_commands.c:301
+#: ../src/group_commands.c:317
 msgid "Error setting privacy state."
 msgstr "Errore nell'impostazione dello stato della privacy."
 
-#: ../src/group_commands.c:314
+#: ../src/group_commands.c:326
+msgid "Failed to rejoin group."
+msgstr "Errore nel rientrare nella chat di gruppo."
+
+#: ../src/group_commands.c:330
 msgid "Reconnecting to group..."
 msgstr "Riconnessione al gruppo..."
 
-#: ../src/group_commands.c:325
+#: ../src/group_commands.c:341
 #, c-format
 msgid "Topic is set to: %s"
 msgstr "Topic impostato a: \"%s\""
 
-#: ../src/group_commands.c:327
+#: ../src/group_commands.c:343
 msgid "Topic is not set"
 msgstr "Topic non impostato"
 
-#: ../src/group_commands.c:336
+#: ../src/group_commands.c:352
 msgid "Failed to set topic."
 msgstr "Errore nell'impostare il topic."
 
-#: ../src/group_commands.c:349
+#: ../src/group_commands.c:365
 #, c-format
 msgid "-!- You set the topic to: %s"
 msgstr "-!- Hai impostato il topic a: \"%s\""
 
-#: ../src/group_commands.c:352
+#: ../src/group_commands.c:368
 #, c-format
 msgid "set topic to %s"
 msgstr "topic impostato a \"%s\""
 
-#: ../src/group_commands.c:359
+#: ../src/group_commands.c:375
 msgid "Who do you want to unignore?"
 msgstr "Chi vuoi rimuovere dalla lista ignorati?"
 
-#: ../src/group_commands.c:367
+#: ../src/group_commands.c:383
 #, c-format
 msgid "Peer '%s' does not exist"
 msgstr "L'utente \"%s\" non esiste"
 
-#: ../src/group_commands.c:372
+#: ../src/group_commands.c:388
 #, c-format
 msgid "Failed to unignore %s"
 msgstr "Errore nel rimuovere l'utente %s dalla lista ignorati"
 
-#: ../src/group_commands.c:379
+#: ../src/group_commands.c:395
 #, c-format
 msgid "-!- You are no longer ignoring %s"
 msgstr "-!- Non stai più ignorando \"%s\""
@@ -1119,7 +1173,7 @@ msgstr "-!- %s è stato silenziato da %s"
 
 #: ../src/groupchat.c:612
 #, c-format
-msgid "-!- %s has been user'd by %s"
+msgid "-!- %s has been made a normal user by %s"
 msgstr "-!- %s è stato declassato a \"utente\" da %s"
 
 #: ../src/groupchat.c:615

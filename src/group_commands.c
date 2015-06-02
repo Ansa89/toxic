@@ -119,7 +119,7 @@ void cmd_kick(WINDOW *window, ToxWindow *self, Tox *m, int argc, char (*argv)[MA
 void cmd_mod(WINDOW *window, ToxWindow *self, Tox *m, int argc, char (*argv)[MAX_STR_SIZE])
 {
     if (argc < 1) {
-        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, "Peer name must be specified.");
+        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, gettext("Peer name must be specified."));
         return;
     }
 
@@ -127,7 +127,7 @@ void cmd_mod(WINDOW *window, ToxWindow *self, Tox *m, int argc, char (*argv)[MAX
     int peernumber = group_get_nick_peernumber(self->num, nick);
 
     if (peernumber == -1) {
-        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0,  "Invalid peer name.");
+        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0,  gettext("Invalid peer name."));
         return;
     }
 
@@ -135,19 +135,19 @@ void cmd_mod(WINDOW *window, ToxWindow *self, Tox *m, int argc, char (*argv)[MAX
 
     switch (ret) {
         case 0: {
-            line_info_add(self, NULL, NULL, NULL, SYS_MSG, 1, BLUE, "You have promoted %s to moderator.", nick);
+            line_info_add(self, NULL, NULL, NULL, SYS_MSG, 1, BLUE, gettext("You have promoted %s to moderator."), nick);
             return;
         }
         case -1: {
-            line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0,  "Failed to promote peer to moderator");
+            line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0,  gettext("Failed to promote peer to moderator"));
             return;
         }
         case -2: {
-            line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0,  "You do not have permission to promote moderators.");
+            line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0,  gettext("You do not have permission to promote moderators."));
             return;
         }
         case -3: {
-            line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0,  "Moderator list is full. Use the \"/prune\" command to remove all offline mods from the mod list.");
+            line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0,  gettext("Moderator list is full. Use the \"%s\" command to remove all offline mods from the mod list."), "/prune");
             return;
         }
     }
@@ -158,17 +158,17 @@ void cmd_prune(WINDOW *window, ToxWindow *self, Tox *m, int argc, char (*argv)[M
     int num_pruned = tox_group_prune_moderator_list(m, self->num);
 
     if (num_pruned == -1) {
-        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, "Failed to prune moderator list.");
+        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, gettext("Failed to prune moderator list."));
         return;
     }
 
-    line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, "%d offline moderators have been pruned from the list.", num_pruned);
+    line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, gettext("%d offline moderators have been pruned from the list."), num_pruned);
 }
 
 void cmd_unmod(WINDOW *window, ToxWindow *self, Tox *m, int argc, char (*argv)[MAX_STR_SIZE])
 {
     if (argc < 1) {
-        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, "Peer name must be specified.");
+        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, gettext("Peer name must be specified."));
         return;
     }
 
@@ -176,7 +176,7 @@ void cmd_unmod(WINDOW *window, ToxWindow *self, Tox *m, int argc, char (*argv)[M
     int peernumber = group_get_nick_peernumber(self->num, nick);
 
     if (peernumber == -1) {
-        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0,  "Invalid peer name.");
+        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0,  gettext("Invalid peer name."));
         return;
     }
 
@@ -184,15 +184,15 @@ void cmd_unmod(WINDOW *window, ToxWindow *self, Tox *m, int argc, char (*argv)[M
 
     switch (ret) {
         case 0: {
-            line_info_add(self, NULL, NULL, NULL, SYS_MSG, 1, BLUE, "You have revoked moderator powers from %s.", nick);
+            line_info_add(self, NULL, NULL, NULL, SYS_MSG, 1, BLUE, gettext("You have revoked moderator powers from %s."), nick);
             return;
         }
         case -1: {
-            line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0,  "Failed to revoke moderator powers from %s.", nick);
+            line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0,  gettext("Failed to revoke moderator powers from %s."), nick);
             return;
         }
         case -2: {
-            line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0,  "Nice try.");
+            line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0,  gettext("Nice try."));
             return;
         }
     }
@@ -323,7 +323,7 @@ void cmd_set_privacy(WINDOW *window, ToxWindow *self, Tox *m, int argc, char (*a
 void cmd_rejoin(WINDOW *window, ToxWindow *self, Tox *m, int argc, char (*argv)[MAX_STR_SIZE])
 {
     if (tox_group_reconnect(m, self->num) == -1) {
-        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, "Failed to rejoin group.");
+        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, gettext("Failed to rejoin group."));
         return;
     }
 
