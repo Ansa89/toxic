@@ -287,29 +287,49 @@ static void help_draw_group(ToxWindow *self)
     wattroff(win, A_BOLD | COLOR_PAIR(RED));
 
     wprintw(win, "  /chatid                    : ");
-    wprintw(win, gettext("Print the group chat id to share with others.\n"));
+    wprintw(win, gettext("Print the group chat id to share with others\n"));
     wprintw(win, "  /ignore <nick>             : ");
     wprintw(win, gettext("Ignore peer\n"));
+    wprintw(win, "  /unignore <nick>           : ");
+    wprintw(win, gettext("Unignore peer \n"));
+    wprintw(win, "  /rejoin                    : ");
+    wprintw(win, gettext("Rejoin the group\n"));
+    wprintw(win, "  /topic <msg>               : ");
+    wprintw(win, gettext("Set group topic (show current topic if no msg)\n"));
+    wprintw(win, "  /whisper <nick> <msg>      : ");
+    wprintw(win, gettext("Send private message to nick\n"));
+
+    wattron(win, A_BOLD);
+    wprintw(win, " ");
+    wprintw(win, gettext("Moderator commands:\n"));
+    wattroff(win, A_BOLD);
     wprintw(win, "  /kick <nick>               : ");
     wprintw(win, gettext("Kick peer\n"));
+    wprintw(win, "  /ban <nick>                : ");
+    wprintw(win, gettext("Ban peer (leave nick blank to see ban list)\n"));
+    wprintw(win, "  /unban <Ban ID>            : ");
+    wprintw(win, gettext("Unban entry\n"));
+    wprintw(win, "  /silence <nick>            : ");
+    wprintw(win, gettext("Silences peer for the entire group\n"));
+    wprintw(win, "  /unsilence <nick>          : ");
+    wprintw(win, gettext("Unsilences peer\n"));
+
+    wattron(win, A_BOLD);
+    wprintw(win, " ");
+    wprintw(win, gettext("Founder commands:\n"));
+    wattroff(win, A_BOLD);
+    wprintw(win, "  /mod <nick>                : ");
+    wpritnw(win, gettext("Promote peer to moderator\n"));
+    wprintw(win, "  /unmod <nick>              : ");
+    wprintw(win, gettext("Demote moderator to normal user\n"));
     wprintw(win, "  /passwd <password>         : ");
     wprintw(win, gettext("Set group password (leave blank to unset)\n"));
     wprintw(win, "  /peerlimit <num>           : ");
     wprintw(win, gettext("Set group peer limit\n"));
     wprintw(win, "  /privacy <state>           : ");
     wprintw(win, gettext("Set group privacy state:"));
-    wprintw(win, "private|public\n");
-    wprintw(win, "  /rejoin                    : ");
-    wprintw(win, gettext("Rejoin the group\n"));
-    wprintw(win, "  /topic <msg>               : ");
-    wprintw(win, gettext("Set group topic (show current topic if no msg)\n"));
-    wprintw(win, "  /unignore <nick>           : ");
-    wprintw(win, gettext("Unignore peer \n"));
-    wprintw(win, "  /whisper <nick> <msg>      : ");
-    wprintw(win, gettext("Send private message to nick\n\n"));
+    wprintw(win, " private|public\n");
 
-#ifdef AUDIO
-#endif /* AUDIO */
     help_draw_bottom_menu(win);
 
     box(win, ACS_VLINE, ACS_HLINE);
@@ -366,7 +386,7 @@ void help_onKey(ToxWindow *self, wint_t key)
             break;
 
         case 'r':
-            help_init_window(self, 15, 80);
+            help_init_window(self, 23, 80);
             self->help->type = HELP_GROUP;
             break;
 

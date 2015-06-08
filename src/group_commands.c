@@ -68,7 +68,7 @@ void cmd_ignore(WINDOW *window, ToxWindow *self, Tox *m, int argc, char (*argv)[
     int peernum = group_get_nick_peernumber(self->num, nick);
 
     if (peernum == -1) {
-        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, gettext("Invalid peer name"));
+        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, gettext("Invalid peer name '%s'."), nick);
         return;
     }
 
@@ -83,6 +83,35 @@ void cmd_ignore(WINDOW *window, ToxWindow *self, Tox *m, int argc, char (*argv)[
     line_info_add(self, timefrmt, NULL, NULL, SYS_MSG, 1, BLUE, gettext("-!- Ignoring %s", nick));
 }
 
+static void cmd_kickban_helper(ToxWindow *self, Tox *m, const char *nick, bool set_ban)
+{
+    int peernumber = group_get_nick_peernumber(self->num, nick);
+
+    if (peernumber == -1) {
+        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0,  gettext("Invalid peer name '%s'."), nick);
+        return;
+    }
+
+    const char *type_str = set_ban ? "ban" : "kick";
+    int ret = tox_group_remove_peer(m, self->num, (uint32_t) peernumber, set_ban);
+
+    switch (ret) {
+        case 0: {
+            type_str = set_ban ? gettext("banned") : gettext("kicked");
+            line_info_add(self, NULL, NULL, NULL, SYS_MSG, 1, RED,  gettext("You have %s %s from the group."), type_str, nick);
+            return;
+        }
+        case -1: {
+            line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0,  gettext("Failed to %s %s from the group."), type_str, nick);
+            return;
+        }
+        case -2: {
+            line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0,  gettext("You do not have permission to %s %s."), type_str, nick);
+            return;
+        }
+    }
+}
+
 void cmd_kick(WINDOW *window, ToxWindow *self, Tox *m, int argc, char (*argv)[MAX_STR_SIZE])
 {
     if (argc < 1) {
@@ -90,30 +119,74 @@ void cmd_kick(WINDOW *window, ToxWindow *self, Tox *m, int argc, char (*argv)[MA
         return;
     }
 
-    const char *nick = argv[1];
-    int peernumber = group_get_nick_peernumber(self->num, nick);
+    cmd_kickban_helper(self, m, argv[1], false);
+}
 
-    if (peernumber == -1) {
-        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0,  gettext("Invalid peer name"));
+void cmd_ban(WINDOW *window, ToxWindow *self, Tox *m, int argc, char (*argv)[MAX_STR_SIZE])
+{
+    if (argc < 1) {
+        int banlist_size = tox_group_get_ban_list_size(m, self->num);
+
+        if (banlist_size == -1) {
+            line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, gettext("Failed to get the ban list."));
+            return;
+        }
+
+        if (banlist_size == 0) {
+            line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, gettext("Ban list is empty."));
+            return;
+        }
+
+        struct Tox_Group_Ban *ban_list = malloc(banlist_size);
+
+        if (ban_list == NULL)
+            return;
+
+        int num_banned = tox_group_get_ban_list(m, self->num, ban_list);
+
+        if (num_banned == -1) {
+            free(ban_list);
+            line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, gettext("Failed to get the ban list."));
+            return;
+        }
+
+        uint16_t i;
+
+        for (i = 0; i < num_banned; ++i) {
+            struct tm tm_set = *localtime((const time_t *) &ban_list[i].time_set);
+            char time_str[64];
+            strftime(time_str, sizeof(time_str), "%e %b %Y %H:%M:%S%p", &tm_set);
+            line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, "[ID: %d] %s : %s : %s", ban_list[i].id,
+                                                                  ban_list[i].ip_address, ban_list[i].nick, time_str);
+        }
+
+        free(ban_list);
         return;
     }
 
-    int ret = tox_group_kick_peer(m, self->num, (uint32_t) peernumber);
+    cmd_kickban_helper(self, m, argv[1], true);
+}
 
-    switch (ret) {
-        case 0: {
-            line_info_add(self, NULL, NULL, NULL, SYS_MSG, 1, RED,  gettext("You have kicked %s from the group."), nick);
-            return;
-        }
-        case -1: {
-            line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0,  gettext("Failed to kick %s from the group."), nick);
-            return;
-        }
-        case -2: {
-            line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0,  gettext("You do not have permission to kick %s."), nick);
-            return;
-        }
+void cmd_unban(WINDOW *window, ToxWindow *self, Tox *m, int argc, char (*argv)[MAX_STR_SIZE])
+{
+    if (argc < 1) {
+        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, "Ban ID must be specified.");
+        return;
     }
+
+    int ban_id = atoi(argv[1]);
+
+    if (ban_id == 0 && strcmp(argv[1], "0")) {
+        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, "Ban ID must be a non-negative interger.");
+        return;
+    }
+
+    if (tox_group_remove_ban_entry(m, self->num, ban_id) == -1) {
+        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, "Ban ID does not exist.");
+        return;
+    }
+
+    line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, "Ban list entry with id %d has been removed.", ban_id);
 }
 
 void cmd_mod(WINDOW *window, ToxWindow *self, Tox *m, int argc, char (*argv)[MAX_STR_SIZE])
@@ -127,7 +200,7 @@ void cmd_mod(WINDOW *window, ToxWindow *self, Tox *m, int argc, char (*argv)[MAX
     int peernumber = group_get_nick_peernumber(self->num, nick);
 
     if (peernumber == -1) {
-        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0,  gettext("Invalid peer name."));
+        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0,  gettext("Invalid peer name '%s'."), nick);
         return;
     }
 
@@ -138,31 +211,15 @@ void cmd_mod(WINDOW *window, ToxWindow *self, Tox *m, int argc, char (*argv)[MAX
             line_info_add(self, NULL, NULL, NULL, SYS_MSG, 1, BLUE, gettext("You have promoted %s to moderator."), nick);
             return;
         }
-        case -1: {
-            line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0,  gettext("Failed to promote peer to moderator"));
-            return;
-        }
         case -2: {
             line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0,  gettext("You do not have permission to promote moderators."));
             return;
         }
-        case -3: {
-            line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0,  gettext("Moderator list is full. Use the \"%s\" command to remove all offline mods from the mod list."), "/prune");
+        default: {
+            line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0,  gettext("Failed to promote peer to moderator"));
             return;
         }
     }
-}
-
-void cmd_prune(WINDOW *window, ToxWindow *self, Tox *m, int argc, char (*argv)[MAX_STR_SIZE])
-{
-    int num_pruned = tox_group_prune_moderator_list(m, self->num);
-
-    if (num_pruned == -1) {
-        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, gettext("Failed to prune moderator list."));
-        return;
-    }
-
-    line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, gettext("%d offline moderators have been pruned from the list."), num_pruned);
 }
 
 void cmd_unmod(WINDOW *window, ToxWindow *self, Tox *m, int argc, char (*argv)[MAX_STR_SIZE])
@@ -176,7 +233,12 @@ void cmd_unmod(WINDOW *window, ToxWindow *self, Tox *m, int argc, char (*argv)[M
     int peernumber = group_get_nick_peernumber(self->num, nick);
 
     if (peernumber == -1) {
-        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0,  gettext("Invalid peer name."));
+        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0,  gettext("Invalid peer name '%s'."), nick);
+        return;
+    }
+
+    if (tox_group_get_peer_role(m, self->num, peernumber) != TOX_GR_MODERATOR) {
+        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, gettext("%s is not a moderator"), nick);
         return;
     }
 
@@ -320,6 +382,77 @@ void cmd_set_privacy(WINDOW *window, ToxWindow *self, Tox *m, int argc, char (*a
     }
 }
 
+void cmd_silence(WINDOW *window, ToxWindow *self, Tox *m, int argc, char (*argv)[MAX_STR_SIZE])
+{
+    if (argc < 1) {
+        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, "Peer name must be specified.");
+        return;
+    }
+
+    const char *nick = argv[1];
+    int peernumber = group_get_nick_peernumber(self->num, nick);
+
+    if (peernumber == -1) {
+        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0,  "Invalid peer name '%s'.", nick);
+        return;
+    }
+
+    int ret = tox_group_set_peer_role(m, self->num, peernumber, TOX_GR_OBSERVER);
+
+    switch (ret) {
+        case 0: {
+            line_info_add(self, NULL, NULL, NULL, SYS_MSG, 1, BLUE, "You have silenced %s", nick);
+            return;
+        }
+        case -2: {
+            line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, "You do not have permission to silence %s.", nick);
+            return;
+        }
+        default: {
+            line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, "Failed to silence %s.", nick);
+            return;
+        }
+    }
+}
+
+void cmd_unsilence(WINDOW *window, ToxWindow *self, Tox *m, int argc, char (*argv)[MAX_STR_SIZE])
+{
+    if (argc < 1) {
+        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, "Peer name must be specified.");
+        return;
+    }
+
+    const char *nick = argv[1];
+    int peernumber = group_get_nick_peernumber(self->num, nick);
+
+    if (peernumber == -1) {
+        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0,  "Invalid peer name '%s'.", nick);
+        return;
+    }
+
+    if (tox_group_get_peer_role(m, self->num, peernumber) != TOX_GR_OBSERVER) {
+        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, "%s is not silenced", nick);
+        return;
+    }
+
+    int ret = tox_group_set_peer_role(m, self->num, peernumber, TOX_GR_USER);
+
+    switch (ret) {
+        case 0: {
+            line_info_add(self, NULL, NULL, NULL, SYS_MSG, 1, BLUE, "You have unsilenced %s", nick);
+            return;
+        }
+        case -2: {
+            line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, "You do not have permission to unsilence %s.", nick);
+            return;
+        }
+        default: {
+            line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, "Failed to unsilence %s.", nick);
+            return;
+        }
+    }
+}
+
 void cmd_rejoin(WINDOW *window, ToxWindow *self, Tox *m, int argc, char (*argv)[MAX_STR_SIZE])
 {
     if (tox_group_reconnect(m, self->num) == -1) {
@@ -380,7 +513,7 @@ void cmd_unignore(WINDOW *window, ToxWindow *self, Tox *m, int argc, char (*argv
     int peernum = group_get_nick_peernumber(self->num, nick);
 
     if (peernum == -1) {
-        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0, gettext("Peer '%s' does not exist"), nick);
+        line_info_add(self, NULL, NULL, NULL, SYS_MSG, 0, 0,  gettext("Invalid peer name '%s'."), nick);
         return;
     }
 

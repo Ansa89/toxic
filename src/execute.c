@@ -91,6 +91,7 @@ static struct cmd_func chat_commands[] = {
 };
 
 static struct cmd_func group_commands[] = {
+    { "/ban",       cmd_ban            },
     { "/chatid",    cmd_chatid         },
     { "/ignore",    cmd_ignore         },
     { "/kick",      cmd_kick           },
@@ -98,11 +99,13 @@ static struct cmd_func group_commands[] = {
     { "/passwd",    cmd_set_passwd     },
     { "/peerlimit", cmd_set_peerlimit  },
     { "/privacy",   cmd_set_privacy    },
-    { "/prune",     cmd_prune          },
     { "/rejoin",    cmd_rejoin         },
+    { "/silence",   cmd_silence        },
     { "/topic",     cmd_set_topic      },
+    { "/unban",     cmd_unban          },
     { "/unignore",  cmd_unignore       },
     { "/unmod",     cmd_unmod          },
+    { "/unsilence", cmd_unsilence      },
 #ifdef AUDIO
     { "/mute",      cmd_mute           },
     { "/sense",     cmd_sense          },
@@ -110,8 +113,9 @@ static struct cmd_func group_commands[] = {
     { NULL,         NULL               },
 };
 
-#define NUM_SPECIAL_COMMANDS 11
+#define NUM_SPECIAL_COMMANDS 14
 static const char special_commands[NUM_SPECIAL_COMMANDS][MAX_CMDNAME_SIZE] = {
+    "/ban",
     "/gaccept",
     "/group",
     "/ignore",
@@ -120,9 +124,11 @@ static const char special_commands[NUM_SPECIAL_COMMANDS][MAX_CMDNAME_SIZE] = {
     "/nick",
     "/note",
     "/passwd",
+    "/silence",
     "/topic",
     "/unignore",
     "/unmod",
+    "/unsilence",
 };
 
 /* return true if input command is in the special_commands array. False otherwise.*/
