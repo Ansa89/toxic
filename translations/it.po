@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Toxic 0.6.0\n"
 "Report-Msgid-Bugs-To: JFreegman@tox.im\n"
-"POT-Creation-Date: 2015-06-08 10:44+0200\n"
+"POT-Creation-Date: 2015-06-11 11:03+0200\n"
 "PO-Revision-Date: 2015-05-30 11:52+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -878,15 +878,15 @@ msgid "Error retreiving chat id."
 msgstr "Errore nel recuperare il chat ID."
 
 #: ../src/group_commands.c:63 ../src/group_commands.c:118
-#: ../src/group_commands.c:195 ../src/group_commands.c:228
-#: ../src/group_commands.c:388 ../src/group_commands.c:421
+#: ../src/group_commands.c:199 ../src/group_commands.c:232
+#: ../src/group_commands.c:392 ../src/group_commands.c:425
 msgid "Peer name must be specified."
 msgstr "Devi specificare il nome dell'utente."
 
 #: ../src/group_commands.c:71 ../src/group_commands.c:91
-#: ../src/group_commands.c:203 ../src/group_commands.c:236
-#: ../src/group_commands.c:396 ../src/group_commands.c:429
-#: ../src/group_commands.c:516
+#: ../src/group_commands.c:207 ../src/group_commands.c:240
+#: ../src/group_commands.c:400 ../src/group_commands.c:433
+#: ../src/group_commands.c:520
 #, c-format
 msgid "Invalid peer name '%s'."
 msgstr "Nome utente non valido '%s'."
@@ -924,7 +924,7 @@ msgstr "Errore nel %s %s dalla chat di gruppo."
 msgid "You do not have permission to %s %s."
 msgstr "Non hai i permessi per %s %s."
 
-#: ../src/group_commands.c:131 ../src/group_commands.c:149
+#: ../src/group_commands.c:131 ../src/group_commands.c:143
 msgid "Failed to get the ban list."
 msgstr "Errore nel recuperare la lista dei ban."
 
@@ -932,206 +932,210 @@ msgstr "Errore nel recuperare la lista dei ban."
 msgid "Ban list is empty."
 msgstr "Lista dei ban vuota."
 
-#: ../src/group_commands.c:173
+#: ../src/group_commands.c:167
 msgid "Ban ID must be specified."
 msgstr "Devi specificare il ban ID."
 
-#: ../src/group_commands.c:180
+#: ../src/group_commands.c:174
 msgid "Ban ID must be a non-negative interger."
 msgstr "Il ban ID deve essere un intero non negativo."
 
-#: ../src/group_commands.c:185
-msgid "Ban ID does not exist."
-msgstr "Ban ID non esistente."
-
-#: ../src/group_commands.c:189
+#: ../src/group_commands.c:182
 #, c-format
 msgid "Ban list entry with id %d has been removed."
 msgstr "Ban ID \"%d\" rimosso dalla lista dei ban."
 
-#: ../src/group_commands.c:211
+#: ../src/group_commands.c:186
+msgid "You do not have permission to unban peers."
+msgstr "Non hai i permessi per togliere ban."
+
+#: ../src/group_commands.c:190
+msgid "Ban ID does not exist."
+msgstr "Ban ID non esistente."
+
+#: ../src/group_commands.c:215
 #, c-format
 msgid "You have promoted %s to moderator."
 msgstr "Hai promossso %s a \"moderatore\"."
 
-#: ../src/group_commands.c:215
+#: ../src/group_commands.c:219
 msgid "You do not have permission to promote moderators."
 msgstr "Non hai i permessi per promuovere a moderatore."
 
-#: ../src/group_commands.c:219
+#: ../src/group_commands.c:223
 msgid "Failed to promote peer to moderator"
 msgstr "Errore nel promuovere l'utente a moderatore"
 
-#: ../src/group_commands.c:241
+#: ../src/group_commands.c:245
 #, c-format
 msgid "%s is not a moderator"
 msgstr "%s non è un moderatore"
 
-#: ../src/group_commands.c:249
+#: ../src/group_commands.c:253
 #, c-format
 msgid "You have revoked moderator powers from %s."
 msgstr "Hai tolto i permessi di moderatore da %s."
 
-#: ../src/group_commands.c:253
+#: ../src/group_commands.c:257
 #, c-format
 msgid "Failed to revoke moderator powers from %s."
 msgstr "Errore nel rimuovere i permessi di moderatore da %s."
 
-#: ../src/group_commands.c:257
+#: ../src/group_commands.c:261
 msgid "Nice try."
 msgstr "Ci hai provato."
 
-#: ../src/group_commands.c:274
+#: ../src/group_commands.c:278
 #, c-format
 msgid "Password exceeds %d character limit"
 msgstr "La password eccede il limite di %d caratteri"
 
-#: ../src/group_commands.c:283
+#: ../src/group_commands.c:287
 #, c-format
 msgid "Password has been set to %s"
 msgstr "Password impostata a: \"%s\""
 
-#: ../src/group_commands.c:285
+#: ../src/group_commands.c:289
 msgid "Password has been unset"
 msgstr "Password rimossa"
 
-#: ../src/group_commands.c:289
+#: ../src/group_commands.c:293
 msgid "You do not have permission to set the password"
 msgstr "Non hai i permessi per impostare la password"
 
-#: ../src/group_commands.c:293
+#: ../src/group_commands.c:297
 msgid "Error setting password"
 msgstr "Errore nell'impostare la password"
 
-#: ../src/group_commands.c:307
+#: ../src/group_commands.c:311
 msgid "Failed to retrieve peer limit"
 msgstr "Errore nel recuperare il limite di utenti"
 
-#: ../src/group_commands.c:311
+#: ../src/group_commands.c:315
 #, c-format
 msgid "Peer limit is set to %d"
 msgstr "Limite utenti impostato a %d"
 
-#: ../src/group_commands.c:318
+#: ../src/group_commands.c:322
 msgid "Peer limit must be a value greater than 0"
 msgstr "Il limite utenti deve essere maggiore di 0"
 
-#: ../src/group_commands.c:326
+#: ../src/group_commands.c:330
 #, c-format
 msgid "Peer limit has been set to %d"
 msgstr "Limite utenti impostato a %d"
 
-#: ../src/group_commands.c:330
+#: ../src/group_commands.c:334
 msgid "You do not have permission to set the peer limit."
 msgstr "Non hai i permessi per impostare il limite utenti."
 
-#: ../src/group_commands.c:334
+#: ../src/group_commands.c:338
 msgid "Failed to set the peer limit"
 msgstr "Errore nell'impostare il limite utenti"
 
-#: ../src/group_commands.c:349
+#: ../src/group_commands.c:353
 msgid "Failed to retrieve privacy state"
 msgstr "Errore nel recuperare lo stato della privacy"
 
-#: ../src/group_commands.c:354
+#: ../src/group_commands.c:358
 #, c-format
 msgid "Privacy state is set to %s."
 msgstr "Stato della privacy impostato a \"%s\"."
 
-#: ../src/group_commands.c:361
+#: ../src/group_commands.c:365
 #, c-format
 msgid "Privacy state must be \"%s\" or \"%s\"."
 msgstr "Lo stato della privacy deve essere \"%s\" o \"%s\"."
 
-#: ../src/group_commands.c:371
+#: ../src/group_commands.c:375
 #, c-format
 msgid "Privacy state has been set to %s."
 msgstr "Stato della privacy impostato a \"%s\"."
 
-#: ../src/group_commands.c:375
+#: ../src/group_commands.c:379
 msgid "You do not have permission to set the privacy state."
 msgstr "Non hai i permessi per impostare lo stato della privacy."
 
-#: ../src/group_commands.c:379
+#: ../src/group_commands.c:383
 msgid "Error setting privacy state."
 msgstr "Errore nell'impostazione dello stato della privacy."
 
-#: ../src/group_commands.c:404
-#, c-format
-msgid "You have silenced %s"
-msgstr "Hai silenziato %s"
-
 #: ../src/group_commands.c:408
 #, c-format
-msgid "You do not have permission to silence %s."
-msgstr "Non hai i permessi per silenziare %s."
+msgid "You have silenced %s"
+msgstr "Hai zittito %s"
 
 #: ../src/group_commands.c:412
 #, c-format
-msgid "Failed to silence %s."
-msgstr "Errore nel silenziare %s."
+msgid "You do not have permission to silence %s."
+msgstr "Non hai i permessi per zittire %s."
 
-#: ../src/group_commands.c:434
+#: ../src/group_commands.c:416
+#, c-format
+msgid "Failed to silence %s."
+msgstr "Errore nel zittire %s."
+
+#: ../src/group_commands.c:438
 #, c-format
 msgid "%s is not silenced"
-msgstr "%s non è silenziato"
-
-#: ../src/group_commands.c:442
-#, c-format
-msgid "You have unsilenced %s"
-msgstr "Hai de-silenziato %s"
+msgstr "%s non è zittito"
 
 #: ../src/group_commands.c:446
 #, c-format
-msgid "You do not have permission to unsilence %s."
-msgstr "Non hai i permessi per de-silenziare %s."
+msgid "You have unsilenced %s"
+msgstr "Hai de-zittito %s"
 
 #: ../src/group_commands.c:450
 #, c-format
-msgid "Failed to unsilence %s."
-msgstr "Errore nel de-silenziare %s."
+msgid "You do not have permission to unsilence %s."
+msgstr "Non hai i permessi per de-zittire %s."
 
-#: ../src/group_commands.c:459
+#: ../src/group_commands.c:454
+#, c-format
+msgid "Failed to unsilence %s."
+msgstr "Errore nel de-zittire %s."
+
+#: ../src/group_commands.c:463
 msgid "Failed to rejoin group."
 msgstr "Errore nel rientrare nella chat di gruppo."
 
-#: ../src/group_commands.c:463
+#: ../src/group_commands.c:467
 msgid "Reconnecting to group..."
 msgstr "Riconnessione al gruppo..."
 
-#: ../src/group_commands.c:474
+#: ../src/group_commands.c:478
 #, c-format
 msgid "Topic is set to: %s"
 msgstr "Topic impostato a: \"%s\""
 
-#: ../src/group_commands.c:476
+#: ../src/group_commands.c:480
 msgid "Topic is not set"
 msgstr "Topic non impostato"
 
-#: ../src/group_commands.c:485
+#: ../src/group_commands.c:489
 msgid "Failed to set topic."
 msgstr "Errore nell'impostare il topic."
 
-#: ../src/group_commands.c:498
+#: ../src/group_commands.c:502
 #, c-format
 msgid "-!- You set the topic to: %s"
 msgstr "-!- Hai impostato il topic a: \"%s\""
 
-#: ../src/group_commands.c:501
+#: ../src/group_commands.c:505
 #, c-format
 msgid "set topic to %s"
 msgstr "topic impostato a \"%s\""
 
-#: ../src/group_commands.c:508
+#: ../src/group_commands.c:512
 msgid "Who do you want to unignore?"
 msgstr "Chi vuoi rimuovere dalla lista ignorati?"
 
-#: ../src/group_commands.c:521
+#: ../src/group_commands.c:525
 #, c-format
 msgid "Failed to unignore %s"
 msgstr "Errore nel rimuovere l'utente %s dalla lista ignorati"
 
-#: ../src/group_commands.c:528
+#: ../src/group_commands.c:532
 #, c-format
 msgid "-!- You are no longer ignoring %s"
 msgstr "-!- Non stai più ignorando \"%s\""
@@ -1496,7 +1500,7 @@ msgstr "Silenzia l'utente per l'intera chat di gruppo\n"
 
 #: ../src/help.c:315
 msgid "Unsilences peer\n"
-msgstr "De-silenzia utente\n"
+msgstr "De-zittisci utente\n"
 
 #: ../src/help.c:319
 msgid "Founder commands:\n"
@@ -1512,7 +1516,8 @@ msgstr "Degrada moderatore a utente\n"
 
 #: ../src/help.c:326
 msgid "Set group password (leave blank to unset)\n"
-msgstr "Imposta una password per la chat di gruppo (lascia vuoto per resettare)\n"
+msgstr ""
+"Imposta una password per la chat di gruppo (lascia vuoto per resettare)\n"
 
 #: ../src/help.c:328
 msgid "Set group peer limit\n"
@@ -1969,4 +1974,3 @@ msgstr "errore in \"set_next_window\""
 #: ../src/windows.c:479
 msgid "failed in init_windows"
 msgstr "errore in \"init_windows\""
-
